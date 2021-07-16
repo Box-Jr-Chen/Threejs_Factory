@@ -1,0 +1,7 @@
+npm install -D sass-loader node-sass
+npm install compass-mixins
+
+
+"laravel-mix": "^5.0.9",
+"sass-loader": "^10.1.1",
+"node-sass": "^4.14.1",

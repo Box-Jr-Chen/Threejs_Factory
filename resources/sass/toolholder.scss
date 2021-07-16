@@ -1,0 +1,538 @@
+.panel{
+    position:absolute;
+    width: 110rem;
+    height: 60rem;
+    background: rgb(250, 250, 250);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.panel >div{
+    position: relative;
+    width:100%;
+    height: 100%;
+
+}
+
+.panel_inner{
+    position: relative;
+    border: 1px solid rgb(177, 177, 177);
+    width: 97%;
+    margin-left: 1.0625rem;
+}
+.panel_1{
+    height: 40%;
+}
+.panel_2{
+    height: 50%;
+}
+
+.panel_sub{
+    position: relative;
+    float: left;
+    overflow:hidden;
+    height: 100%;
+    background: rgb(240, 240, 240);
+    border: 1px solid rgb(177, 177, 177);
+}
+.panel_sub_sub{
+    width: 98%;
+    height: 17rem;
+    margin-left: 0.5rem;
+    border: 1px solid rgb(177, 177, 177);
+    overflow:hidden;
+    overflow-y: scroll;
+}
+.panel_sub > .context2{
+    width:100%;
+    height: auto;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.panel_sub > .context{
+    width:100%;
+    height: auto;
+    margin-top: 6.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.panel_sub > .end{
+    width: 98%;
+    height: 3.9rem;
+}
+.panel_sub > .end > div{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+}
+.toolholder_text{
+    text-align: center;
+    width: 13rem;
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+}
+.toolholder_maxlife_code{
+    text-align: center;
+    width: 25rem;
+    font: 1.1rem Microsoft JhengHei;
+    font-weight: 500;
+}
+.toolholder_maxlife_life{
+    text-align: center;
+    width: 25rem;
+    font: 1.1rem Microsoft JhengHei;
+    font-weight: 500;
+}
+.button_g {
+    width:35%;
+}
+.button_g > button {
+    float: right;
+
+}
+.panel_sub >p{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.panel_sub > .record{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    width: 100%;
+
+}
+.panel_sub > .record> .title{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    margin-left: 20rem;
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+    float: left;
+}
+.panel_sub > .record > .panel_num{
+    font: 1.3rem Microsoft JhengHei;
+    font-weight: 500;
+    margin-left: 13rem;
+    margin-top:  0.5rem;
+    float: left;
+    width: 6rem;
+    overflow: hidden;
+}
+.panel_sub > .record > .panel_num >p{
+    float: left;
+}
+.panel_sub > .record > .panel_num >div{
+    float: left;
+}
+.panel_sub > .record > .panel_num >div >p{
+    float: left;
+}
+
+
+
+
+
+.panel_sub > .maxlife{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    width: 100%;
+
+}
+.panel_sub > .maxlife> .title{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    margin-left: 12rem;
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+    float: left;
+}
+.panel_sub > .maxlife > .panel_num{
+    font: 1.3rem Microsoft JhengHei;
+    font-weight: 500;
+    margin-left: 3rem;
+    margin-top:  0.5rem;
+    float: left;
+    width: 6rem;
+    overflow: hidden;
+}
+.panel_sub > .maxlife > .panel_num >p{
+    float: left;
+}
+.panel_sub > .maxlife > .panel_num >div{
+    float: left;
+}
+.panel_sub > .maxlife > .panel_num >div >p{
+    float: left;
+}
+
+
+
+
+
+
+.panel_sub >.panel_sub_sub2{
+    width: 95%;
+    height: 26rem;
+    margin-left: 0.5rem;
+    border: 1px solid rgb(177, 177, 177);
+    overflow:hidden;
+    overflow-y: scroll;
+}
+.panel_sub >.panel_sub_sub2> .cell{
+    height: 5rem;
+    padding: 0;
+    margin-bottom: 0.3125rem;
+    margin-left: 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.panel_sub >.panel_sub_sub2> .cell >.context{
+    height:100%;
+    padding: 0;
+    margin: 0;
+    float: left;
+    border-right: 1px solid rgb(177, 177, 177);
+}
+.panel_sub >.panel_sub_sub2> .cell >.context > .code{
+    width: 100%;
+    height:40%;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 400;
+    background: rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.panel_sub >.panel_sub_sub2> .cell >.context > .des{
+    width: 100%;
+    height:60%;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    background: rgb(206, 206, 206);
+}
+.panel_sub >.panel_sub_sub2> .cell >.context > .des2{
+    width:40%;
+    height:60%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    background: rgb(206, 206, 206);
+    color: black;
+    float: left;
+}
+.panel_sub >.panel_sub_sub2> .cell >.modify{
+    height:100%;
+    float: left;
+}
+.panel_sub >.panel_sub_sub2> .cell >.modify >button{
+    width: 3.1rem;
+    height:3.1rem;
+    font: 1rem Microsoft JhengHei;
+    font-weight: 300;
+    color: white;
+    padding: 0;
+    margin-top: 0.9rem;
+}
+
+
+
+
+
+.panel_sub >.panel_sub_sub3{
+    width: 95%;
+    height: 26rem;
+    margin-left: 0.5rem;
+    border: 1px solid rgb(177, 177, 177);
+    overflow:hidden;
+    overflow-y: scroll;
+}
+.panel_sub >.panel_sub_sub3> .cell{
+    height: 5rem;
+    padding: 0;
+    margin-bottom: 0.3125rem;
+    margin-left: 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgb(177, 177, 177);
+}
+
+.panel_sub >.panel_sub_sub3> .cell >.context{
+    height:100%;
+    padding: 0;
+    margin: 0;
+    float: left;
+    border-right: 1px solid rgb(177, 177, 177);
+}
+.panel_sub >.panel_sub_sub3> .cell  >.context >.code{
+    width: 100%;
+    height:40%;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 400;
+    background: rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.panel_sub >.panel_sub_sub3> .cell >.context > .des{
+    width: 100%;
+    height:60%;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    background: rgb(206, 206, 206);
+}
+.panel_sub >.panel_sub_sub3> .cell >.context > .des2{
+    width:87.5%;
+    height:60%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    background: rgb(206, 206, 206);
+    color: black;
+    float: left;
+}
+.panel_sub >.panel_sub_sub3> .cell >.modify{
+    height:100%;
+    float: left;
+}
+.panel_sub >.panel_sub_sub3> .cell >.modify >button{
+    width: 3.1rem;
+    height:3.1rem;
+    font: 1rem Microsoft JhengHei;
+    font-weight: 300;
+    color: white;
+    padding: 0;
+    margin-top: 0.9rem;
+}
+
+
+
+
+
+
+
+
+
+
+.type_interface_inner > .type_submit > .Submit_button  > div > button:active {
+  background: rgb(12, 116, 12);
+  padding: 0;
+  border: none;
+}
+.type_interface_inner > .type_submit > .Submit_button  > div > button:focus { outline: none; }
+
+.toolholder_pre_cell{
+    width: 80%;
+    height: 3.5rem;
+    margin-bottom: 0.3125rem;
+    margin-left: 1rem;
+    border: 1px solid rgb(177, 177, 177);
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.toolholder_pre_cell >.title{
+    position: relative;
+    float: left;
+    height:100%;
+    width: 35%;
+    padding: 0;
+    margin: 0;
+}
+.toolholder_pre_cell >.title >.word{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+}
+.toolholder_pre_cell >.context{
+    position: relative;
+    float: right;
+    height:100%;
+    width: 60%;
+    text-align: center;
+}
+.toolholder_pre_cell >.context >select{
+    position: absolute;
+    width:20rem;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font: 1.6rem Microsoft JhengHei;
+    font-weight: 300;
+    /* text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center; */
+    padding-left: 9rem;
+}
+
+.toolholder_pre_cell >.context >select >option{
+    /* text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center; */
+    padding-left: 8rem;
+}
+.toolholder_pre_cell >.context >select .lt{
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+}
+.toolholder_pre_cell >.context >input{
+    position: absolute;
+    width:20rem;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font: 1.6rem Microsoft JhengHei;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+.block_Up{
+    position: relative;
+    width: 100%;
+    height: 2.7rem;
+}
+
+.block_Down > .Combine_Code{
+    margin-left: 0.6rem;
+    float: left;
+    height: 100%;
+}
+.block_Down > .Combine_Code > div {
+    margin-top: 1rem;
+}
+.block_Down > .Combine_Code > div > .title{
+    float: left;
+    font-size: 1.5rem;
+}
+.block_Down > .Combine_Code > div > .context{
+    float: left;
+    font-size: 1.55rem;
+    color:red;
+}
+
+.btn{
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+.btn:disabled{
+  cursor: not-allowed;
+}
+.btn_records_g_color_active{
+    color: rgb(50, 161, 147);
+}
+.btn_records_g{
+  cursor: pointer;
+}
+.btn_records_g:disabled{
+  cursor: not-allowed;
+}
+
+.Submit_button{
+    background: rgb(20, 182, 20);
+}
+.clear_button{
+    background: rgb(219, 71, 13);
+}
+
+.Submit_button:active{
+    background: rgb(7, 131, 7);
+}
+.clear_button:active{
+    background: rgb(158, 78, 12);
+}
+
+.Btn_Leave
+{
+  float: right;
+  font-size: 1.3rem;
+  background-color: #4CAF50;
+  text-align: center;
+  margin-right: 3px;
+  margin-top: 3px;
+  padding-left: 12.5px;
+  padding-right: 12.5px;
+}
+.err_Upload_Toolholder_msg
+{
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+}
+.error_toolholders{
+    font: 1.4rem Microsoft JhengHei;
+    font-weight: 500;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.9rem;
+}
+.axios_loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    background: rgba(243, 243, 243, 0.9);
+}
+.axios_loading > img{
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(243, 243, 243, 0.0);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.noselect {
+    -moz-user-select: none;
+     -khtml-user-select: none;
+     -webkit-user-select: none;
+      -ms-user-select: none;
+     user-select: none;
+  }

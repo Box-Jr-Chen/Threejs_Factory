@@ -1,0 +1,203 @@
+body {
+  background: #673ab7;
+  color: white;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.menu {
+  filter: url("#shadowed-goo");
+}
+
+.menu-item,
+.menu-open-button {
+  background: #797979;
+  border-radius: 100%;
+  width: 3.3rem;
+  height: 3.3rem;
+  line-height: 80px;
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  background-image: linear-gradient(#808080, dimgray);
+  box-shadow: 0 1px 4px #707070;
+  display: block;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  transition: transform ease-out 200ms;
+  z-index: 1;
+}
+
+.menu-item:active,
+.menu-open-button:active {
+  background-image: -webkit-linear-gradient(#707070 0%, #5e5e5e 100%);
+  box-shadow: inset 1px 1px 1px rgba(83, 83, 83, 0.5);
+  border-bottom: solid 2px #4d4c4c;
+}
+
+.menu-open {
+  display: none;
+}
+
+.hamburger {
+  width: 1.5rem;
+  height: 0.2rem;
+  background: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.75rem;
+  margin-top: -0.1rem;
+  transition: transform 200ms;
+}
+
+.hamburger-1 {
+  transform: translate3d(0, -8px, 0);
+}
+
+.hamburger-2 {
+  transform: translate3d(0, 0, 0);
+}
+
+.hamburger-3 {
+  transform: translate3d(0, 8px, 0);
+}
+
+.menu-open:checked + .menu-open-button .hamburger-1 {
+  transform: translate3d(0, 0, 0) rotate(45deg);
+}
+
+.menu-open:checked + .menu-open-button .hamburger-2 {
+  transform: translate3d(0, 0, 0) scale(0.1, 1);
+}
+
+.menu-open:checked + .menu-open-button .hamburger-3 {
+  transform: translate3d(0, 0, 0) rotate(-45deg);
+}
+
+.menu {
+  border-radius: 10px;
+  margin-left: 0;
+  padding-top: 0;
+  padding-left: 0;
+  font-size: 0;
+  width: 65%;
+  height: 4.5rem;
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.outline {
+  position: absolute;
+  width: 100%;
+  height: 4.5rem;
+  left: 0%;
+  border-radius: 5px;
+  background-image: linear-gradient(#aaaaaa, #8f8f8f);
+  z-index: -1;
+  border: 1px solid #a5a5a5;
+  box-shadow: 0 1px 2px #838383, inset 0 1px 2px #cccccc;
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.menu-item:nth-child(3) {
+  transition-duration: 150ms;
+}
+
+.menu-item:nth-child(4) {
+  transition-duration: 150ms;
+}
+
+.menu-item:nth-child(5) {
+  transition-duration: 150ms;
+}
+
+.menu-item:nth-child(6) {
+  transition-duration: 150ms;
+}
+
+.menu-open-button {
+  z-index: 2;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 400ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+.menu-open-button:hover {
+  transform: scale(1.05, 1.05) translate3d(0, 0, 0);
+}
+
+.menu-open:checked + .menu-open-button {
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+}
+
+.menu-open:checked ~ .menu-item {
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(3) {
+  transition-duration: 190ms;
+  transform: translate3d(0, 5.2rem, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(4) {
+  transition-duration: 290ms;
+  transform: translate3d(0, 10.4rem, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(5) {
+  transition-duration: 390ms;
+  transform: translate3d(0, 15.6rem, 0);
+}
+
+.menu-open:checked ~ .menu-item:nth-child(6) {
+  transition-duration: 490ms;
+  transform: translate3d(0, 20.8rem, 0);
+}
+
+.menu-open:checked ~ .outline {
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 190ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  height: 9.8rem;
+  transition-duration: 290ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  height: 15rem;
+  transition-duration: 390ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  height: 20.2rem;
+  transition-duration: 490ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  height: 25.4rem;
+}
+
+.menu-open:checked ~ .outline::before,
+.menu-open:checked ~ .outline::after {
+  transform: rotate(-45deg);
+}
+

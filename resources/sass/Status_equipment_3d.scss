@@ -1,0 +1,238 @@
+.sidebar{
+    height: 100%;
+    width: 6%;
+    position: absolute;
+    z-index: 100;
+  }
+  .sidebar .sidebar_inner{
+      background: rgba(248, 0, 0, 0);
+      position: relative;
+      width:90% ;
+      height: 12%;
+      margin: 0 auto;
+      margin-top: 15rem;
+  }
+  .btn_refrash{
+      position: fixed;
+      float: right;
+      top: 30%;
+      left: 38%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 140px;
+      background: red;
+  }
+  .btn_refrash> button{
+      position: relative;
+  }
+  .panel_rightmain{
+      position: fixed;
+      float: right;
+      background: rgba(255, 255, 255, 0.8);
+      height: 95.5%;
+      margin-top: 0.2%;
+      z-index: 100;
+      box-shadow: -2px -2px 4px 1px  rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+  }
+  .panel_rightmain2{
+      width:8rem;
+      height:1.875rem;
+      position: fixed;
+      float: left;
+      margin-top: 0.2%;
+      z-index: 100;
+  }
+  .panel_rightmain2 > .panel_wavehouse_inner > button{
+    font: 1.1rem Microsoft JhengHei;
+    font-weight: 530;
+    background: rgb(148, 209, 245);
+    color:white;
+    padding: 5px;
+    border: none;
+    box-shadow: 2px 2px 4px 1px  rgba(0, 0, 0, 0.3);
+  }
+  .panel_rightmain2 > .panel_wavehouse_inner > button:active {
+    background: rgb(81, 135, 167);
+    color:white;
+    padding: 5px;
+    border: none;
+    box-shadow: 2px 2px 4px 1px  rgba(0, 0, 0, 0.3);
+  }
+  .panel_rightmain2 > .panel_wavehouse_inner > button:focus { outline: none; }
+
+
+  .panel_wavehouse_inner{
+      position: relative;
+      width:95% ;
+      height: 99%;
+      margin: 0 auto;
+  }
+  .camera_view {
+      position: relative;
+      width: 16rem;
+      height: 3rem;
+      margin: 0.3125rem auto;
+      font: 1.4em Microsoft JhengHei;
+      font-weight: 530;
+
+  }
+  .camera_view > p{
+      float: left;
+      margin-right: 0.8rem;
+  }
+  .camera_view > select{
+      float: left;
+  }
+  .List_wavehouse{
+      width: 100%;
+      height: 94%;
+      margin: 0 auto;
+      background: rgba(184, 184, 184, 0.8);
+      border-inline: 2px;
+      border-color:  rgba(37, 37, 37, 0.8);
+      overflow:hidden;
+      overflow-y: scroll;
+  }
+  .wavehouse_cell{
+      float: left;
+      width: 98%;
+      height: 3.75rem;
+      margin-bottom: 3px;
+      margin-left:3px;
+        -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently*/
+  }
+  .wavehouse_cell:hover {
+          background: rgba(255, 255, 0, 0.8);
+  }
+  .wavehouse_cell  > .title{
+      position: relative;
+      width: 13%;
+      height: 100%;
+      font: 1.2rem Microsoft JhengHei;
+      font-weight: 1200;
+      text-align: center;
+      color:white;
+      float: left;
+      box-shadow:  0 4px 2px -2px rgba(0, 0, 0, 0.3);
+  }
+  .wavehouse_cell  > .title > div{
+      width: 100%;
+      height: 100%;
+  }
+  .wavehouse_cell > .title > div>p{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  .wavehouse_cell  >.context {
+      position: relative;
+      width: 87%;
+      height: 100%;
+      float: left;
+      box-shadow:  0 4px 2px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  .wavehouse_cell >.context > .code{
+      position: relative;
+      width: 100%;
+      height: 50%;
+      padding: 0;
+      font: 1.2rem Microsoft JhengHei;
+      font-weight: 530;
+      text-align:left;
+      margin: 0;
+      background: rgba(155, 155, 155, 0.5)
+  }
+  .wavehouse_cell >.context > .code >p{
+      width: 100%;
+      margin-left: 2px;
+  }
+  .wavehouse_cell >.context> .down{
+      position: relative;
+      text-align:left;
+      width: 100%;
+      height: 50%;
+      padding: 0;
+      margin: 0;
+      background: rgba(30, 253, 160, 0.5);
+  }
+  .wavehouse_cell >.context> .down > p{
+      width: 100%;
+      font: 1.3rem Microsoft JhengHei;
+      font-weight: 530;
+      padding: 0;
+      margin-left: 4px;
+  }
+  .add_toolholder_BG{
+      position: absolute;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+
+  .pamel_equipment_cell{
+      width: 100%;
+      height: 18.75rem;
+      background: rgba(187, 187, 187, 0.849);
+      margin-bottom: 1.625rem;
+      border-inline: 4px;
+      border-color:  rgba(32, 32, 32, 0.8);
+      box-shadow:  2px 4px 2px -2px rgba(0, 0, 0, 0.6);
+  }
+  .pamel_equipment_cell >.title{
+      width: 100%;
+      font: 2.2rem Microsoft JhengHei;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      color:rgb(85, 85, 85);
+      background: rgb(230, 230, 230);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .pamel_equipment_cell >.cell_row{
+      width: 100%;
+      height: 5rem;
+      float: left;
+      color: rgb(53, 53, 53);
+  }
+
+  .pamel_equipment_cell >.cell_row > div{
+      float: left;
+      font: 1.8rem Microsoft JhengHei;
+      font-weight: 600;
+  }
+  .pamel_equipment_cell >.cell_row > .cell_row_title{
+      margin-left: 1.2rem;
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

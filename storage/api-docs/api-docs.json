@@ -1,0 +1,48 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "\u96f2\u7aef\u5200\u5009\u7cfb\u7d71 API",
+        "description": "\u81ea\u4e3b\u7814\u767c\u5c08\u6848-\u96f2\u7aef\u5200\u5009\u7cfb\u7d71 API\u6e2c\u8a66\u7cfb\u7d71",
+        "version": "1.0.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/api/user/login?id={id}&password={password}": {
+            "get": {
+                "summary": "\u4f7f\u7528\u8005\u767b\u5165",
+                "operationId": "\u4f7f\u7528\u8005\u767b\u5165",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u6210\u529f\u64cd\u4f5c"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u7db2\u5740"
+                    },
+                    "500": {
+                        "description": "\u4e3b\u6a5f\u932f\u8aa4"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
