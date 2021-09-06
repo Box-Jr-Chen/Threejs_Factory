@@ -35,6 +35,22 @@ export default {
                Controls_Camera_Abled(){
                    this.controls.enabled = true;
                },
+               Click_panel(panel_num){
+
+                    var self = this;
+                    self.$store.state.select_panel = panel_num;
+                    self.$store.state.panel_x = self.$store.state.width_3d/1.07;
+                    self.$store.state.panel_y = self.$store.state.height_3d/2;
+
+                    if(panel_num ==1)
+                        self.$store.state.element_panel = document.getElementsByClassName('wh_outline');
+                    else  if(panel_num ==2)
+                        self.$store.state.element_panel = document.getElementsByClassName('wh_outline');
+                    else  if(panel_num ==3)
+                        self.$store.state.element_panel = document.getElementsByClassName('toolholder_outline');
+                    else  if(panel_num ==4)
+                        self.$store.state.element_panel = document.getElementsByClassName('job_outline');
+               }
        },
        created(){
            // if( this.$router.currentRoute.path === '/service/tms/status_3d')

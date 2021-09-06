@@ -5,60 +5,77 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use DB;
+use Illuminate\Support\Facades\DB;
 class TypeController extends Controller
 {
 
-
-    public $Table_cooling     = 'type_toolholder_cooling';
-    public $Table_machining  = 'type_toolholder_machining';
-    public $Table_material    = 'type_toolholder_material';
-    public $Table_shank       = 'type_toolholder_shank';
-    public $Table_shankamount = 'type_toolholder_shankamount';
-    public $Table_size        = 'type_toolholder_size';
+    /**
+     * @SWG\Get(
+     *   path="/api/user/login?id={id}&password={password}",
+     *   summary="使用者登入",
+     *   operationId="使用者登入",
+     *   @SWG\Response(response=200, description="成功操作"),
+     *   @SWG\Response(response=404, description="找不到網址"),
+     *   @SWG\Response(response=500, description="主機錯誤"),
+	 *		@SWG\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="string"
+     *      ),
+     * 	 	@SWG\Parameter(
+     *          name="password",
+     *          in="path",
+     *          required=true,
+     *          type="string"
+     *      ),
+     * )
+     *
+     */
+    public $Table_Type     = 'type_toolholder';
 
 
     function GetTable($par)
     {
-        $table = '';
+        $query = '';
         switch($par)
         {
             case 'cooling':
-                $table = $this->Table_cooling;
+                $query = 'L%';
             break;
             case 'machining':
-                $table = $this->Table_machining;
+                $query = 'M%';
             break;
             case 'material':
-                $table = $this->Table_material;
+                $query = 'K%';
             break;
             case 'shank':
-                $table = $this->Table_shank;
+                $query = 'N%';
             break;
             case 'shankamount':
-                $table = $this->Table_shankamount;
-            break;
-            case 'size':
-                $table = $this->Table_size;
+                $query = 'Z%';
             break;
             default:
             break;
         }
 
-        return $table;
+        return $query;
     }
 
     public function Getdata(Request $request, $arg1)
     {
         $par = $request->route('table');
 
-        $table = $this->GetTable($par);
+        $query = $this->GetTable($par);
 
-        if($table =='')
+        if($query =='')
              return response()->json(array('message'=>'no table '.$par),400);
 
-         $data  = DB::table($table)
+
+        $data  = DB::table('type_toolholder')
+        ->where('code', 'like', $query)
         ->get();
+
 
           return response()->json(array('message'=>'success','data'=>$data),200);
 
@@ -86,9 +103,11 @@ class TypeController extends Controller
         $code = $request->code ;
         $description = $request->description ;
 
-        $check  = DB::table($table)
-            ->where('code', $code)
-            ->first();
+
+        $check  = DB::table('type_toolholder')
+        ->where('code', 'like', $table)
+        ->get();
+
 
         if (isset($check))
         {
@@ -96,8 +115,7 @@ class TypeController extends Controller
         }
 
 
-
-        $data  = DB::table($table)
+        $data  = DB::table('type_toolholder')
             ->insert(
                 [
                     'code' =>  $code,
@@ -118,7 +136,7 @@ class TypeController extends Controller
     public function UpdateData(Request $request, $arg1, $arg2)
     {
         $par = $request->route('table');
-        $num = $request->route('id');
+        $num = intval($request->route('id'));
 
         if( $num <=0 )
             return response()->json(array('message'=>'數值錯誤'),200);

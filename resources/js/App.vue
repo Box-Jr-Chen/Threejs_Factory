@@ -22,6 +22,9 @@ export default {
           //  this.mywidth  = (16/9) * this.myheight  ;
             self.$store.state.myheight  =  window.innerHeight;
             self.$store.state.mywidth   = (16/9) * window.innerHeight  ;
+            self.$store.state.nav_height  = self.$store.state.myheight/27 ;
+            self.$store.state.bound_x     = (window.innerWidth-self.$store.state.mywidth)/2;
+            self.$store.state.bound_y     = (window.innerHeight-self.$store.state.myheight)/2;
           }
   },
    mounted() {

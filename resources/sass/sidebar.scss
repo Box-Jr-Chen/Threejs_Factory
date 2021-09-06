@@ -5,7 +5,7 @@ $bg:#673ab7;
 $pi:3.14;
 
 //config
-$menu-items:4;
+$menu-items:5;
 $open-distance:105px;
 $opening-angle:$pi*2;
 
@@ -17,6 +17,18 @@ body{
 a{
   color:inherit;
 }
+
+.img_icon{
+    margin: 0 auto;
+    text-align: center;
+    width: 2.4rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 h1, h2, h3, h4{
   margin:0;
   margin-bottom:10px;
@@ -39,9 +51,9 @@ h1{
   position:absolute;
   top:12%;
   left:15%;
-  background-image: linear-gradient(#808080, rgb(105, 105, 105));
+  background-image: linear-gradient(#636363, rgb(87, 86, 86));
   //box-shadow: 0 1px 4px rgb(112, 112, 112), inset 0 2px 3px rgb(185, 185, 185);
-  box-shadow: 0 1px 4px rgb(112, 112, 112);
+  box-shadow: 0 1px 2px rgb(128, 128, 128) ;
   display: block;
   text-align:center;
   transform:translate3d(0,0,0);
@@ -52,8 +64,8 @@ h1{
 
 
 %ball:active{
-    background-image: -webkit-linear-gradient(#707070 0%, #5e5e5e 100%);
-    box-shadow: inset 1px 1px 1px rgba(83, 83, 83, 0.5);
+    background-image: -webkit-linear-gradient( rgb(68, 68, 68),rgb(72, 72, 72));
+    box-shadow: 0 1px 2px rgb(128, 128, 128) inset 1px 2px 0 rgb(44, 44, 44);
     border-bottom: solid 2px #4d4c4c;
 }
 
@@ -63,6 +75,51 @@ h1{
 }
 .menu-item{
   @extend %ball;
+
+//   position: relative;
+   display: inline-block;
+}
+.menu-item .tooltiptext{
+    visibility: hidden;
+    width: 8rem;
+    height: 3rem;
+    background-color: rgba(3, 3, 3, 0.459);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 6px;
+    padding: 1px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 0;
+    top:0;
+    left:5.5rem;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+    cursor: default;
+}
+.menu-item .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.486) transparent transparent;
+  }
+
+.menu-item:hover .tooltiptext {
+    visibility: visible;
+  }
+.img_icon_tip{
+    width: 65%;
+    height: 54%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2.6rem;
 }
 .hamburger{
   $width:1.5rem;
@@ -122,7 +179,7 @@ $hamburger-spacing:8px;
     height:4.5rem;
     left: 0%;
     border-radius:5px;
-    background-image: linear-gradient( rgb(170, 170, 170), rgb(143, 143, 143));
+    background-image: linear-gradient( rgb(114, 114, 114), rgb(97, 97, 97));
     z-index: -1;
     border: 1px solid rgb(165, 165, 165);
     box-shadow: 0 1px 2px rgb(131, 131, 131), inset 0 1px 2px rgb(204, 204, 204);
@@ -188,4 +245,12 @@ $hamburger-spacing:8px;
         transform: rotate(-45deg);
     }
 
+}
+
+
+.active_panel
+{
+    background-image: -webkit-linear-gradient( rgb(63, 63, 63),rgb(58, 58, 58));
+    box-shadow: 0 1px 2px rgb(116, 116, 116) inset 1px 2px 0 rgb(36, 36, 36);
+    border-bottom: solid 2px #424242;
 }

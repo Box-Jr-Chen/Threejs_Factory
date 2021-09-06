@@ -8,7 +8,6 @@ import store from './store/index'
 import infiniteScroll from "vue-infinite-scroll";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
-
 Vue.use(VueRouter)
 Vue.use(infiniteScroll)
 // Vue.prototype.$ajax = Axios

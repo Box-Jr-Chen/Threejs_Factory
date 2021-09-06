@@ -1,0 +1,247 @@
+.resizable{
+    background-position: top left;
+    position: relative;
+}
+
+.toolholder_outline{
+    width: 27rem;
+    height: 50rem;
+    border-radius:5px;
+    border: 1px solid rgb(165, 165, 165);
+    background-image: linear-gradient(#636363b9, rgba(87, 86, 86, 0.747));
+    z-index:2;
+    // cursor: grabbing;
+}
+.active_move{
+    cursor: grabbing;
+}
+
+.toolholder_outline .title{
+    width: 100%;
+    height: 2rem;
+    color: white;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    user-select: none;
+}
+.title_close{
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top: 2.5%;
+    left: 95%;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.2rem;
+    color: white;
+    background: rgb(194, 44, 44);
+    cursor: pointer;
+    user-select: none;
+    margin: 0 auto;
+}
+.title_close p{
+    text-align: center;
+    margin-top: -0.25rem;
+}
+
+.combo_row{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.combo_row .combo_row_title{
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    user-select: none
+}
+
+.combo_row .combo{
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+}
+.toolholder_detail{
+    width: 95%;
+    height: 5rem;
+    background: rgb(65, 65, 65);
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+.detail{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.data_block{
+    width: 100%;
+    height: 38rem;
+    // background: red;
+}
+
+.data_outline{
+    width: 95%;
+    height: 100%;
+    background: rgb(129, 129, 129);
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.data_inline{
+    width: 100%;
+    height: 100%;
+    background: rgb(145, 145, 145);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.data_inline_cell{
+    width: 96%;
+    height: 3rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    border: 1px solid rgb(77, 77, 77);
+    margin-top: 0.25rem;
+    margin-left: 0.5rem;
+}
+.data_inline_number{
+    width: 20%;
+    height: 100%;
+    padding-top: 0.5rem;
+    color: white;
+    background: rgb(10, 169, 180);
+}
+.data_inline_context{
+    width: 80%;
+    height: 100%;
+}
+.data_inline_context div{
+    width: 100%;
+    height: 50%;
+}
+//分割線
+.data_inline_line{
+    width: 2%;
+    height: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(11, 172, 201);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(7, 125, 146);
+  }
+
+
+  //Tab
+  @import url('https://fonts.googleapis.com/css?family=Arimo:400,700&display=swap');
+  body{
+    background:#CDDC39;
+    font-family: 'Arimo', sans-serif;
+  }
+  h2{
+    color:#000;
+    text-align:center;
+    font-size:2em;
+  }
+  .warpper{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+    padding: 0;
+    margin: 0;
+  }
+  .tabs{
+      width: 100%;
+      padding-top: 0.3rem;
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+  }
+  .tab{
+    cursor: pointer;
+    padding:0.5rem 1rem;
+    width: 31%;
+    margin:0px 2px;
+    background:rgb(65, 65, 65);
+    display:inline-block;
+    color:#fff;
+    text-align: center;
+    border-radius:3px 3px 0px 0px;
+    box-shadow: 0 0.3rem 0.4rem #0000004f;
+  }
+
+.tab_active{
+    background:rgb(228, 228, 228);
+    color: black;
+}
+
+  .panels{
+    background:#999999a1;
+    box-shadow: 0 0.3rem 0.3rem #00000042;
+    height:92%;
+    width:95%;
+    border-radius:3px;
+    overflow:hidden;
+    padding:0.1rem;
+  }
+  .panel{
+    display:none;
+    animation: fadein .8s;
+  }
+  @keyframes fadein {
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  .panel-title{
+    font-size:1rem;
+    font-weight:bold
+  }
+  .radio{
+    display:none;
+  }
+  #one:checked ~ .panels #one-panel,
+  #two:checked ~ .panels #two-panel,
+  #three:checked ~ .panels #three-panel{
+    display:block
+  }
+  #one:checked ~ .tabs #one-tab,
+  #two:checked ~ .tabs #two-tab,
+  #three:checked ~ .tabs #three-tab{
+    background:#fffffff6;
+    color:#000;
+    border-top: 3px solid #000;
+  }

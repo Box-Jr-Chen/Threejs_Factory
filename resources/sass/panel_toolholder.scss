@@ -1,0 +1,80 @@
+.show_black{
+    width: 100%;
+    height: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.show{
+    width: 97%;
+    height: 100%;
+    padding-top: 0.3rem;
+    background: rgba(0, 0, 0, 0.555);
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(252, 226, 226);
+}
+.type_black{
+    width: 97%;
+    height: 36.5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+.type_black .type_option{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+.type_black .type_option div{
+    width: 30%;
+    color: white;
+    font-size: 1.2rem;
+}
+.type_black .type_option select{
+    width: 70%;
+}
+.type_black .type_option .type_num{
+    width: 70%;
+}
+.btn_block{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn_celltool{
+    width: 20%;
+    height: 100%;
+    margin-right: 0.4rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border: 1px solid rgba(34, 34, 34, 0.185);
+    box-shadow: 0 1px 2px rgb(95, 95, 95);
+}
+.btn_enter{
+    background: linear-gradient(#58ccdb, #03a9be);
+    color: white;
+}
+.btn_cancel{
+    background: linear-gradient(#db9358, #be4e03);
+    color: white;
+}
+// .type_select{
+//   width: 70%;
+// }
+
+.style-chooser .vs__search::placeholder,
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+background: #dfe5fb;
+border: none;
+color: #394066;
+text-transform: lowercase;
+font-variant: small-caps;
+}
+
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+fill: #394066;
+}

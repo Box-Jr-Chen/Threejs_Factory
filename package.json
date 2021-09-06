@@ -30,7 +30,7 @@
         "node-sass": "^4.14.1",
         "obj-mtl-loader": "0.0.5",
         "sass-loader": "^10.1.1",
-        "three": "^0.103.0",
+        "three": "^0.132.2",
         "three-css2drender": "^1.0.0",
         "three-gltf-loader": "^1.111.0",
         "three-mtl-loader": "^1.0.2",
@@ -39,7 +39,9 @@
         "three-orbit-controls": "^82.1.0",
         "tween": "^0.9.0",
         "vue-infinite-scroll": "^2.0.2",
+        "vue-resizable": "^2.0.5",
         "vue-router": "^3.4.4",
+        "vue-select": "^3.12.2",
         "vuex": "^3.5.1"
     }
 }

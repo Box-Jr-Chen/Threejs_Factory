@@ -8,6 +8,17 @@ a {
   color: inherit;
 }
 
+.img_icon {
+  margin: 0 auto;
+  text-align: center;
+  width: 2.4rem;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 h1,
 h2,
 h3,
@@ -35,8 +46,8 @@ h1 {
   position: absolute;
   top: 12%;
   left: 15%;
-  background-image: linear-gradient(#808080, dimgray);
-  box-shadow: 0 1px 4px #707070;
+  background-image: linear-gradient(#636363, #575656);
+  box-shadow: 0 1px 2px gray;
   display: block;
   text-align: center;
   transform: translate3d(0, 0, 0);
@@ -46,13 +57,65 @@ h1 {
 
 .menu-item:active,
 .menu-open-button:active {
-  background-image: -webkit-linear-gradient(#707070 0%, #5e5e5e 100%);
-  box-shadow: inset 1px 1px 1px rgba(83, 83, 83, 0.5);
+  background-image: -webkit-linear-gradient(#444444, #484848);
+  box-shadow: 0 1px 2px gray inset 1px 2px 0 #2c2c2c;
   border-bottom: solid 2px #4d4c4c;
 }
 
 .menu-open {
   display: none;
+}
+
+.menu-item {
+  display: inline-block;
+}
+
+.menu-item .tooltiptext {
+  visibility: hidden;
+  width: 8rem;
+  height: 3rem;
+  background-color: rgba(3, 3, 3, 0.459);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 5.5rem;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+  cursor: default;
+}
+
+.menu-item .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.486) transparent transparent;
+}
+
+.menu-item:hover .tooltiptext {
+  visibility: visible;
+}
+
+.img_icon_tip {
+  width: 65%;
+  height: 54%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2.6rem;
 }
 
 .hamburger {
@@ -112,10 +175,11 @@ h1 {
   height: 4.5rem;
   left: 0%;
   border-radius: 5px;
-  background-image: linear-gradient(#aaaaaa, #8f8f8f);
+  background-image: linear-gradient(#727272, #616161);
   z-index: -1;
   border: 1px solid #a5a5a5;
   box-shadow: 0 1px 2px #838383, inset 0 1px 2px #cccccc;
+  transition-duration: 150ms;
   transition-duration: 150ms;
   transition-duration: 150ms;
   transition-duration: 150ms;
@@ -135,6 +199,10 @@ h1 {
 }
 
 .menu-item:nth-child(6) {
+  transition-duration: 150ms;
+}
+
+.menu-item:nth-child(7) {
   transition-duration: 150ms;
 }
 
@@ -180,6 +248,11 @@ h1 {
   transform: translate3d(0, 20.8rem, 0);
 }
 
+.menu-open:checked ~ .menu-item:nth-child(7) {
+  transition-duration: 590ms;
+  transform: translate3d(0, 26rem, 0);
+}
+
 .menu-open:checked ~ .outline {
   transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   transition-duration: 190ms;
@@ -194,10 +267,19 @@ h1 {
   transition-duration: 490ms;
   transform: scale(1, 1) translate3d(0, 0, 0);
   height: 25.4rem;
+  transition-duration: 590ms;
+  transform: scale(1, 1) translate3d(0, 0, 0);
+  height: 30.6rem;
 }
 
 .menu-open:checked ~ .outline::before,
 .menu-open:checked ~ .outline::after {
   transform: rotate(-45deg);
+}
+
+.active_panel {
+  background-image: -webkit-linear-gradient(#3f3f3f, #3a3a3a);
+  box-shadow: 0 1px 2px #747474 inset 1px 2px 0 #242424;
+  border-bottom: solid 2px #424242;
 }
 
