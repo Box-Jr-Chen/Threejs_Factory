@@ -83,7 +83,7 @@ class WaveHouseController extends Controller
 
 
             $data  = DB::table('warehouse_toolholder')
-            ->select('warehouse_toolholder.id','warehouse_toolholder.name','warehouse_toolholder.id_toolholder','warehouse_toolholder.id_toolholder','toolholder.name','toolholder.code','toolholder.life')
+            ->select('warehouse_toolholder.id','warehouse_toolholder.name','warehouse_toolholder.id_toolholder','warehouse_toolholder.id_toolholder','toolholder.name','toolholder.code','toolholder.life','toolholder.created_at')
             ->leftJoin('toolholder', 'warehouse_toolholder.id_toolholder', '=', 'toolholder.id')
             ->where('warehouse_toolholder.name', 'like', $query)
             ->get();

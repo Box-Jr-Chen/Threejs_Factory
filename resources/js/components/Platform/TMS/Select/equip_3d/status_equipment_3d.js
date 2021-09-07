@@ -211,7 +211,7 @@ import * as THREE from "three";
 
                     var lightscale =self.$store.state.threejs.texturelight;
 
-                    console.log(obj.scene);
+                   // console.log(obj.scene);
                     self.$store.state.threejs.equipment_action.Material_nor =obj.scene.children[1].children[4].material ;
                     self.$store.state.threejs.equipment_action.setting.equipment_CNC[0].tip[2].instance =obj.scene.children[1].children[4];
                     self.$store.state.threejs.equipment_action.setting.equipment_CNC[0].tip[0].instance =obj.scene.children[1].children[5];

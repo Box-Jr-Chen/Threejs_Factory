@@ -3,6 +3,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import ThreeJs from '@js/threejs/threejs.js';
 import Program_Robot from '@js/program_robot/program_robot.js';
+import store from '@js/store'
 Vue.use(Vuex)
 
 
@@ -24,7 +25,7 @@ export default new Vuex.Store({
 
 
 
-        baseUrlApi:'http://127.0.0.1:8001/api',
+        baseUrlApi:'http://127.0.0.1:8000/api',
         p_w: '/wavehouse',
         p_wcnc:'/wavehouse_cnc',
         p_tool_unpre:'/toolholder/unprepared',
@@ -75,7 +76,9 @@ export default new Vuex.Store({
                 ]
             },
         ],
-        ToolHolder_Unprepared:[
+
+
+        ToolHolder:[
 
         ]
 
@@ -87,9 +90,9 @@ export default new Vuex.Store({
        }
     },
     mutations: {
-           StorageUser(state,UserName){
-            localStorage.setItem('username',UserName);
-           }
+        //    StorageUser(state,UserName){
+        //     localStorage.setItem('username',UserName);
+        //    }
     },
     actions: {
         async AxiosGet(state,data){
@@ -122,8 +125,22 @@ export default new Vuex.Store({
                  return error ;
             })
         },
-        async A_GetWarehouse_toolholder(state,data){
+        async A_GetWarehouse_toolholder(state,checkdata){
+            var self= this;
+            var data = {
+              'path': self.state.baseUrlApi + self.state.p_w+"/"+checkdata
+            };
 
+            state
+            return await store
+                .dispatch('AxiosGet', data)
+                .then(response => {
+                  return  response;
+                }
+                ).catch(error => {
+                  console.error(error);
+                  return "error";
+                });
         }
     },
     modules: {
