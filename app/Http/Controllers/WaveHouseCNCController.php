@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 class WaveHouseCNCController extends Controller
 {
@@ -21,71 +21,76 @@ class WaveHouseCNCController extends Controller
      */
     function date()
     {
-        $date            = Carbon::now()->toDateTimeString();
+        $date  = Carbon::now()->toDateTimeString();
 
         $date = date("Y-m-d H:i:s", strtotime('+8 hours'));
 
         return  $date;
     }
 
-
-    public $Table_Name = 'warehouse_cnc';
-
-    public function getdata(){
-
-                $Table_Name_2 = 'toolholder_pre';
-
-                $data  = DB::table($this->Table_Name)
-                         ->get();
-
-                foreach ($data as $value) {
-
-                     if(!is_null($value->id))
-                     {
-                         $data_toolholder  = DB::table($Table_Name_2)
-                         ->where([
-                             ['id',$value->id],
-                           ])
-                         ->first();
-
-                         $value->id = $data_toolholder;
-                     }
-                }
-
-
-
-                if(!is_null($data))
-                {
-                    return response()->json(array('message'=>'success','data'=>$data),200);
-                }
-                else
-                    return response()->json(array('message'=>'none'),404);
+    function GetOneT($par)
+    {
+        $query = '';
+        switch($par)
+        {
+            case 't1':
+                $query = 't1%';
+            break;
+            case 't2':
+                $query = 't2%';
+            break;
+            default:
+            break;
         }
+
+        return $query;
+    }
+    public $Table_Name = 'cnc_toolholder';
+
+    public function getdata(Request $request, $arg1){
+
+        $par = $request->route('t');
+        $query = $this->GetOneT($par);
+
+
+        $data  = DB::table($this->Table_Name)
+        ->select('cnc_toolholder.id','cnc_toolholder.name','cnc_toolholder.id_toolholder','toolholder.name','toolholder.code','toolholder.life','toolholder.created_at')
+        ->leftJoin('toolholder', 'cnc_toolholder.id_toolholder', '=', 'toolholder.id')
+        ->where('cnc_toolholder.name', 'like', $query)
+        ->get();
+
+        if(!is_null($data))
+        {
+            return response()->json(array('message'=>'success','data'=>$data),200);
+        }
+        else
+            return response()->json(array('message'=>'none'),404);
+     }
 
     function update(Request $Form)
     {
-        if (!isset($Form->num))
+
+        if (!isset($Form->name))
         {
-            return response()->json('no wavehouse num',404);
+            return response()->json('no cnc name',404);
         }
-        if (!isset($Form->id_toolholder))
+        if (!isset($Form->toolholder))
         {
-            return response()->json('no toolholder_id',404);
+            return response()->json('no  toolholder id',404);
         }
 
-         $num           =   $Form->num ;
-         $id_toolholder =   intval($Form->id_toolholder) ;
-         $date          =   $this->date();
+         $name           =   $Form->name ;
+         $id_toolholder =   intval($Form->toolholder) ;
+       //  $date          =   $this->date();
 
         if($id_toolholder ==0)
         {
-            $id_toolholder = null;
-            $date = null;
+            $id_toolholder = 0;
         }
 
         $check_hasId = null;
 
-        if(!is_null($id_toolholder))
+        if($id_toolholder >0 && !is_null($id_toolholder))
         {
             $check_hasId = DB::table($this->Table_Name)
             ->where([['id_toolholder',$id_toolholder]])
@@ -99,15 +104,14 @@ class WaveHouseCNCController extends Controller
         else
         {
             $returnValue = DB::table($this->Table_Name)
-            ->where([['num',$num]])
+            ->where([['name',$name]])
             ->update(
-                ["id_toolholder"=> $id_toolholder,
-                 "update_date"  => $date],
+                ["id_toolholder"=> $id_toolholder],
                 );
 
             if($returnValue ==1)
             {
-                return response()->json(array('message'=>'update success'),202);
+                return response()->json(array('message'=>'更新成功'),202);
             }
             else  if($returnValue ==0)
             {

@@ -98,6 +98,7 @@ class ThreeJs_3D {
         this.controls.maxDistance = 400;
         this.controls.maxPolarAngle = Math.PI / 2.05;
         this.controls.update();
+        this.controls.enablePan = false;
         // this.controls.addEventListener('mousedown',(evt )=>{
         //     console.log('click');
         // } ,false);

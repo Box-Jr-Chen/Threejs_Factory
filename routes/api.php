@@ -22,11 +22,11 @@ Route::get("/user/test","UserController@test");
 Route::post("/user/login","UserController@login");
 Route::post("/user/signup","UserController@create");
 
-Route::get("/wavehouse/{w}","WaveHouseController@getdata");
-Route::patch("/wavehouse","WaveHouseController@update");
+Route::get("/warehouse/{w}","WaveHouseController@getdata");
+Route::patch("/warehouse","WaveHouseController@update");
 
-// Route::get("/wavehouse_cnc","WaveHouseCNCController@getdata");
-// Route::post("/wavehouse_cnc/update","WaveHouseCNCController@update");
+Route::get("/cnc/{t}","WaveHouseCNCController@getdata");
+Route::patch("/cnc/update","WaveHouseCNCController@update");
 
 Route::get("/type/{table}","TypeController@Getdata");
 Route::post("/type/{table}","TypeController@InsertData");

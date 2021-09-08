@@ -2544,6 +2544,8 @@ function _asyncToGenerator(fn) {
     self.load_CNC_agvModel();
     self.load_CNC_robot_01Model();
     self.load_CNC_robot_02Model();
+    self.load_WH_Toolholder();
+    self.load_CNC_Toolholder();
     setTimeout(function () {
       self.$store.state.width_3d = container.offsetWidth;
       self.$store.state.height_3d = container.offsetHeight;
@@ -2766,6 +2768,88 @@ function _asyncToGenerator(fn) {
             }
           }
         }, _callee4);
+      }))();
+    },
+    load_WH_Toolholder: function load_WH_Toolholder() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                self = _this5; //w1
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w1').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w2
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w2').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w3
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w3').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w4
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w4').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w5
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w5').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w6
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w6').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w7
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w7').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w8
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w8').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                }); //w9
+
+                self.$store.dispatch('A_GetWarehouse_toolholder', 'w9').then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                });
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    load_CNC_Toolholder: function load_CNC_Toolholder() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                self = _this6; //t1
+
+                self.$store.dispatch('A_GetCnc_toolholder', 't1').then(function (response) {
+                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                }); //t2
+
+                self.$store.dispatch('A_GetCnc_toolholder', 't2').then(function (response) {
+                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                });
+
+              case 3:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     },
     eHandler: function eHandler(data) {
@@ -3067,45 +3151,7 @@ __webpack_require__.r(__webpack_exports__);
       return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + datetime.getHours() + ":" + datetime.getMinutes(); // 16-5-2015 9:50
     }
   },
-  mounted: function mounted() {
-    var self = this; //w1
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w1').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w2
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w2').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w3
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w3').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w4
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w4').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w5
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w5').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w6
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w6').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w7
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w7').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w8
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w8').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    }); //w9
-
-    self.$store.dispatch('A_GetWarehouse_toolholder', 'w9').then(function (response) {
-      self.$store.state.ToolHolder.push(response.data);
-    });
-  },
+  mounted: function mounted() {},
   created: function created() {}
 });
 
@@ -3124,11 +3170,22 @@ __webpack_require__.r(__webpack_exports__);
   name: 'wh_cnc',
   components: {},
   props: ['element'],
+  computed: {
+    hasCode: function hasCode() {
+      if (this.containsKey(this.item_hover, 'code')) {
+        return this.item_hover.code;
+      }
+
+      return '';
+    }
+  },
   data: function data() {
     return {
       page_x: 0,
       page_y: 0,
-      click_move: false
+      click_move: false,
+      select_index: 0,
+      item_hover: null
     };
   },
   methods: {
@@ -3195,6 +3252,17 @@ __webpack_require__.r(__webpack_exports__);
       this.click_move = false;
       this.$store.state.threejs.enter = false;
       this.$store.state.threejs.Controls_Camera_Abled();
+    },
+    DateTime_Tram: function DateTime_Tram(name, datetime) {
+      if (name === '' || name === null) return '';
+      return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + datetime.getHours() + ":" + datetime.getMinutes(); // 16-5-2015 9:50
+    },
+    GetItem_hover: function GetItem_hover(item) {
+      console.log(item.code);
+      this.item_hover = item;
+    },
+    containsKey: function containsKey(obj, key) {
+      return Object.keys(obj).includes(key);
     }
   },
   created: function created() {}
@@ -7902,7 +7970,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../../node_
 
 
 // module
-exports.push([module.i, ".resizable[data-v-85095826] {\n  background-position: top left;\n  position: relative;\n}\n.wh_outline[data-v-85095826] {\n  width: 27rem;\n  height: 50rem;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  background-image: linear-gradient(#636363b9, rgba(87, 86, 86, 0.747));\n  z-index: 2;\n}\n.active_move[data-v-85095826] {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n.wh_outline .title[data-v-85095826] {\n  width: 100%;\n  height: 2rem;\n  color: white;\n  margin: 0 auto;\n  margin-top: 0.5rem;\n  text-align: center;\n  font-size: 1.2rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.title_close[data-v-85095826] {\n  position: absolute;\n  transform: translate(-50%, -50%);\n  top: 2.5%;\n  left: 95%;\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 1.2rem;\n  color: white;\n  background: #c22c2c;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 auto;\n}\n.title_close p[data-v-85095826] {\n  text-align: center;\n  margin-top: -0.25rem;\n}\n.combo_row[data-v-85095826] {\n  width: 100%;\n  height: 3rem;\n  display: flex;\n  justify-content: flex-start;\n}\n.combo_row .combo_row_title[data-v-85095826] {\n  width: 50%;\n  font-size: 1.2rem;\n  text-align: center;\n  color: white;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.combo_row .combo[data-v-85095826] {\n  width: 50%;\n  font-size: 1.2rem;\n  text-align: center;\n  color: white;\n}\n.toolholder_detail[data-v-85095826] {\n  width: 95%;\n  height: 5rem;\n  background: #414141;\n  text-align: center;\n  margin: 0 auto;\n  margin-bottom: 0.5rem;\n  color: white;\n}\n.detail[data-v-85095826] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n.data_block[data-v-85095826] {\n  width: 100%;\n  height: 38rem;\n}\n.data_outline[data-v-85095826] {\n  width: 95%;\n  height: 100%;\n  background: #818181;\n  text-align: center;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: row;\n}\n.data_inline[data-v-85095826] {\n  width: 100%;\n  height: 100%;\n  background: #919191;\n  overflow-y: auto;\n  overflow-x: hidden;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.data_inline_cell[data-v-85095826] {\n  width: 96%;\n  height: 3rem;\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: row;\n  color: black;\n  border: 1px solid #4d4d4d;\n  margin-top: 0.25rem;\n  margin-left: 0.5rem;\n}\n.data_inline_number[data-v-85095826] {\n  width: 20%;\n  height: 100%;\n  padding-top: 0.5rem;\n  color: white;\n  background: #0aa9b4;\n}\n.data_inline_context[data-v-85095826] {\n  width: 80%;\n  height: 100%;\n}\n.data_inline_context div[data-v-85095826] {\n  width: 100%;\n  height: 50%;\n}\n.data_inline_line[data-v-85095826] {\n  width: 2%;\n  height: 100%;\n}\n\n/* width */\n[data-v-85095826]::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n[data-v-85095826]::-webkit-scrollbar-track {\n  background: #f1f1f1;\n}\n\n/* Handle */\n[data-v-85095826]::-webkit-scrollbar-thumb {\n  background: #0bacc9;\n}\n\n/* Handle on hover */\n[data-v-85095826]::-webkit-scrollbar-thumb:hover {\n  background: #077d92;\n}", ""]);
+exports.push([module.i, ".resizable[data-v-85095826] {\n  background-position: top left;\n  position: relative;\n}\n.wh_outline[data-v-85095826] {\n  width: 27rem;\n  height: 50rem;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  background-image: linear-gradient(#636363b9, rgba(87, 86, 86, 0.747));\n  z-index: 2;\n}\n.active_move[data-v-85095826] {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n.wh_outline .title[data-v-85095826] {\n  width: 100%;\n  height: 2rem;\n  color: white;\n  margin: 0 auto;\n  margin-top: 0.5rem;\n  text-align: center;\n  font-size: 1.2rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.title_close[data-v-85095826] {\n  position: absolute;\n  transform: translate(-50%, -50%);\n  top: 2.5%;\n  left: 95%;\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 1.2rem;\n  color: white;\n  background: #c22c2c;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 auto;\n}\n.title_close p[data-v-85095826] {\n  text-align: center;\n  margin-top: -0.25rem;\n}\n.combo_row[data-v-85095826] {\n  width: 100%;\n  height: 3rem;\n  display: flex;\n  justify-content: flex-start;\n}\n.combo_row .combo_row_title[data-v-85095826] {\n  width: 50%;\n  font-size: 1.2rem;\n  text-align: center;\n  color: white;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.combo_row .combo[data-v-85095826] {\n  width: 50%;\n  font-size: 1.2rem;\n  text-align: center;\n  color: white;\n}\n.toolholder_detail[data-v-85095826] {\n  width: 95%;\n  height: 5rem;\n  background: #414141;\n  text-align: center;\n  margin: 0 auto;\n  margin-bottom: 0.5rem;\n  color: white;\n}\n.detail[data-v-85095826] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n.data_block[data-v-85095826] {\n  width: 100%;\n  height: 38rem;\n}\n.data_outline[data-v-85095826] {\n  width: 95%;\n  height: 100%;\n  background: #818181;\n  text-align: center;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: row;\n}\n.data_inline[data-v-85095826] {\n  width: 100%;\n  height: 100%;\n  background: #919191;\n  overflow-y: auto;\n  overflow-x: hidden;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.data_inline_cell[data-v-85095826] {\n  width: 96%;\n  height: 3rem;\n  font-size: 1.2rem;\n  display: flex;\n  flex-direction: row;\n  color: black;\n  border: 1px solid #4d4d4d;\n  margin-top: 0.25rem;\n  margin-left: 0.5rem;\n}\n.data_inline_cell[data-v-85095826]:hover {\n  background: #585858;\n}\n.data_inline_number[data-v-85095826] {\n  width: 20%;\n  height: 100%;\n  padding-top: 0.5rem;\n  color: white;\n  background: #0aa9b4;\n}\n.data_inline_context[data-v-85095826] {\n  width: 80%;\n  height: 100%;\n}\n.data_inline_context div[data-v-85095826] {\n  width: 100%;\n  height: 50%;\n}\n.data_inline_line[data-v-85095826] {\n  width: 2%;\n  height: 100%;\n}\n\n/* width */\n[data-v-85095826]::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n[data-v-85095826]::-webkit-scrollbar-track {\n  background: #f1f1f1;\n}\n\n/* Handle */\n[data-v-85095826]::-webkit-scrollbar-thumb {\n  background: #0bacc9;\n}\n\n/* Handle on hover */\n[data-v-85095826]::-webkit-scrollbar-thumb:hover {\n  background: #077d92;\n}", ""]);
 
 // exports
 
@@ -83166,85 +83234,85 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _vm.$store.state.ToolHolder[_vm.select_index] != null
+      _vm.$store.state.ToolHolder_wh[_vm.select_index] != null
         ? _c("div", { staticClass: "data_block" }, [
             _c("div", { staticClass: "data_outline" }, [
               _c(
                 "div",
                 { staticClass: "data_inline" },
-                _vm._l(_vm.$store.state.ToolHolder[_vm.select_index], function(
-                  item,
-                  n
-                ) {
-                  return n % 2 === 0
-                    ? _c(
-                        "div",
-                        {
-                          key: n,
-                          staticClass: "data_inline_cell",
-                          on: {
-                            mouseover: function($event) {
-                              _vm.item_hover = item
+                _vm._l(
+                  _vm.$store.state.ToolHolder_wh[_vm.select_index],
+                  function(item, n) {
+                    return n % 2 === 0
+                      ? _c(
+                          "div",
+                          {
+                            key: n,
+                            staticClass: "data_inline_cell",
+                            on: {
+                              mouseover: function($event) {
+                                _vm.item_hover = item
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "data_inline_number" }, [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(n + 1) +
-                                "\n                            "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "data_inline_context" }, [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  "border-bottom":
-                                    "1px solid rgb(120, 120, 120)",
-                                  color: "white",
-                                  "margin-top": "-4px",
-                                  height: "55%"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(
-                                      _vm.DateTime_Tram(
-                                        item.name,
-                                        new Date(item.created_at)
-                                      )
-                                    ) +
-                                    "\n                                "
-                                )
-                              ]
-                            ),
+                          },
+                          [
+                            _c("div", { staticClass: "data_inline_number" }, [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(n + 1) +
+                                  "\n                            "
+                              )
+                            ]),
                             _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  color: "white",
-                                  "margin-top": "-2px",
-                                  height: "45%"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(item.name) +
-                                    "\n                                "
-                                )
-                              ]
-                            )
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                }),
+                            _c("div", { staticClass: "data_inline_context" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    "border-bottom":
+                                      "1px solid rgb(120, 120, 120)",
+                                    color: "white",
+                                    "margin-top": "-4px",
+                                    height: "55%"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(
+                                        _vm.DateTime_Tram(
+                                          item.name,
+                                          new Date(item.created_at)
+                                        )
+                                      ) +
+                                      "\n                                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    color: "white",
+                                    "margin-top": "-2px",
+                                    height: "45%"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.name) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      : _vm._e()
+                  }
+                ),
                 0
               ),
               _vm._v(" "),
@@ -83253,79 +83321,79 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "data_inline" },
-                _vm._l(_vm.$store.state.ToolHolder[_vm.select_index], function(
-                  item,
-                  n
-                ) {
-                  return n % 2 === 1
-                    ? _c(
-                        "div",
-                        {
-                          key: n,
-                          staticClass: "data_inline_cell",
-                          on: {
-                            mouseover: function($event) {
-                              _vm.item_hover = item
+                _vm._l(
+                  _vm.$store.state.ToolHolder_wh[_vm.select_index],
+                  function(item, n) {
+                    return n % 2 === 1
+                      ? _c(
+                          "div",
+                          {
+                            key: n,
+                            staticClass: "data_inline_cell",
+                            on: {
+                              mouseover: function($event) {
+                                _vm.item_hover = item
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "data_inline_number" }, [
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(n + 1) +
-                                "\n                                "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "data_inline_context" }, [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  "border-bottom":
-                                    "1px solid rgb(120, 120, 120)",
-                                  color: "white",
-                                  "margin-top": "-4px",
-                                  height: "55%"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(
-                                      _vm.DateTime_Tram(
-                                        item.name,
-                                        new Date(item.created_at)
-                                      )
-                                    ) +
-                                    "\n                                    "
-                                )
-                              ]
-                            ),
+                          },
+                          [
+                            _c("div", { staticClass: "data_inline_number" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(n + 1) +
+                                  "\n                                "
+                              )
+                            ]),
                             _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  color: "white",
-                                  "margin-top": "-2px",
-                                  height: "45%"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(item.name) +
-                                    "\n                                    "
-                                )
-                              ]
-                            )
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                }),
+                            _c("div", { staticClass: "data_inline_context" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    "border-bottom":
+                                      "1px solid rgb(120, 120, 120)",
+                                    color: "white",
+                                    "margin-top": "-4px",
+                                    height: "55%"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(
+                                        _vm.DateTime_Tram(
+                                          item.name,
+                                          new Date(item.created_at)
+                                        )
+                                      ) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    color: "white",
+                                    "margin-top": "-2px",
+                                    height: "45%"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(item.name) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      : _vm._e()
+                  }
+                ),
                 0
               )
             ])
@@ -83386,27 +83454,172 @@ var render = function() {
         _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "combo_row" }, [
+        _c("div", { staticClass: "combo_row_title" }, [
+          _vm._v("\n                工具機倉儲 :\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "combo" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.select_index,
+                  expression: "select_index"
+                }
+              ],
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.select_index = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "0" } }, [_vm._v("CNC 01")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("CNC 02")])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "toolholder_detail" }, [
+        _vm.item_hover !== null && _vm.item_hover.name !== null
+          ? _c("div", { staticClass: "detail" }, [
+              _c("div", { staticClass: "detail_title" }, [
+                _vm._v(
+                  "\n                            刀把編號 :\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "detail_context" }, [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(_vm.item_hover.name) +
+                    "\n                    "
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.item_hover !== null && _vm.item_hover.name !== null
+          ? _c("div", { staticClass: "detail" }, [
+              _c("div", { staticClass: "detail_title" }, [
+                _vm._v(
+                  "\n                            刀具組合 :\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "detail_context" }, [
+                _vm._v(
+                  "\n                           " +
+                    _vm._s(_vm.item_hover.code) +
+                    "\n                    "
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.item_hover !== null && _vm.item_hover.name !== null
+          ? _c("div", { staticClass: "detail" }, [
+              _c("div", { staticClass: "detail_context" }, [
+                _vm._v(
+                  "\n                             刀把壽命 : " +
+                    _vm._s(_vm.item_hover.life) +
+                    "\n                    "
+                )
+              ])
+            ])
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "data_block" }, [
         _c("div", { staticClass: "data_outline" }, [
           _c(
             "div",
             { staticClass: "data_inline" },
-            _vm._l(40, function(n) {
-              return _c("div", { key: n, staticClass: "data_inline_cell" }, [
-                _c("div", { staticClass: "data_inline_number" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(n) +
-                      "\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(2, true)
-              ])
+            _vm._l(_vm.$store.state.ToolHolder_Cnc[_vm.select_index], function(
+              item,
+              n
+            ) {
+              return _c(
+                "div",
+                {
+                  key: n,
+                  staticClass: "data_inline_cell",
+                  on: {
+                    mouseover: function($event) {
+                      return _vm.GetItem_hover(item)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "data_inline_number" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(n + 1) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "data_inline_context" }, [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          "border-bottom": "1px solid rgb(120, 120, 120)",
+                          color: "white",
+                          "margin-top": "-4px",
+                          height: "55%"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                   " +
+                            _vm._s(
+                              _vm.DateTime_Tram(
+                                item.name,
+                                new Date(item.created_at)
+                              )
+                            ) +
+                            "\n                                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          color: "white",
+                          "margin-top": "-2px",
+                          height: "45%"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(item.name) +
+                            "\n                                "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
             }),
             0
           )
@@ -83415,90 +83628,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "combo_row" }, [
-      _c("div", { staticClass: "combo_row_title" }, [
-        _vm._v("\n                工具機倉儲 :\n            ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "combo" }, [
-        _c("select", [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("CNC 01")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("CNC 02")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "toolholder_detail" }, [
-      _c("div", { staticClass: "detail" }, [
-        _c("div", { staticClass: "detail_title" }, [
-          _vm._v(
-            "\n                            刀把編號 :\n                    "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "detail_context" }, [
-          _vm._v(
-            "\n                            xxxxxxxxx\n                    "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "detail" }, [
-        _c("div", { staticClass: "detail_title" }, [
-          _vm._v(
-            "\n                            刀具組合 :\n                    "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "detail_context" }, [
-          _vm._v(
-            "\n                            xxxxxxxxx\n                    "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "detail" }, [
-        _c("div", { staticClass: "detail_context" }, [
-          _vm._v(
-            "\n                            (xxxxxxxxx)\n                    "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "data_inline_context" }, [
-      _c(
-        "div",
-        { staticStyle: { "border-bottom": "1px solid rgb(120, 120, 120)" } },
-        [
-          _vm._v(
-            "\n                                    aa\n                                "
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", [
-        _vm._v(
-          "\n                                    bb\n                                "
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -101725,8 +101855,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
     element_panel: null,
     //panel組件
     baseUrlApi: 'http://127.0.0.1:8000/api',
-    p_w: '/wavehouse',
-    p_wcnc: '/wavehouse_cnc',
+    p_w: '/warehouse',
+    p_wcnc: '/cnc',
     p_tool_unpre: '/toolholder/unprepared',
     p_tool_pre_record: '/toolholder/prepared',
     p_tool_life_record: '/toolholder/maxlife',
@@ -101765,7 +101895,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
       'now_type': 'now_type_cooling',
       'data': []
     }],
-    ToolHolder: []
+    ToolHolder_wh: [],
+    ToolHolder_Cnc: []
   },
   getters: {
     ApiPath: function ApiPath(state) {
@@ -101906,6 +102037,39 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
             }
           }
         }, _callee5);
+      }))();
+    },
+    A_GetCnc_toolholder: function A_GetCnc_toolholder(state, checkdata) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var self, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                self = _this2;
+                data = {
+                  'path': self.state.baseUrlApi + self.state.p_wcnc + "/" + checkdata
+                };
+                state;
+                _context6.next = 5;
+                return _js_store__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('AxiosGet', data).then(function (response) {
+                  return response;
+                })["catch"](function (error) {
+                  console.error(error);
+                  return "error";
+                });
+
+              case 5:
+                return _context6.abrupt("return", _context6.sent);
+
+              case 6:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     }
   },
@@ -102434,7 +102598,8 @@ var ThreeJs_3D = /*#__PURE__*/function () {
       this.controls.minDistance = 280;
       this.controls.maxDistance = 400;
       this.controls.maxPolarAngle = Math.PI / 2.05;
-      this.controls.update(); // this.controls.addEventListener('mousedown',(evt )=>{
+      this.controls.update();
+      this.controls.enablePan = false; // this.controls.addEventListener('mousedown',(evt )=>{
       //     console.log('click');
       // } ,false);
 

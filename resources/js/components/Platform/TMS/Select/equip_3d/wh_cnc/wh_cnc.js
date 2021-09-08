@@ -3,11 +3,24 @@ export default {
     components: {
     },
     props:['element'],
+    computed: {
+        hasCode:function() {
+
+            if(this.containsKey(this.item_hover, 'code'))
+            {
+                return this.item_hover.code;
+            }
+
+            return '';
+        }
+    },
     data(){
            return{
                page_x :0,
                page_y : 0,
-               click_move:false
+               click_move:false,
+               select_index:0,
+               item_hover:null
            }
        },
        methods:{
@@ -103,7 +116,25 @@ export default {
                     this.click_move = false;
                     this.$store.state.threejs.enter=false;
                     this.$store.state.threejs.Controls_Camera_Abled();
-                }
+                },
+                DateTime_Tram(name,datetime){
+                    if(name ==='' ||name ===null)
+                            return '';
+
+                    return datetime.getFullYear() + "-"  +(datetime.getMonth()+1) + "-"  + datetime.getDate()  + " " +
+                    datetime.getHours() + ":" + datetime.getMinutes();
+
+                    // 16-5-2015 9:50
+                },
+                GetItem_hover(item)
+                {
+                    console.log(item.code);
+                    this.item_hover = item;
+                },
+                containsKey(obj, key ) {
+                    return Object.keys(obj).includes(key);
+                },
+
        },
        created(){
        }

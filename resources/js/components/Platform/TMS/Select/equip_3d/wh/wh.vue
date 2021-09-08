@@ -60,12 +60,12 @@
                                 </div>
                         </div>
 
-                        <div class="data_block" v-if="$store.state.ToolHolder[select_index] !=null">
+                        <div class="data_block" v-if="$store.state.ToolHolder_wh[select_index] !=null">
                             <div class="data_outline">
                                 <div class="data_inline" >
 
                                     <div class="data_inline_cell"
-                                    v-if="n % 2 === 0" v-for="(item, n)  in $store.state.ToolHolder[select_index]"
+                                    v-if="n % 2 === 0" v-for="(item, n)  in $store.state.ToolHolder_wh[select_index]"
                                     :key="n"
                                     @mouseover="item_hover = item">
                                             <div class="data_inline_number">
@@ -89,7 +89,7 @@
                                 <div class="data_inline">
 
                                         <div class="data_inline_cell"
-                                        v-if="n % 2 === 1" v-for="(item, n) in $store.state.ToolHolder[select_index]"
+                                        v-if="n % 2 === 1" v-for="(item, n) in $store.state.ToolHolder_wh[select_index]"
                                         :key="n"
                                         @mouseover="item_hover = item" >
                                                 <div class="data_inline_number">

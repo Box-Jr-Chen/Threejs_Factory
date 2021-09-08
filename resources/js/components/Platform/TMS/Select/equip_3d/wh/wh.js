@@ -120,53 +120,7 @@ export default {
                 }
        },
        mounted(){
-        var self = this;
-        //w1
-        self.$store.dispatch('A_GetWarehouse_toolholder','w1').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w2
-        self.$store.dispatch('A_GetWarehouse_toolholder','w2').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w3
-        self.$store.dispatch('A_GetWarehouse_toolholder','w3').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w4
-        self.$store.dispatch('A_GetWarehouse_toolholder','w4').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w5
-        self.$store.dispatch('A_GetWarehouse_toolholder','w5').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w6
-        self.$store.dispatch('A_GetWarehouse_toolholder','w6').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w7
-        self.$store.dispatch('A_GetWarehouse_toolholder','w7').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w8
-        self.$store.dispatch('A_GetWarehouse_toolholder','w8').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
-        });
-        //w9
-        self.$store.dispatch('A_GetWarehouse_toolholder','w9').
-        then(response =>{
-            self.$store.state.ToolHolder.push(response.data);
 
-        });
 
        },
        created(){

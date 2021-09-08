@@ -26,8 +26,8 @@ export default new Vuex.Store({
 
 
         baseUrlApi:'http://127.0.0.1:8000/api',
-        p_w: '/wavehouse',
-        p_wcnc:'/wavehouse_cnc',
+        p_w: '/warehouse',
+        p_wcnc:'/cnc',
         p_tool_unpre:'/toolholder/unprepared',
         p_tool_pre_record:'/toolholder/prepared',
         p_tool_life_record:'/toolholder/maxlife',
@@ -78,11 +78,13 @@ export default new Vuex.Store({
         ],
 
 
-        ToolHolder:[
+        ToolHolder_wh:[
+
+        ],
+
+        ToolHolder_Cnc:[
 
         ]
-
-
     },
     getters:{
         ApiPath: (state)=> (sub)  => {
@@ -129,6 +131,23 @@ export default new Vuex.Store({
             var self= this;
             var data = {
               'path': self.state.baseUrlApi + self.state.p_w+"/"+checkdata
+            };
+
+            state
+            return await store
+                .dispatch('AxiosGet', data)
+                .then(response => {
+                  return  response;
+                }
+                ).catch(error => {
+                  console.error(error);
+                  return "error";
+                });
+        },
+        async A_GetCnc_toolholder(state,checkdata){
+            var self= this;
+            var data = {
+              'path': self.state.baseUrlApi + self.state.p_wcnc+"/"+checkdata
             };
 
             state

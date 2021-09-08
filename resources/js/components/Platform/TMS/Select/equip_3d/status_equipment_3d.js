@@ -158,6 +158,8 @@ import * as THREE from "three";
               self.load_CNC_agvModel();
               self.load_CNC_robot_01Model();
               self.load_CNC_robot_02Model();
+              self.load_WH_Toolholder();
+              self.load_CNC_Toolholder();
               setTimeout(()=>{
                 self.$store.state.width_3d  =  container.offsetWidth;
                 self.$store.state.height_3d =  container.offsetHeight;
@@ -379,13 +381,76 @@ import * as THREE from "three";
                 }
              );
            },
+           async load_WH_Toolholder(){
+                var self = this;
+                //w1
+                self.$store.dispatch('A_GetWarehouse_toolholder','w1').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w2
+                self.$store.dispatch('A_GetWarehouse_toolholder','w2').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w3
+                self.$store.dispatch('A_GetWarehouse_toolholder','w3').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w4
+                self.$store.dispatch('A_GetWarehouse_toolholder','w4').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w5
+                self.$store.dispatch('A_GetWarehouse_toolholder','w5').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w6
+                self.$store.dispatch('A_GetWarehouse_toolholder','w6').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w7
+                self.$store.dispatch('A_GetWarehouse_toolholder','w7').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w8
+                self.$store.dispatch('A_GetWarehouse_toolholder','w8').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+                });
+                //w9
+                self.$store.dispatch('A_GetWarehouse_toolholder','w9').
+                then(response =>{
+                    self.$store.state.ToolHolder_wh.push(response.data);
+
+                });
+           },
+           async load_CNC_Toolholder(){
+            var self = this;
+            //t1
+            self.$store.dispatch('A_GetCnc_toolholder','t1').
+            then(response =>{
+                self.$store.state.ToolHolder_Cnc.push(response.data);
+            });
+            //t2
+            self.$store.dispatch('A_GetCnc_toolholder','t2').
+            then(response =>{
+                self.$store.state.ToolHolder_Cnc.push(response.data);
+            });
+           },
            eHandler(data) {
             this.width = data.width;
             this.height = data.height;
             this.left = data.left;
             this.top = data.top;
             this.event = data.eventName;
-           }
+           },
+
        }
     }
 
