@@ -19,6 +19,7 @@ class toolholderseed extends Seeder
             ->select('code')
             ->where('code', 'like', 'L%')
             ->get();
+
         //machining
             $machining  = DB::table('type_toolholder')
             ->select('code')
