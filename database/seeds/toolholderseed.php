@@ -46,7 +46,7 @@ class toolholderseed extends Seeder
         $length_shank       = count($shank);
         $length_shankamount = count($shankamount);
 
-        for ($y = 1; $y <= 30; $y+=1) {
+        for ($y = 1; $y <= 60; $y+=1) {
 
             $result ='t';
 

@@ -65,9 +65,10 @@
                                 <div class="data_inline" >
 
                                     <div class="data_inline_cell"
-                                    v-if="n % 2 === 0" v-for="(item, n)  in $store.state.ToolHolder_wh[select_index]"
+                                    v-if="n <$store.state.ToolHolder_wh[select_index].length/2" v-for="(item, n)  in $store.state.ToolHolder_wh[select_index]"
                                     :key="n"
-                                    @mouseover="item_hover = item">
+                                    @mouseover="mouse_over_show(n,item)"
+                                     @mouseleave="mouse_leave_show" >
                                             <div class="data_inline_number">
                                                 {{n+1}}
                                             </div>
@@ -89,9 +90,10 @@
                                 <div class="data_inline">
 
                                         <div class="data_inline_cell"
-                                        v-if="n % 2 === 1" v-for="(item, n) in $store.state.ToolHolder_wh[select_index]"
+                                        v-if="n > $store.state.ToolHolder_wh[select_index].length/2" v-for="(item, n) in $store.state.ToolHolder_wh[select_index]"
                                         :key="n"
-                                        @mouseover="item_hover = item" >
+                                        @mouseover="mouse_over_show(n,item)"
+                                         @mouseleave="mouse_leave_show" >
                                                 <div class="data_inline_number">
                                                     {{n+1}}
                                                 </div>

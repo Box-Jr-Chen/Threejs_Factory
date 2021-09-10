@@ -12,6 +12,7 @@ export default {
                page_y : 0,
                click_move:false,
                select_index:0,
+               select_item :null,
                item_hover:null
            }
        },
@@ -41,6 +42,25 @@ export default {
 
                     self.$store.state.threejs.Controls_Camera_Abled();
 
+                },
+                mouse_over_show(index,item){
+
+                    if(this.select_item !==null && this.$store.state.threejs.equipment_action.setting.toolholders.wh[this.select_index][index] !==this.select_item)
+                    {
+                        this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder;
+                    }
+
+                    this.select_item = this.$store.state.threejs.equipment_action.setting.toolholders.wh[this.select_index][index];
+                    this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder_select;
+                    this.item_hover = item;
+
+
+                },
+                mouse_leave_show(){
+                    if(this.select_item !==null)
+                    {
+                        this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder;
+                    }
                 },
                 update_wh: function(event) {
                    var self = this;

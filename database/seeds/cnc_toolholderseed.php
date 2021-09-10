@@ -43,7 +43,7 @@ class cnc_toolholderseed extends Seeder
         $id_hasuse = array();
 
         for ($x = 1; $x <= 2; $x+=1) {
-            for ($y = 1; $y <= 40; $y+=1) {
+            for ($y = 1; $y <= 60; $y+=1) {
 
                 $result ='t';
 

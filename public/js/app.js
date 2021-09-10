@@ -2420,113 +2420,7 @@ function _asyncToGenerator(fn) {
       isLoadingInit: false,
       modelsize: 4,
       element_panel: null,
-      loading_finish: [] //                 LoadingProcess:{
-      //                     'Init_ThreeJS':false,
-      //                     'Update_Wavehouse_Model_Data':{
-      //                         'Trackholder_wavehouse':false,
-      //                         'Trackholder_cnc':false,
-      //                         'Trackholder_cnc2':false
-      //                     },
-      //                     'SQL_Types_Data_All':false
-      //                 },
-      //                 isfirstScreenadd:0,
-      //                 raycaster:null,
-      //                 mouse:null,
-      //                 select_wavehouse:null,
-      //                 scene: '',
-      //                 labelRenderer: '',
-      //                 light: '',
-      //                 camera: '',
-      //                 camera_cnc: '',
-      //                 camera_cnc02: '',
-      //                 camera_now: '',
-      //                 controls: '',
-      //                 renderer: '',
-      //                 geometry: '',
-      //                 material: '',
-      //                 cube: '',
-      //                 fov: 60,
-      //                 biaozhudiv: '',
-      //                 wavehouse_data:[],
-      //                 wavehouse_data_cnc:[],
-      //                 wavehouse_data_cnc2:[],
-      //                 status_equiment:[],
-      //                 type_wavehouse:[
-      //                   '倉儲內格位',
-      //                   '工具機01',
-      //                   '工具機02'
-      //                 ],
-      //                 model_choose_Mouse:null,
-      //                 model_toolholder_Ori:null,
-      //                 color_origin:new THREE.Color("rgb(255, 100, 0)"),
-      //                 mat_toolholder:
-      //                     new THREE.MeshPhongMaterial({
-      //                         ambient: 0x7c8262,
-      //                         color: "rgb(220, 220, 220)",  // 物件顏色
-      //                         specular: 0x555555,
-      //                         shininess: 30
-      //                     }),
-      //                 mat_glow_red:
-      //                     new THREE.ShaderMaterial({
-      //                         uniforms:
-      //                         {
-      //                             "s":   { type: "f", value: -1.0},
-      //                             "b":   { type: "f", value: 1.0},
-      //                             "p":   { type: "f", value: 1},
-      //                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 0, 0)") },
-      //                         },
-      //                         vertexShader:   shader_glow.vertexShader,
-      //                         fragmentShader: shader_glow.fragmentShader,
-      //                         side: THREE.FrontSide,
-      //                         blending: THREE.AdditiveBlending,
-      //                         transparent: true
-      //                     }),
-      //                 mat_glow_Origin:
-      //                     new THREE.ShaderMaterial({
-      //                         uniforms:
-      //                         {
-      //                             "s":   { type: "f", value: -1.0},
-      //                             "b":   { type: "f", value: 1.0},
-      //                             "p":   { type: "f", value: 1},
-      //                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 100, 0)") },
-      //                         },
-      //                         vertexShader:   shader_glow.vertexShader,
-      //                         fragmentShader: shader_glow.fragmentShader,
-      //                         side: THREE.FrontSide,
-      //                         blending: THREE.AdditiveBlending,
-      //                         transparent: true
-      //                     }),
-      //                 mat_glow_yellow:
-      //                     new THREE.ShaderMaterial({
-      //                         uniforms:
-      //                         {
-      //                             "s":   { type: "f", value: -1.0},
-      //                             "b":   { type: "f", value: 1.0},
-      //                             "p":   { type: "f", value: 1},
-      //                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 255, 0)") },
-      //                         },
-      //                         vertexShader:   shader_glow.vertexShader,
-      //                         fragmentShader: shader_glow.fragmentShader,
-      //                         side: THREE.FrontSide,
-      //                         blending: THREE.AdditiveBlending,
-      //                         transparent: true
-      //                     }),
-      //                  mat_glow_darkblue:
-      //                     new THREE.ShaderMaterial({
-      //                         uniforms:
-      //                         {
-      //                             "s":   { type: "f", value: -1.0},
-      //                             "b":   { type: "f", value: 1.0},
-      //                             "p":   { type: "f", value: 1},
-      //                             glowColor: { type: "c", value: new THREE.Color("rgb(0, 50, 50)") },
-      //                         },
-      //                         vertexShader:   shader_glow.vertexShader,
-      //                         fragmentShader: shader_glow.fragmentShader,
-      //                         side: THREE.FrontSide,
-      //                         blending: THREE.AdditiveBlending,
-      //                         transparent: true
-      //                     }),
-
+      loading_finish: []
     };
   },
   computed: {
@@ -2546,31 +2440,12 @@ function _asyncToGenerator(fn) {
     self.load_CNC_agvModel();
     self.load_CNC_robot_01Model();
     self.load_CNC_robot_02Model();
-    self.load_Point_Toolholder_project(); //   self.load_WH_Toolholder();
-    //   self.load_CNC_Toolholder();
-
+    self.load_Point_Toolholder_project();
     self.load_Type_Toolholder();
     setTimeout(function () {
       self.$store.state.width_3d = container.offsetWidth;
       self.$store.state.height_3d = container.offsetHeight;
-    }, 100); //            self.Init_ThreeJS(()=>{
-    //                self.LoadingProcess['Init_ThreeJS'] = true;
-    //                self.check_LoadingProcess();
-    //            });
-    //             self.Update_Wavehouse_Model_Data(()=>{
-    //                 self.check_LoadingProcess();
-    //             });
-    //             self.SQL_Types_Data_All(()=>{
-    //                 self.LoadingProcess['SQL_Types_Data_All'] = true;
-    //                 self.check_LoadingProcess();
-    //             });
-    //             self.$nextTick(() => {
-    //                 document.getElementById('container').addEventListener('mousedown',self.onDocumentMouseDown);
-    //             });
-    //             self.select_wavehouse =  self.type_wavehouse[0];
-    //             setInterval(()=>{
-    //                 self.Update_Status();
-    //             },3000);
+    }, 100); //self.check_LoadingProcess();
   },
   beforeDestroy: function beforeDestroy() {
     this.controls.enabled = false;
@@ -2791,6 +2666,33 @@ function _asyncToGenerator(fn) {
                   //console.log(obj.scene);
 
                   self.$store.state.threejs.equipment_action.setting.toolholder = obj.scene.children[0];
+                  self.$store.state.threejs.equipment_action.Material_toolholder = obj.scene.children[0].material; //outline
+
+                  self.$store.state.threejs.equipment_action.Material_toolholder_select = new three__WEBPACK_IMPORTED_MODULE_8__["ShaderMaterial"]({
+                    uniforms: {
+                      "s": {
+                        type: "f",
+                        value: -1.0
+                      },
+                      "b": {
+                        type: "f",
+                        value: 1.0
+                      },
+                      "p": {
+                        type: "f",
+                        value: 1
+                      },
+                      glowColor: {
+                        type: "c",
+                        value: new three__WEBPACK_IMPORTED_MODULE_8__["Color"]("rgb(255, 0, 0)")
+                      }
+                    },
+                    vertexShader: self.$store.state.threejs.equipment_action.vertexShadertext_outline,
+                    fragmentShader: self.$store.state.threejs.equipment_action.fragmentshadertext_outline,
+                    side: three__WEBPACK_IMPORTED_MODULE_8__["FrontSide"],
+                    blending: three__WEBPACK_IMPORTED_MODULE_8__["AdditiveBlending"],
+                    transparent: true
+                  });
                   var lightscale = self.$store.state.threejs.texturelight;
                   obj.scene.children[0].material.color.r = lightscale;
                   obj.scene.children[0].material.color.g = lightscale;
@@ -2823,8 +2725,9 @@ function _asyncToGenerator(fn) {
                 return self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_project.glb", function (obj) {
                   obj.name = "Lali_project";
                   obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize); //初始位置
-                  //console.log(obj.scene);
 
+                  console.log('project');
+                  console.log(obj.scene);
                   self.$store.state.threejs.equipment_action.setting.project = obj.scene.children[0];
                   var lightscale = self.$store.state.threejs.texturelight;
                   obj.scene.children[0].material.color.r = lightscale;
@@ -2911,6 +2814,10 @@ function _asyncToGenerator(fn) {
                 return _this7.instance_toolholder();
 
               case 13:
+                _context7.next = 15;
+                return _this7.instance_project();
+
+              case 15:
               case "end":
                 return _context7.stop();
             }
@@ -2923,16 +2830,21 @@ function _asyncToGenerator(fn) {
       var _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var self, i, j, toolholder_cell, clone, pos, lightscale;
+        var self, toolholder_instance, i, toolholder_instance_one, j, toolholder_cell, clone, pos, lightscale, toolholder_instance_cnc, toolholder_instance_one_cnc;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 self = _this8; //wh
 
+                toolholder_instance = [];
+
                 for (i = 0; i < self.$store.state.ToolHolder_wh.length; i++) {
+                  toolholder_instance_one = [];
+
                   for (j = 0; j < self.$store.state.ToolHolder_wh[i].length; j++) {
                     toolholder_cell = self.$store.state.ToolHolder_wh[i][j];
+                    toolholder_instance_one.push(null);
 
                     if (toolholder_cell.name !== null && toolholder_cell.name !== '' && toolholder_cell.name !== 'null') {
                       //有刀把才複製
@@ -2944,20 +2856,26 @@ function _asyncToGenerator(fn) {
                       clone.material.color.r = lightscale / 1.5;
                       clone.material.color.g = lightscale / 1.5;
                       clone.material.color.b = lightscale / 1.5;
-                      self.$store.state.threejs.equipment_action.setting.toolholders.wh.push(clone);
+                      toolholder_instance_one[j] = clone;
                       self.$store.state.threejs.scene.add(clone);
                     }
                   }
 
                   ;
-                  console.log('-------------------------');
+                  toolholder_instance.push(toolholder_instance_one);
                 }
 
-                ; //cnc
+                ;
+                self.$store.state.threejs.equipment_action.setting.toolholders.wh = toolholder_instance; //cnc
+
+                toolholder_instance_cnc = [];
 
                 for (i = 0; i < self.$store.state.ToolHolder_Cnc.length; i++) {
+                  toolholder_instance_one_cnc = [];
+
                   for (j = 0; j < self.$store.state.ToolHolder_Cnc[i].length; j++) {
                     toolholder_cell = self.$store.state.ToolHolder_Cnc[i][j];
+                    toolholder_instance_one_cnc.push(null);
 
                     if (toolholder_cell.name !== null && toolholder_cell.name !== '' && toolholder_cell.name !== 'null') {
                       //有刀把才複製
@@ -2969,17 +2887,19 @@ function _asyncToGenerator(fn) {
                       clone.material.color.r = lightscale / 1.5;
                       clone.material.color.g = lightscale / 1.5;
                       clone.material.color.b = lightscale / 1.5;
-                      self.$store.state.threejs.equipment_action.setting.toolholders.cnc.push(clone);
                       self.$store.state.threejs.scene.add(clone);
+                      toolholder_instance_one_cnc[j] = clone;
                     }
                   }
 
                   ;
+                  toolholder_instance_cnc.push(toolholder_instance_one_cnc);
                 }
 
                 ;
+                self.$store.state.threejs.equipment_action.setting.toolholders.cnc = toolholder_instance_cnc;
 
-              case 5:
+              case 9:
               case "end":
                 return _context8.stop();
             }
@@ -2987,43 +2907,35 @@ function _asyncToGenerator(fn) {
         }, _callee8);
       }))();
     },
-    //DATA
-    load_WH_Toolholder: function load_WH_Toolholder() {
+    instance_project: function instance_project() {
       var _this9 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-        var self, w, i;
+        var self, i, project_cell, clone, lightscale;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                self = _this9; //w1
+                self = _this9; //project
 
-                self.$store.state.ToolHolder_wh = [];
-                w = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8', 'w9'];
-                i = 0;
+                for (i = 0; i < self.$store.state.threejs.equipment_action.setting.point_project.length; i++) {
+                  project_cell = self.$store.state.threejs.equipment_action.setting.point_project[i]; //複製
 
-              case 4:
-                if (!(i < w.length)) {
-                  _context9.next = 10;
-                  break;
+                  clone = self.$store.state.threejs.equipment_action.setting.project.clone(); /// var pos   = self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[i].pos[j];
+
+                  clone.position.set(project_cell.x * 4, project_cell.y * 4, project_cell.z * 4);
+                  clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                  lightscale = self.$store.state.threejs.texturelight;
+                  clone.material.color.r = lightscale / 1.2;
+                  clone.material.color.g = lightscale / 1.2;
+                  clone.material.color.b = lightscale / 1.2;
+                  self.$store.state.threejs.equipment_action.setting.projects.push(clone);
+                  self.$store.state.threejs.scene.add(clone);
                 }
 
-                _context9.next = 7;
-                return self.$store.dispatch('A_GetWarehouse_toolholder', w[i]).then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                  console.log();
-                });
+                ;
 
-              case 7:
-                i++;
-                _context9.next = 4;
-                break;
-
-              case 10:
-                console.log('load wh');
-
-              case 11:
+              case 3:
               case "end":
                 return _context9.stop();
             }
@@ -3031,36 +2943,43 @@ function _asyncToGenerator(fn) {
         }, _callee9);
       }))();
     },
-    load_CNC_Toolholder: function load_CNC_Toolholder() {
+    //DATA
+    load_WH_Toolholder: function load_WH_Toolholder() {
       var _this10 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-        var self, t, i;
+        var self, w, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
               case 0:
-                self = _this10;
-                t = ['t1', 't2'];
+                self = _this10; //w1
+
+                self.$store.state.ToolHolder_wh = [];
+                w = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8', 'w9'];
                 i = 0;
 
-              case 3:
-                if (!(i < t.length)) {
-                  _context10.next = 9;
+              case 4:
+                if (!(i < w.length)) {
+                  _context10.next = 10;
                   break;
                 }
 
-                _context10.next = 6;
-                return self.$store.dispatch('A_GetCnc_toolholder', t[i]).then(function (response) {
-                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                _context10.next = 7;
+                return self.$store.dispatch('A_GetWarehouse_toolholder', w[i]).then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                  console.log();
                 });
 
-              case 6:
+              case 7:
                 i++;
-                _context10.next = 3;
+                _context10.next = 4;
                 break;
 
-              case 9:
+              case 10:
+                console.log('load wh');
+
+              case 11:
               case "end":
                 return _context10.stop();
             }
@@ -3068,16 +2987,53 @@ function _asyncToGenerator(fn) {
         }, _callee10);
       }))();
     },
-    load_Type_Toolholder: function load_Type_Toolholder() {
+    load_CNC_Toolholder: function load_CNC_Toolholder() {
       var _this11 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-        var self, type;
+        var self, t, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
               case 0:
                 self = _this11;
+                t = ['t1', 't2'];
+                i = 0;
+
+              case 3:
+                if (!(i < t.length)) {
+                  _context11.next = 9;
+                  break;
+                }
+
+                _context11.next = 6;
+                return self.$store.dispatch('A_GetCnc_toolholder', t[i]).then(function (response) {
+                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                });
+
+              case 6:
+                i++;
+                _context11.next = 3;
+                break;
+
+              case 9:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11);
+      }))();
+    },
+    load_Type_Toolholder: function load_Type_Toolholder() {
+      var _this12 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+        var self, type;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                self = _this12;
                 type = ['cooling', 'machining', 'material', 'shank', 'shankamount'];
                 type.forEach(function (e) {
                   self.$store.dispatch('A_GetType_toolholder', e).then(function (response) {
@@ -3090,10 +3046,10 @@ function _asyncToGenerator(fn) {
 
               case 3:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
           }
-        }, _callee11);
+        }, _callee12);
       }))();
     },
     eHandler: function eHandler(data) {
@@ -3376,6 +3332,7 @@ __webpack_require__.r(__webpack_exports__);
       page_y: 0,
       click_move: false,
       select_index: 0,
+      select_item: null,
       item_hover: null
     };
   },
@@ -3401,6 +3358,20 @@ __webpack_require__.r(__webpack_exports__);
       self.click_move = false;
       self.$store.state.threejs.enter = false;
       self.$store.state.threejs.Controls_Camera_Abled();
+    },
+    mouse_over_show: function mouse_over_show(index, item) {
+      if (this.select_item !== null && this.$store.state.threejs.equipment_action.setting.toolholders.wh[this.select_index][index] !== this.select_item) {
+        this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder;
+      }
+
+      this.select_item = this.$store.state.threejs.equipment_action.setting.toolholders.wh[this.select_index][index];
+      this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder_select;
+      this.item_hover = item;
+    },
+    mouse_leave_show: function mouse_leave_show() {
+      if (this.select_item !== null) {
+        this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder;
+      }
     },
     update_wh: function update_wh(event) {
       var self = this;
@@ -3483,7 +3454,8 @@ __webpack_require__.r(__webpack_exports__);
       page_y: 0,
       click_move: false,
       select_index: 0,
-      item_hover: null
+      item_hover: null,
+      select_item: null
     };
   },
   methods: {
@@ -3508,6 +3480,23 @@ __webpack_require__.r(__webpack_exports__);
       self.click_move = false;
       self.$store.state.threejs.enter = false;
       self.$store.state.threejs.Controls_Camera_Abled();
+    },
+    mouse_over_show: function mouse_over_show(index, item) {
+      console.log(this.$store.state.threejs.equipment_action.setting.toolholders.cnc);
+
+      if (this.select_item !== null && this.$store.state.threejs.equipment_action.setting.toolholders.cnc[this.select_index][index] !== this.select_item) {
+        this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder;
+      }
+
+      this.select_item = this.$store.state.threejs.equipment_action.setting.toolholders.cnc[this.select_index][index];
+      console.log(this.select_item);
+      this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder_select;
+      this.item_hover = item;
+    },
+    mouse_leave_show: function mouse_leave_show() {
+      if (this.select_item !== null) {
+        this.select_item.material = this.$store.state.threejs.equipment_action.Material_toolholder;
+      }
     },
     update_wh: function update_wh(event) {
       var self = this;
@@ -3555,10 +3544,11 @@ __webpack_require__.r(__webpack_exports__);
       if (name === '' || name === null) return '';
       return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + datetime.getHours() + ":" + datetime.getMinutes(); // 16-5-2015 9:50
     },
-    GetItem_hover: function GetItem_hover(item) {
-      console.log(item.code);
-      this.item_hover = item;
-    },
+    // GetItem_hover(item)
+    // {
+    //     console.log(item.code);
+    //     this.item_hover = item;
+    // },
     containsKey: function containsKey(obj, key) {
       return Object.keys(obj).includes(key);
     }
@@ -83535,7 +83525,9 @@ var render = function() {
                 _vm._l(
                   _vm.$store.state.ToolHolder_wh[_vm.select_index],
                   function(item, n) {
-                    return n % 2 === 0
+                    return n <
+                      _vm.$store.state.ToolHolder_wh[_vm.select_index].length /
+                        2
                       ? _c(
                           "div",
                           {
@@ -83543,8 +83535,9 @@ var render = function() {
                             staticClass: "data_inline_cell",
                             on: {
                               mouseover: function($event) {
-                                _vm.item_hover = item
-                              }
+                                return _vm.mouse_over_show(n, item)
+                              },
+                              mouseleave: _vm.mouse_leave_show
                             }
                           },
                           [
@@ -83616,7 +83609,9 @@ var render = function() {
                 _vm._l(
                   _vm.$store.state.ToolHolder_wh[_vm.select_index],
                   function(item, n) {
-                    return n % 2 === 1
+                    return n >
+                      _vm.$store.state.ToolHolder_wh[_vm.select_index].length /
+                        2
                       ? _c(
                           "div",
                           {
@@ -83624,8 +83619,9 @@ var render = function() {
                             staticClass: "data_inline_cell",
                             on: {
                               mouseover: function($event) {
-                                _vm.item_hover = item
-                              }
+                                return _vm.mouse_over_show(n, item)
+                              },
+                              mouseleave: _vm.mouse_leave_show
                             }
                           },
                           [
@@ -83860,8 +83856,9 @@ var render = function() {
                   staticClass: "data_inline_cell",
                   on: {
                     mouseover: function($event) {
-                      return _vm.GetItem_hover(item)
-                    }
+                      return _vm.mouse_over_show(n, item)
+                    },
+                    mouseleave: _vm.mouse_leave_show
                   }
                 },
                 [
@@ -102573,8 +102570,12 @@ var Equipment_Action = /*#__PURE__*/function () {
       color: "green",
       wireframe: false
     });
+    this.Material_toolholder = null;
+    this.Material_toolholder_select = null;
     this.Material_nor = null;
     this.selectedObjects_control = [];
+    this.vertexShadertext_outline = "\n        varying vec3 vNormal;\n       varying vec3 vPositionNormal;\n        void main()\n        {\n            vNormal = normalize( normalMatrix * normal ); // \u8F6C\u6362\u5230\u89C6\u56FE\u7A7A\u95F4\n            vPositionNormal = normalize(( modelViewMatrix * vec4(position, 1.0) ).xyz);\n            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n        }";
+    this.fragmentshadertext_outline = "\n            uniform vec3 glowColor;\n            varying float intensity;\n\n            uniform float b;\n            uniform float p;\n            uniform float s;\n            varying vec3 vNormal;\n            varying vec3 vPositionNormal;\n\n            void main()\n            {\n                float a = pow( b + s * abs(dot(vNormal, vPositionNormal)), p );\n                gl_FragColor = vec4( glowColor, a );\n            }";
   }
 
   _createClass(Equipment_Action, [{

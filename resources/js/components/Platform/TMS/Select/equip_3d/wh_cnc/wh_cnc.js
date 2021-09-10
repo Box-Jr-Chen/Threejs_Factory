@@ -20,7 +20,8 @@ export default {
                page_y : 0,
                click_move:false,
                select_index:0,
-               item_hover:null
+               item_hover:null,
+               select_item:null
            }
        },
        methods:{
@@ -49,6 +50,27 @@ export default {
 
                     self.$store.state.threejs.Controls_Camera_Abled();
 
+                },
+                mouse_over_show(index,item){
+
+                    console.log(this.$store.state.threejs.equipment_action.setting.toolholders.cnc);
+                    if(this.select_item !==null && this.$store.state.threejs.equipment_action.setting.toolholders.cnc[this.select_index][index] !==this.select_item)
+                    {
+                        this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder;
+                    }
+
+                    this.select_item = this.$store.state.threejs.equipment_action.setting.toolholders.cnc[this.select_index][index];
+                    console.log(this.select_item);
+                    this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder_select;
+                    this.item_hover = item;
+
+
+                },
+                mouse_leave_show(){
+                    if(this.select_item !==null)
+                    {
+                        this.select_item.material =  this.$store.state.threejs.equipment_action.Material_toolholder;
+                    }
                 },
                 update_wh: function(event) {
                    var self = this;
@@ -126,11 +148,11 @@ export default {
 
                     // 16-5-2015 9:50
                 },
-                GetItem_hover(item)
-                {
-                    console.log(item.code);
-                    this.item_hover = item;
-                },
+                // GetItem_hover(item)
+                // {
+                //     console.log(item.code);
+                //     this.item_hover = item;
+                // },
                 containsKey(obj, key ) {
                     return Object.keys(obj).includes(key);
                 },

@@ -33,112 +33,6 @@ import { MeshPhongMaterial } from "three";
                    modelsize:4,
                    element_panel:null,
                    loading_finish:[],
-//                 LoadingProcess:{
-//                     'Init_ThreeJS':false,
-//                     'Update_Wavehouse_Model_Data':{
-//                         'Trackholder_wavehouse':false,
-//                         'Trackholder_cnc':false,
-//                         'Trackholder_cnc2':false
-//                     },
-//                     'SQL_Types_Data_All':false
-//                 },
-//                 isfirstScreenadd:0,
-//                 raycaster:null,
-//                 mouse:null,
-//                 select_wavehouse:null,
-//                 scene: '',
-//                 labelRenderer: '',
-//                 light: '',
-//                 camera: '',
-//                 camera_cnc: '',
-//                 camera_cnc02: '',
-//                 camera_now: '',
-//                 controls: '',
-//                 renderer: '',
-//                 geometry: '',
-//                 material: '',
-//                 cube: '',
-//                 fov: 60,
-//                 biaozhudiv: '',
-//                 wavehouse_data:[],
-//                 wavehouse_data_cnc:[],
-//                 wavehouse_data_cnc2:[],
-//                 status_equiment:[],
-//                 type_wavehouse:[
-//                   '倉儲內格位',
-//                   '工具機01',
-//                   '工具機02'
-//                 ],
-//                 model_choose_Mouse:null,
-//                 model_toolholder_Ori:null,
-//                 color_origin:new THREE.Color("rgb(255, 100, 0)"),
-//                 mat_toolholder:
-//                     new THREE.MeshPhongMaterial({
-//                         ambient: 0x7c8262,
-//                         color: "rgb(220, 220, 220)",  // 物件顏色
-//                         specular: 0x555555,
-//                         shininess: 30
-//                     }),
-//                 mat_glow_red:
-//                     new THREE.ShaderMaterial({
-//                         uniforms:
-//                         {
-//                             "s":   { type: "f", value: -1.0},
-//                             "b":   { type: "f", value: 1.0},
-//                             "p":   { type: "f", value: 1},
-//                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 0, 0)") },
-//                         },
-//                         vertexShader:   shader_glow.vertexShader,
-//                         fragmentShader: shader_glow.fragmentShader,
-//                         side: THREE.FrontSide,
-//                         blending: THREE.AdditiveBlending,
-//                         transparent: true
-//                     }),
-//                 mat_glow_Origin:
-//                     new THREE.ShaderMaterial({
-//                         uniforms:
-//                         {
-//                             "s":   { type: "f", value: -1.0},
-//                             "b":   { type: "f", value: 1.0},
-//                             "p":   { type: "f", value: 1},
-//                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 100, 0)") },
-//                         },
-//                         vertexShader:   shader_glow.vertexShader,
-//                         fragmentShader: shader_glow.fragmentShader,
-//                         side: THREE.FrontSide,
-//                         blending: THREE.AdditiveBlending,
-//                         transparent: true
-//                     }),
-//                 mat_glow_yellow:
-//                     new THREE.ShaderMaterial({
-//                         uniforms:
-//                         {
-//                             "s":   { type: "f", value: -1.0},
-//                             "b":   { type: "f", value: 1.0},
-//                             "p":   { type: "f", value: 1},
-//                             glowColor: { type: "c", value: new THREE.Color("rgb(255, 255, 0)") },
-//                         },
-//                         vertexShader:   shader_glow.vertexShader,
-//                         fragmentShader: shader_glow.fragmentShader,
-//                         side: THREE.FrontSide,
-//                         blending: THREE.AdditiveBlending,
-//                         transparent: true
-//                     }),
-//                  mat_glow_darkblue:
-//                     new THREE.ShaderMaterial({
-//                         uniforms:
-//                         {
-//                             "s":   { type: "f", value: -1.0},
-//                             "b":   { type: "f", value: 1.0},
-//                             "p":   { type: "f", value: 1},
-//                             glowColor: { type: "c", value: new THREE.Color("rgb(0, 50, 50)") },
-//                         },
-//                         vertexShader:   shader_glow.vertexShader,
-//                         fragmentShader: shader_glow.fragmentShader,
-//                         side: THREE.FrontSide,
-//                         blending: THREE.AdditiveBlending,
-//                         transparent: true
-//                     }),
              }
          },
       computed:
@@ -161,40 +55,14 @@ import { MeshPhongMaterial } from "three";
               self.load_CNC_robot_01Model();
               self.load_CNC_robot_02Model();
               self.load_Point_Toolholder_project();
-            //   self.load_WH_Toolholder();
-            //   self.load_CNC_Toolholder();
+
               self.load_Type_Toolholder();
               setTimeout(()=>{
                 self.$store.state.width_3d  =  container.offsetWidth;
                 self.$store.state.height_3d =  container.offsetHeight;
               },100);
 
-
-
-//            self.Init_ThreeJS(()=>{
-//                self.LoadingProcess['Init_ThreeJS'] = true;
-//                self.check_LoadingProcess();
-//            });
-
-//             self.Update_Wavehouse_Model_Data(()=>{
-//                 self.check_LoadingProcess();
-//             });
-
-//             self.SQL_Types_Data_All(()=>{
-//                 self.LoadingProcess['SQL_Types_Data_All'] = true;
-//                 self.check_LoadingProcess();
-//             });
-
-
-//             self.$nextTick(() => {
-//                 document.getElementById('container').addEventListener('mousedown',self.onDocumentMouseDown);
-//             });
-
-//             self.select_wavehouse =  self.type_wavehouse[0];
-
-//             setInterval(()=>{
-//                 self.Update_Status();
-//             },3000);
+              //self.check_LoadingProcess();
 
      },
         beforeDestroy(){
@@ -396,6 +264,23 @@ import { MeshPhongMaterial } from "three";
 
                     //console.log(obj.scene);
                     self.$store.state.threejs.equipment_action.setting.toolholder =  obj.scene.children[0];
+                    self.$store.state.threejs.equipment_action.Material_toolholder = obj.scene.children[0].material;
+                    //outline
+                    self.$store.state.threejs.equipment_action.Material_toolholder_select =
+                    new THREE.ShaderMaterial({
+                        uniforms:
+                        {
+                            "s":   { type: "f", value: -1.0},
+                            "b":   { type: "f", value: 1.0},
+                            "p":   { type: "f", value: 1},
+                            glowColor: { type: "c", value: new THREE.Color("rgb(255, 0, 0)") },
+                        },
+                        vertexShader:   self.$store.state.threejs.equipment_action.vertexShadertext_outline,
+                        fragmentShader: self.$store.state.threejs.equipment_action.fragmentshadertext_outline,
+                        side: THREE.FrontSide,
+                        blending: THREE.AdditiveBlending,
+                        transparent: true
+                    })
 
                     var lightscale =self.$store.state.threejs.texturelight;
 
@@ -421,8 +306,8 @@ import { MeshPhongMaterial } from "three";
                     obj.name = "Lali_project";
                     obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize);
                     //初始位置
-
-                    //console.log(obj.scene);
+                    console.log('project');
+                    console.log(obj.scene);
                     self.$store.state.threejs.equipment_action.setting.project = obj.scene.children[0];
 
                     var lightscale =self.$store.state.threejs.texturelight;
@@ -494,6 +379,7 @@ import { MeshPhongMaterial } from "three";
                  await  this.load_WH_Toolholder();
                  await  this.load_CNC_Toolholder();
                  await  this.instance_toolholder();
+                 await  this.instance_project();
             },
             //instance
             async instance_toolholder()
@@ -501,12 +387,13 @@ import { MeshPhongMaterial } from "three";
                 var self = this;
 
                 //wh
-
+                var toolholder_instance =[];
                 for(var i=0;i<self.$store.state.ToolHolder_wh.length;i++){
+                    var toolholder_instance_one =[];
                     for(var j=0;j< self.$store.state.ToolHolder_wh[i].length;j++){
 
                         var toolholder_cell =  self.$store.state.ToolHolder_wh[i][j];
-
+                            toolholder_instance_one.push(null);
                             if(toolholder_cell.name!==null && toolholder_cell.name!=='' && toolholder_cell.name!=='null')
                             {
                                 //有刀把才複製
@@ -521,20 +408,23 @@ import { MeshPhongMaterial } from "three";
                                 clone.material.color.g =lightscale/1.5;
                                 clone.material.color.b =lightscale/1.5;
 
+                                toolholder_instance_one[j] = clone ;
 
-                                self.$store.state.threejs.equipment_action.setting.toolholders.wh.push(clone);
                                 self.$store.state.threejs.scene.add(clone);
 
                             }
                     };
-                    console.log('-------------------------');
+                    toolholder_instance.push(toolholder_instance_one);
                 };
+                self.$store.state.threejs.equipment_action.setting.toolholders.wh= toolholder_instance;
                 //cnc
+                var toolholder_instance_cnc =[];
                 for(var i=0;i<self.$store.state.ToolHolder_Cnc.length;i++){
+                    var toolholder_instance_one_cnc =[];
                     for(var j=0;j< self.$store.state.ToolHolder_Cnc[i].length;j++){
 
                         var toolholder_cell =  self.$store.state.ToolHolder_Cnc[i][j];
-
+                            toolholder_instance_one_cnc.push(null);
                             if(toolholder_cell.name!==null && toolholder_cell.name!=='' && toolholder_cell.name!=='null')
                             {
                                 //有刀把才複製
@@ -550,10 +440,39 @@ import { MeshPhongMaterial } from "three";
                                 clone.material.color.g =lightscale/1.5;
                                 clone.material.color.b =lightscale/1.5;
 
-                                self.$store.state.threejs.equipment_action.setting.toolholders.cnc.push(clone);
+
                                 self.$store.state.threejs.scene.add(clone);
+                                toolholder_instance_one_cnc[j]=clone;
                             }
                     };
+
+                    toolholder_instance_cnc.push(toolholder_instance_one_cnc);
+                };
+                self.$store.state.threejs.equipment_action.setting.toolholders.cnc = toolholder_instance_cnc;
+            },
+            async instance_project(){
+                var self = this;
+                //project
+                for(var i=0;i<self.$store.state.threejs.equipment_action.setting.point_project.length;i++){
+
+                        var project_cell =  self.$store.state.threejs.equipment_action.setting.point_project[i];
+
+                                //複製
+                                var clone = self.$store.state.threejs.equipment_action.setting.project.clone();
+                               /// var pos   = self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[i].pos[j];
+                                clone.position.set(project_cell.x*4,project_cell.y*4,project_cell.z*4);
+                                clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+
+                                var lightscale =self.$store.state.threejs.texturelight;
+
+                                clone.material.color.r =lightscale/1.2;
+                                clone.material.color.g =lightscale/1.2;
+                                clone.material.color.b =lightscale/1.2;
+
+
+                                self.$store.state.threejs.equipment_action.setting.projects.push(clone);
+                                self.$store.state.threejs.scene.add(clone);
+
                 };
             },
             //DATA

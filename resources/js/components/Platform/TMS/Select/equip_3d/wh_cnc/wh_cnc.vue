@@ -59,7 +59,8 @@
 
                                     <div class="data_inline_cell"   v-for="(item, n)  in $store.state.ToolHolder_Cnc[select_index]"
                                     :key="n"
-                                    @mouseover="GetItem_hover(item)">
+                                     @mouseover="mouse_over_show(n,item)"
+                                     @mouseleave="mouse_leave_show">
                                             <div class="data_inline_number">
                                                 {{n+1}}
                                             </div>

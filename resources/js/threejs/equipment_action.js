@@ -12,8 +12,40 @@ class Equipment_Action {
         this.Material_Error  = new THREE.MeshBasicMaterial({color: "red", wireframe: false});
         this.Material_Run    = new THREE.MeshBasicMaterial({color: "yellow", wireframe: false});
         this.Material_Idle   = new THREE.MeshBasicMaterial({color: "green", wireframe: false});
+
+        this.Material_toolholder   = null;
+        this.Material_toolholder_select   = null;
+
         this.Material_nor    = null;
         this.selectedObjects_control = [];
+
+
+        this.vertexShadertext_outline =
+        `
+        varying vec3 vNormal;
+       varying vec3 vPositionNormal;
+        void main()
+        {
+            vNormal = normalize( normalMatrix * normal ); // 转换到视图空间
+            vPositionNormal = normalize(( modelViewMatrix * vec4(position, 1.0) ).xyz);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }`;
+        this.fragmentshadertext_outline =
+        `
+            uniform vec3 glowColor;
+            varying float intensity;
+
+            uniform float b;
+            uniform float p;
+            uniform float s;
+            varying vec3 vNormal;
+            varying vec3 vPositionNormal;
+
+            void main()
+            {
+                float a = pow( b + s * abs(dot(vNormal, vPositionNormal)), p );
+                gl_FragColor = vec4( glowColor, a );
+            }`;
     }
 
     ControlMove(dir) {

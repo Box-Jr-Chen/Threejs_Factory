@@ -35,6 +35,7 @@ class ThreeJs_3D {
         this.grid_ground = null;
         this.click = false;
         this.enter = false;
+
         this.vertexShadertext_glow ="varying vec2 vUv;"+
         "void main() {"+
             "vUv = uv;"+
