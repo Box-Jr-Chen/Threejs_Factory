@@ -25,7 +25,7 @@ export default new Vuex.Store({
 
 
 
-        baseUrlApi:'http://127.0.0.1:8000/api',
+        baseUrlApi:'https://wh-toolholder-3d.herokuapp.com/api',
         p_w: '/warehouse',
         p_wcnc:'/cnc',
         p_type:'/type',  //種類

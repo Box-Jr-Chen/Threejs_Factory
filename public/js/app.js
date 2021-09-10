@@ -102147,7 +102147,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
     select_panel: 0,
     element_panel: null,
     //panel組件
-    baseUrlApi: 'http://127.0.0.1:8000/api',
+    baseUrlApi: 'https://wh-toolholder-3d.herokuapp.com/api',
     p_w: '/warehouse',
     p_wcnc: '/cnc',
     p_type: '/type',
