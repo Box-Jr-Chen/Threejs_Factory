@@ -1,14 +1,16 @@
 <template>
 
                 <div class="toolholder_outline"
-                @mouseup="Mouseup_stay_panel()"
-                @mousedown="Mousedown_stay_panel()"
                 v-on:mouseover="Controls_Mouseover()"
                 v-on:mouseleave="Controls_Mouseleave()"
+                    >
+
+                <div
+                class="title"
+                @mouseup="Mouseup_stay_panel()"
+                @mousedown="Mousedown_stay_panel()"
                 v-on:mousemove="update_wh"
                 v-bind:class="{ active_move: click_move }">
-
-                <div class="title">
                     刀把設定
                 </div>
 

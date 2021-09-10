@@ -22,6 +22,17 @@
             </div>
         </div>
 
+        <div class="code_black">
+            <div  class="code_cell"  v-for="(item,index) in get_typeList()" :key="index">
+                <div class="title">{{index+1}}</div>
+                <div class="context">{{item.code}}-{{item.description}}</div>
+                <div class="delect">
+                    <!-- <div class="btn_list btn_cancel">
+                        清除
+                    </div> -->
+                </div>
+            </div>
+        </div>
 
         <div class="btn_block">
             <div class="btn_type btn_enter">

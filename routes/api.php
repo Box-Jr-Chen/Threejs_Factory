@@ -36,6 +36,7 @@ Route::patch("/type/{table}/{id}","TypeController@UpdateData");
 Route::delete("/type/{table}/{id}","TypeController@DeleteData");
 
 Route::get("/toolholder","ToolHolderController@Getdata");
+Route::get("/toolholder/page","ToolHolderController@GetCount_data");
 
 Route::get("/datatransfer1","DatatransferController@Getdata");
 

@@ -10,6 +10,7 @@ import loading from "./loading/loading.vue";
 
 
 import * as THREE from "three";
+import { MeshPhongMaterial } from "three";
  export default {
        name: 'status_equipment',
        props:['element'],
@@ -30,7 +31,8 @@ import * as THREE from "three";
 //                 isfirstScreen:false,
                    isLoadingInit:false,
                    modelsize:4,
-                   element_panel:null
+                   element_panel:null,
+                   loading_finish:[],
 //                 LoadingProcess:{
 //                     'Init_ThreeJS':false,
 //                     'Update_Wavehouse_Model_Data':{
@@ -158,8 +160,10 @@ import * as THREE from "three";
               self.load_CNC_agvModel();
               self.load_CNC_robot_01Model();
               self.load_CNC_robot_02Model();
-              self.load_WH_Toolholder();
-              self.load_CNC_Toolholder();
+              self.load_Point_Toolholder_project();
+            //   self.load_WH_Toolholder();
+            //   self.load_CNC_Toolholder();
+              self.load_Type_Toolholder();
               setTimeout(()=>{
                 self.$store.state.width_3d  =  container.offsetWidth;
                 self.$store.state.height_3d =  container.offsetHeight;
@@ -381,66 +385,232 @@ import * as THREE from "three";
                 }
              );
            },
+           async load_CNC_toolholderModel()
+           {
+            var self =this;
+             await  self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_toolholder.glb",
+                function (obj) {
+                    obj.name = "Lali_toolholder";
+                    obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                    //初始位置
+
+                    //console.log(obj.scene);
+                    self.$store.state.threejs.equipment_action.setting.toolholder =  obj.scene.children[0];
+
+                    var lightscale =self.$store.state.threejs.texturelight;
+
+                      obj.scene.children[0].material.color.r =lightscale;
+                      obj.scene.children[0].material.color.g =lightscale;
+                      obj.scene.children[0].material.color.b =lightscale;
+
+                    //self.$store.state.threejs.scene.add(obj.scene);
+                },
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + "% loaded")
+                },
+                function (error) {
+                    console.error(error, "load error!")
+                }
+             );
+           },
+           async load_CNC_projectModel()
+           {
+            var self =this;
+             await  self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_project.glb",
+                function (obj) {
+                    obj.name = "Lali_project";
+                    obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                    //初始位置
+
+                    //console.log(obj.scene);
+                    self.$store.state.threejs.equipment_action.setting.project = obj.scene.children[0];
+
+                    var lightscale =self.$store.state.threejs.texturelight;
+
+                      obj.scene.children[0].material.color.r =lightscale;
+                      obj.scene.children[0].material.color.g =lightscale;
+                      obj.scene.children[0].material.color.b =lightscale;
+
+                    //self.$store.state.threejs.scene.add(obj.scene);
+                },
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + "% loaded")
+                },
+                function (error) {
+                    console.error(error, "load error!")
+                }
+             );
+           },
+           async load_Point_Toolholder_project(){
+                var self =this;
+                await  self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_point.glb",
+                 function (obj) {
+                    obj.name = "point";
+                    obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                    //初始位置
+                    //console.log(obj);
+
+
+                    var wavehouse =obj.scene.children[0];
+                    var cnc       =obj.scene.children[1];
+                    var project   = obj.scene.children[2];
+                    var cnc_pro_pos =obj.scene.children[3];
+                    //倉庫刀把位置
+                    wavehouse.children.forEach(function(wh_once,index){
+                        wh_once.children.forEach(
+                            function(cell,index2){
+                                self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[index].pos.push(cell.position);
+                            }
+                        );
+                    });
+                    //CNC刀把位置
+                    cnc.children.forEach(function(wh_once,index){
+                        wh_once.children.forEach(
+                            function(cell,index2){
+                                self.$store.state.threejs.equipment_action.setting.point_cnc_toolholder[index].pos.push(cell.position);
+                            }
+                        );
+                    });
+                    //project位置
+                    project.children.forEach(function(pro_once,index){
+                                self.$store.state.threejs.equipment_action.setting.point_project.push(pro_once.position);
+                    });
+                    //cnc_pro_pos位置
+                    cnc_pro_pos.children.forEach(function(pro_once,index){
+                        self.$store.state.threejs.equipment_action.setting.point_cnc_move.push(pro_once.position);
+                    });
+                },
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + "% loaded")
+                },
+                function (error) {
+                    console.error(error, "load error!")
+                }
+                );
+
+                //讀取倉庫跟CNC刀把資料
+                 await  this.load_CNC_toolholderModel();
+                 await  this.load_CNC_projectModel();
+                 await  this.load_WH_Toolholder();
+                 await  this.load_CNC_Toolholder();
+                 await  this.instance_toolholder();
+            },
+            //instance
+            async instance_toolholder()
+            {
+                var self = this;
+
+                //wh
+
+                for(var i=0;i<self.$store.state.ToolHolder_wh.length;i++){
+                    for(var j=0;j< self.$store.state.ToolHolder_wh[i].length;j++){
+
+                        var toolholder_cell =  self.$store.state.ToolHolder_wh[i][j];
+
+                            if(toolholder_cell.name!==null && toolholder_cell.name!=='' && toolholder_cell.name!=='null')
+                            {
+                                //有刀把才複製
+                                var clone = self.$store.state.threejs.equipment_action.setting.toolholder.clone();
+                                var pos   = self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[i].pos[j];
+                                clone.position.set(pos.x*4,pos.y*4,pos.z*4);
+                                clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+
+                                var lightscale =self.$store.state.threejs.texturelight;
+
+                                clone.material.color.r =lightscale/1.5;
+                                clone.material.color.g =lightscale/1.5;
+                                clone.material.color.b =lightscale/1.5;
+
+
+                                self.$store.state.threejs.equipment_action.setting.toolholders.wh.push(clone);
+                                self.$store.state.threejs.scene.add(clone);
+
+                            }
+                    };
+                    console.log('-------------------------');
+                };
+                //cnc
+                for(var i=0;i<self.$store.state.ToolHolder_Cnc.length;i++){
+                    for(var j=0;j< self.$store.state.ToolHolder_Cnc[i].length;j++){
+
+                        var toolholder_cell =  self.$store.state.ToolHolder_Cnc[i][j];
+
+                            if(toolholder_cell.name!==null && toolholder_cell.name!=='' && toolholder_cell.name!=='null')
+                            {
+                                //有刀把才複製
+                                var clone = self.$store.state.threejs.equipment_action.setting.toolholder.clone();
+                                var pos   = self.$store.state.threejs.equipment_action.setting.point_cnc_toolholder[i].pos[j];
+                                clone.position.set(pos.x*4,pos.y*4,pos.z*4);
+                                clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+
+
+                                var lightscale =self.$store.state.threejs.texturelight;
+
+                                clone.material.color.r =lightscale/1.5;
+                                clone.material.color.g =lightscale/1.5;
+                                clone.material.color.b =lightscale/1.5;
+
+                                self.$store.state.threejs.equipment_action.setting.toolholders.cnc.push(clone);
+                                self.$store.state.threejs.scene.add(clone);
+                            }
+                    };
+                };
+            },
+            //DATA
            async load_WH_Toolholder(){
                 var self = this;
                 //w1
-                self.$store.dispatch('A_GetWarehouse_toolholder','w1').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w2
-                self.$store.dispatch('A_GetWarehouse_toolholder','w2').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w3
-                self.$store.dispatch('A_GetWarehouse_toolholder','w3').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w4
-                self.$store.dispatch('A_GetWarehouse_toolholder','w4').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w5
-                self.$store.dispatch('A_GetWarehouse_toolholder','w5').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w6
-                self.$store.dispatch('A_GetWarehouse_toolholder','w6').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w7
-                self.$store.dispatch('A_GetWarehouse_toolholder','w7').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w8
-                self.$store.dispatch('A_GetWarehouse_toolholder','w8').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
-                });
-                //w9
-                self.$store.dispatch('A_GetWarehouse_toolholder','w9').
-                then(response =>{
-                    self.$store.state.ToolHolder_wh.push(response.data);
+                self.$store.state.ToolHolder_wh =[];
+                var w =['w1','w2','w3','w4','w5','w6','w7','w8','w9'];
 
-                });
+                for(var i=0;i<w.length;i++)
+                {
+                    await  self.$store.dispatch('A_GetWarehouse_toolholder',w[i]).
+                    then(response =>{
+                        self.$store.state.ToolHolder_wh.push(response.data);
+                        console.log();
+                    });
+                }
+                console.log('load wh');
            },
            async load_CNC_Toolholder(){
             var self = this;
-            //t1
-            self.$store.dispatch('A_GetCnc_toolholder','t1').
-            then(response =>{
-                self.$store.state.ToolHolder_Cnc.push(response.data);
-            });
-            //t2
-            self.$store.dispatch('A_GetCnc_toolholder','t2').
-            then(response =>{
-                self.$store.state.ToolHolder_Cnc.push(response.data);
+
+            var t =['t1','t2'];
+
+            for(var i=0;i<t.length;i++)
+            {
+                await  self.$store.dispatch('A_GetCnc_toolholder',t[i]).
+                then(response =>{
+                    self.$store.state.ToolHolder_Cnc.push(response.data);
+                });
+            }
+
+           },
+           async load_Type_Toolholder(){
+            var self = this;
+
+            var type = ['cooling','machining','material','shank','shankamount'];
+
+            type.forEach(e =>{
+                self.$store.dispatch('A_GetType_toolholder',e).
+                then(response =>{
+
+                    if(response !=='error')
+                    {
+                        self.loading_finish.push(true);
+                        if(e==='cooling')
+                          self.$store.state.ToolHolder_Type.cooling =response.data;
+                        else if(e==='machining')
+                          self.$store.state.ToolHolder_Type.machining =response.data;
+                        else if(e==='material')
+                          self.$store.state.ToolHolder_Type.material =response.data;
+                        else if(e==='shank')
+                          self.$store.state.ToolHolder_Type.shank =response.data;
+                        else if(e==='shankamount')
+                          self.$store.state.ToolHolder_Type.shankamount =response.data;
+                    }
+                });
             });
            },
            eHandler(data) {

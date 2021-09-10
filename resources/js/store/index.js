@@ -28,15 +28,9 @@ export default new Vuex.Store({
         baseUrlApi:'http://127.0.0.1:8000/api',
         p_w: '/warehouse',
         p_wcnc:'/cnc',
-        p_tool_unpre:'/toolholder/unprepared',
-        p_tool_pre_record:'/toolholder/prepared',
-        p_tool_life_record:'/toolholder/maxlife',
-        p_tool_life_one_record:'/toolholder/maxlife/single',
-        p_tool_all:'/toolholder',  //所有刀套
-        p_tool_scrollmax:'/toolholder/scrollmax',
-        p_tool_life_scrollmax:'/toolholder/scrollmax_life',
-        p_tool_g_serial:'/toolholder/serial',
-        p_tool_datatransfer1:'/datatransfer1',
+        p_type:'/type',  //種類
+        p_toolholder:'/toolholder',  //刀把資料
+        p_toolholderPage:'/toolholder/page',  //刀把資料
         TMS_select_now:null,
         TMS_select_now_sub:null,
         ToolHolder_TYPES:[
@@ -84,7 +78,15 @@ export default new Vuex.Store({
 
         ToolHolder_Cnc:[
 
-        ]
+        ],
+
+        ToolHolder_Type:{
+            'cooling':[],
+            'machining':[],
+            'material':[],
+            'shank':[],
+            'shankamount':[],
+        }
     },
     getters:{
         ApiPath: (state)=> (sub)  => {
@@ -160,7 +162,58 @@ export default new Vuex.Store({
                   console.error(error);
                   return "error";
                 });
-        }
+        },
+        async A_GetType_toolholder(state,checkdata){
+            var self= this;
+            var data = {
+              'path': self.state.baseUrlApi + self.state.p_type+"/"+checkdata
+            };
+
+            state
+            return await store
+                .dispatch('AxiosGet', data)
+                .then(response => {
+                  return  response;
+                }
+                ).catch(error => {
+                  console.error(error);
+                  return "error";
+                });
+        },
+        async A_GetPage_toolholder(state){
+            var self= this;
+            var data = {
+              'path': self.state.baseUrlApi + self.state.p_toolholderPage
+            };
+
+            state
+            return await store
+                .dispatch('AxiosGet', data)
+                .then(response => {
+                  return  response;
+                }
+                ).catch(error => {
+                  console.error(error);
+                  return "error";
+                });
+        },
+        async A_Get_toolholder(state,checkdata){
+            var self= this;
+            var data = {
+              'path': self.state.baseUrlApi + self.state.p_toolholder+'?p='+checkdata
+            };
+
+            state
+            return await store
+                .dispatch('AxiosGet', data)
+                .then(response => {
+                  return  response;
+                }
+                ).catch(error => {
+                  console.error(error);
+                  return "error";
+                });
+        },
     },
     modules: {
     }

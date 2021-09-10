@@ -7,35 +7,49 @@ export default {
     components: {
     },
     computed:{
-        tool_combine(){
+
+        tool_combine:function(){
+            var result = '';
             var self = this.data_onetool;
-            return self.machining+'.'+self.material+'.'+self.shark+'.'+self.sharkamount+'.'+self.cooling+'.'+self.p_1+'.'+self.p_2+'.'+self.p_3+'.'+self.p_4+'.'+self.p_5+'.'+self.p_6+'.'+self.p_7;
+
+            var machining =self.machining.split('-')[0];
+            var material =self.material.split('-')[0];
+            var shark =self.shark.split('-')[0];
+            var sharkamount =self.sharkamount.split('-')[0];
+            var cooling =self.cooling.split('-')[0];
+
+            if(machining !=='')
+                result = result +machining+'.';
+            if(material !=='')
+                result = result +material+'.';
+            if(shark !=='')
+                result = result +shark+'.';
+            if(sharkamount !=='')
+                result = result +sharkamount+'.';
+            if(cooling !=='')
+                result = result +cooling+'.';
+
+            result = result +self.p_1+'.'+self.p_2+'.'+self.p_3+'.'+self.p_4;
+
+            return result;
         }
     },
     data(){
            return{
                data_onetool:{
-                    machining:' ',
-                    material:' ',
-                    shark:' ',
-                    sharkamount:' ',
-                    cooling:' ',
+                    machining:'',
+                    material:'',
+                    shark:'',
+                    sharkamount:'',
+                    cooling:'',
                     p_1:0,
                     p_2:0,
                     p_3:0,
-                    p_4:0,
-                    p_5:0,
-                    p_6:0,
-                    p_7:0,
+                    p_4:0
                }
            }
        },
        methods:{
-            tool_combine:function(){
-                var self = this.data_onetool;
-                return self.machining+'.'+self.material+'.'+self.shark+'.'+self.sharkamount+'.'+self.cooling+'.'+self.p_1+'.'+self.p_2+'.'+self.p_3+'.'+self.p_4+'.'+self.p_5+'.'+self.p_6+'.'+self.p_7;
-            }
-
        },
        created(){
        }

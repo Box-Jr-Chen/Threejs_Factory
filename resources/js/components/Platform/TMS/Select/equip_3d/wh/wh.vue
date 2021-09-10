@@ -1,13 +1,13 @@
 <template>
 
                 <div class="wh_outline"
-                @mouseup="Mouseup_stay_panel()"
-                @mousedown="Mousedown_stay_panel()"
                 v-on:mouseover="Controls_Mouseover()"
                 v-on:mouseleave="Controls_Mouseleave()"
                 v-on:mousemove="update_wh"
                 v-bind:class="{ active_move: click_move }">
-                        <div class="title">
+                        <div class="title"
+                            @mouseup="Mouseup_stay_panel()"
+                            @mousedown="Mousedown_stay_panel()">
                             刀把倉儲
                         </div>
 

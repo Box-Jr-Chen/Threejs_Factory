@@ -121,6 +121,74 @@ class Setting {
             ]
         }
     ];
+    //wh刀把點
+    this.point_wh_toolholder=[
+                {
+                    'name':'w1',
+                    'pos':[]
+                },
+                {
+                    'name':'w2',
+                    'pos':[]
+                },
+                {
+                    'name':'w3',
+                    'pos':[]
+                },
+                {
+                    'name':'w4',
+                    'pos':[]
+                },
+                {
+                    'name':'w5',
+                    'pos':[]
+                },
+                {
+                    'name':'w6',
+                    'pos':[]
+                },
+                {
+                    'name':'w7',
+                    'pos':[]
+                },
+                {
+                    'name':'w8',
+                    'pos':[]
+                },
+                {
+                    'name':'w9',
+                    'pos':[]
+                },
+        ];
+    //cnc刀把點
+    this.point_cnc_toolholder=[
+        {
+            'name':'t1',
+            'pos':[]
+        },
+        {
+            'name':'t2',
+            'pos':[]
+        },
+        ];
+    //貨物的點
+    this.point_project=[
+
+        ];
+    //貨物到CNC的點
+    this.point_cnc_move=[
+
+        ];
+    //toolholder ori
+    this.toolholder =null;
+    this.project =null;
+
+    this.toolholders ={
+        'wh':[],
+        'cnc':[]
+    };
+    this.projects =[];
+
     }
 }
 

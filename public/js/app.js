@@ -2398,6 +2398,7 @@ function _asyncToGenerator(fn) {
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'status_equipment',
   props: ['element'],
@@ -2418,7 +2419,8 @@ function _asyncToGenerator(fn) {
       //                 isfirstScreen:false,
       isLoadingInit: false,
       modelsize: 4,
-      element_panel: null //                 LoadingProcess:{
+      element_panel: null,
+      loading_finish: [] //                 LoadingProcess:{
       //                     'Init_ThreeJS':false,
       //                     'Update_Wavehouse_Model_Data':{
       //                         'Trackholder_wavehouse':false,
@@ -2544,8 +2546,10 @@ function _asyncToGenerator(fn) {
     self.load_CNC_agvModel();
     self.load_CNC_robot_01Model();
     self.load_CNC_robot_02Model();
-    self.load_WH_Toolholder();
-    self.load_CNC_Toolholder();
+    self.load_Point_Toolholder_project(); //   self.load_WH_Toolholder();
+    //   self.load_CNC_Toolholder();
+
+    self.load_Type_Toolholder();
     setTimeout(function () {
       self.$store.state.width_3d = container.offsetWidth;
       self.$store.state.height_3d = container.offsetHeight;
@@ -2770,7 +2774,7 @@ function _asyncToGenerator(fn) {
         }, _callee4);
       }))();
     },
-    load_WH_Toolholder: function load_WH_Toolholder() {
+    load_CNC_toolholderModel: function load_CNC_toolholderModel() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
@@ -2779,45 +2783,25 @@ function _asyncToGenerator(fn) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                self = _this5; //w1
+                self = _this5;
+                _context5.next = 3;
+                return self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_toolholder.glb", function (obj) {
+                  obj.name = "Lali_toolholder";
+                  obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize); //初始位置
+                  //console.log(obj.scene);
 
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w1').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w2
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w2').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w3
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w3').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w4
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w4').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w5
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w5').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w6
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w6').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w7
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w7').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w8
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w8').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
-                }); //w9
-
-                self.$store.dispatch('A_GetWarehouse_toolholder', 'w9').then(function (response) {
-                  self.$store.state.ToolHolder_wh.push(response.data);
+                  self.$store.state.threejs.equipment_action.setting.toolholder = obj.scene.children[0];
+                  var lightscale = self.$store.state.threejs.texturelight;
+                  obj.scene.children[0].material.color.r = lightscale;
+                  obj.scene.children[0].material.color.g = lightscale;
+                  obj.scene.children[0].material.color.b = lightscale; //self.$store.state.threejs.scene.add(obj.scene);
+                }, function (xhr) {
+                  console.log(xhr.loaded / xhr.total * 100 + "% loaded");
+                }, function (error) {
+                  console.error(error, "load error!");
                 });
 
-              case 10:
+              case 3:
               case "end":
                 return _context5.stop();
             }
@@ -2825,7 +2809,7 @@ function _asyncToGenerator(fn) {
         }, _callee5);
       }))();
     },
-    load_CNC_Toolholder: function load_CNC_Toolholder() {
+    load_CNC_projectModel: function load_CNC_projectModel() {
       var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
@@ -2834,14 +2818,22 @@ function _asyncToGenerator(fn) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                self = _this6; //t1
+                self = _this6;
+                _context6.next = 3;
+                return self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_project.glb", function (obj) {
+                  obj.name = "Lali_project";
+                  obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize); //初始位置
+                  //console.log(obj.scene);
 
-                self.$store.dispatch('A_GetCnc_toolholder', 't1').then(function (response) {
-                  self.$store.state.ToolHolder_Cnc.push(response.data);
-                }); //t2
-
-                self.$store.dispatch('A_GetCnc_toolholder', 't2').then(function (response) {
-                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                  self.$store.state.threejs.equipment_action.setting.project = obj.scene.children[0];
+                  var lightscale = self.$store.state.threejs.texturelight;
+                  obj.scene.children[0].material.color.r = lightscale;
+                  obj.scene.children[0].material.color.g = lightscale;
+                  obj.scene.children[0].material.color.b = lightscale; //self.$store.state.threejs.scene.add(obj.scene);
+                }, function (xhr) {
+                  console.log(xhr.loaded / xhr.total * 100 + "% loaded");
+                }, function (error) {
+                  console.error(error, "load error!");
                 });
 
               case 3:
@@ -2850,6 +2842,258 @@ function _asyncToGenerator(fn) {
             }
           }
         }, _callee6);
+      }))();
+    },
+    load_Point_Toolholder_project: function load_Point_Toolholder_project() {
+      var _this7 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                self = _this7;
+                _context7.next = 3;
+                return self.$store.state.threejs.Load_Model_Data("/static/model/wavehouse/static/Lali_point.glb", function (obj) {
+                  obj.name = "point";
+                  obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize); //初始位置
+                  //console.log(obj);
+
+                  var wavehouse = obj.scene.children[0];
+                  var cnc = obj.scene.children[1];
+                  var project = obj.scene.children[2];
+                  var cnc_pro_pos = obj.scene.children[3]; //倉庫刀把位置
+
+                  wavehouse.children.forEach(function (wh_once, index) {
+                    wh_once.children.forEach(function (cell, index2) {
+                      self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[index].pos.push(cell.position);
+                    });
+                  }); //CNC刀把位置
+
+                  cnc.children.forEach(function (wh_once, index) {
+                    wh_once.children.forEach(function (cell, index2) {
+                      self.$store.state.threejs.equipment_action.setting.point_cnc_toolholder[index].pos.push(cell.position);
+                    });
+                  }); //project位置
+
+                  project.children.forEach(function (pro_once, index) {
+                    self.$store.state.threejs.equipment_action.setting.point_project.push(pro_once.position);
+                  }); //cnc_pro_pos位置
+
+                  cnc_pro_pos.children.forEach(function (pro_once, index) {
+                    self.$store.state.threejs.equipment_action.setting.point_cnc_move.push(pro_once.position);
+                  });
+                }, function (xhr) {
+                  console.log(xhr.loaded / xhr.total * 100 + "% loaded");
+                }, function (error) {
+                  console.error(error, "load error!");
+                });
+
+              case 3:
+                _context7.next = 5;
+                return _this7.load_CNC_toolholderModel();
+
+              case 5:
+                _context7.next = 7;
+                return _this7.load_CNC_projectModel();
+
+              case 7:
+                _context7.next = 9;
+                return _this7.load_WH_Toolholder();
+
+              case 9:
+                _context7.next = 11;
+                return _this7.load_CNC_Toolholder();
+
+              case 11:
+                _context7.next = 13;
+                return _this7.instance_toolholder();
+
+              case 13:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    //instance
+    instance_toolholder: function instance_toolholder() {
+      var _this8 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var self, i, j, toolholder_cell, clone, pos, lightscale;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                self = _this8; //wh
+
+                for (i = 0; i < self.$store.state.ToolHolder_wh.length; i++) {
+                  for (j = 0; j < self.$store.state.ToolHolder_wh[i].length; j++) {
+                    toolholder_cell = self.$store.state.ToolHolder_wh[i][j];
+
+                    if (toolholder_cell.name !== null && toolholder_cell.name !== '' && toolholder_cell.name !== 'null') {
+                      //有刀把才複製
+                      clone = self.$store.state.threejs.equipment_action.setting.toolholder.clone();
+                      pos = self.$store.state.threejs.equipment_action.setting.point_wh_toolholder[i].pos[j];
+                      clone.position.set(pos.x * 4, pos.y * 4, pos.z * 4);
+                      clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                      lightscale = self.$store.state.threejs.texturelight;
+                      clone.material.color.r = lightscale / 1.5;
+                      clone.material.color.g = lightscale / 1.5;
+                      clone.material.color.b = lightscale / 1.5;
+                      self.$store.state.threejs.equipment_action.setting.toolholders.wh.push(clone);
+                      self.$store.state.threejs.scene.add(clone);
+                    }
+                  }
+
+                  ;
+                  console.log('-------------------------');
+                }
+
+                ; //cnc
+
+                for (i = 0; i < self.$store.state.ToolHolder_Cnc.length; i++) {
+                  for (j = 0; j < self.$store.state.ToolHolder_Cnc[i].length; j++) {
+                    toolholder_cell = self.$store.state.ToolHolder_Cnc[i][j];
+
+                    if (toolholder_cell.name !== null && toolholder_cell.name !== '' && toolholder_cell.name !== 'null') {
+                      //有刀把才複製
+                      clone = self.$store.state.threejs.equipment_action.setting.toolholder.clone();
+                      pos = self.$store.state.threejs.equipment_action.setting.point_cnc_toolholder[i].pos[j];
+                      clone.position.set(pos.x * 4, pos.y * 4, pos.z * 4);
+                      clone.scale.set(self.modelsize, self.modelsize, self.modelsize);
+                      lightscale = self.$store.state.threejs.texturelight;
+                      clone.material.color.r = lightscale / 1.5;
+                      clone.material.color.g = lightscale / 1.5;
+                      clone.material.color.b = lightscale / 1.5;
+                      self.$store.state.threejs.equipment_action.setting.toolholders.cnc.push(clone);
+                      self.$store.state.threejs.scene.add(clone);
+                    }
+                  }
+
+                  ;
+                }
+
+                ;
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }))();
+    },
+    //DATA
+    load_WH_Toolholder: function load_WH_Toolholder() {
+      var _this9 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var self, w, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                self = _this9; //w1
+
+                self.$store.state.ToolHolder_wh = [];
+                w = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8', 'w9'];
+                i = 0;
+
+              case 4:
+                if (!(i < w.length)) {
+                  _context9.next = 10;
+                  break;
+                }
+
+                _context9.next = 7;
+                return self.$store.dispatch('A_GetWarehouse_toolholder', w[i]).then(function (response) {
+                  self.$store.state.ToolHolder_wh.push(response.data);
+                  console.log();
+                });
+
+              case 7:
+                i++;
+                _context9.next = 4;
+                break;
+
+              case 10:
+                console.log('load wh');
+
+              case 11:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9);
+      }))();
+    },
+    load_CNC_Toolholder: function load_CNC_Toolholder() {
+      var _this10 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var self, t, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                self = _this10;
+                t = ['t1', 't2'];
+                i = 0;
+
+              case 3:
+                if (!(i < t.length)) {
+                  _context10.next = 9;
+                  break;
+                }
+
+                _context10.next = 6;
+                return self.$store.dispatch('A_GetCnc_toolholder', t[i]).then(function (response) {
+                  self.$store.state.ToolHolder_Cnc.push(response.data);
+                });
+
+              case 6:
+                i++;
+                _context10.next = 3;
+                break;
+
+              case 9:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10);
+      }))();
+    },
+    load_Type_Toolholder: function load_Type_Toolholder() {
+      var _this11 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+        var self, type;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                self = _this11;
+                type = ['cooling', 'machining', 'material', 'shank', 'shankamount'];
+                type.forEach(function (e) {
+                  self.$store.dispatch('A_GetType_toolholder', e).then(function (response) {
+                    if (response !== 'error') {
+                      self.loading_finish.push(true);
+                      if (e === 'cooling') self.$store.state.ToolHolder_Type.cooling = response.data;else if (e === 'machining') self.$store.state.ToolHolder_Type.machining = response.data;else if (e === 'material') self.$store.state.ToolHolder_Type.material = response.data;else if (e === 'shank') self.$store.state.ToolHolder_Type.shank = response.data;else if (e === 'shankamount') self.$store.state.ToolHolder_Type.shankamount = response.data;
+                    }
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11);
       }))();
     },
     eHandler: function eHandler(data) {
@@ -2868,10 +3112,54 @@ function _asyncToGenerator(fn) {
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--12-0!./resources/js/components/Platform/TMS/Select/equip_3d/toolholder_setting/panel_list/panel_list.js?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'panel_list',
+  components: {},
+  computed: {},
+  data: function data() {
+    return {
+      pagemax: 0,
+      page_now: 1,
+      toolholderdata: []
+    };
+  },
+  mounted: function mounted() {
+    this.page_now = 1;
+    this.get_toolholderdata();
+  },
+  methods: {
+    get_toolholderdata: function get_toolholderdata() {
+      var _this = this;
 
+      var self = this;
+      self.$store.dispatch('A_GetPage_toolholder').then(function (response) {
+        if (response !== 'error') {
+          self.pagemax = response.data;
+          self.$store.dispatch('A_Get_toolholder', _this.page_now).then(function (response) {
+            if (response !== 'error') {
+              self.toolholderdata = response.data;
+            }
+          });
+        }
+      });
+    },
+    changeIndex: function changeIndex(index) {
+      var self = this;
+      self.page_now = index;
+      self.$store.dispatch('A_Get_toolholder', this.page_now).then(function (response) {
+        if (response !== 'error') {
+          self.toolholderdata = response.data;
+        }
+      });
+    }
+  },
+  created: function created() {}
+});
 
 /***/ }),
 
@@ -2892,34 +3180,38 @@ __webpack_require__.r(__webpack_exports__);
   components: {},
   computed: {
     tool_combine: function tool_combine() {
+      var result = '';
       var self = this.data_onetool;
-      return self.machining + '.' + self.material + '.' + self.shark + '.' + self.sharkamount + '.' + self.cooling + '.' + self.p_1 + '.' + self.p_2 + '.' + self.p_3 + '.' + self.p_4 + '.' + self.p_5 + '.' + self.p_6 + '.' + self.p_7;
+      var machining = self.machining.split('-')[0];
+      var material = self.material.split('-')[0];
+      var shark = self.shark.split('-')[0];
+      var sharkamount = self.sharkamount.split('-')[0];
+      var cooling = self.cooling.split('-')[0];
+      if (machining !== '') result = result + machining + '.';
+      if (material !== '') result = result + material + '.';
+      if (shark !== '') result = result + shark + '.';
+      if (sharkamount !== '') result = result + sharkamount + '.';
+      if (cooling !== '') result = result + cooling + '.';
+      result = result + self.p_1 + '.' + self.p_2 + '.' + self.p_3 + '.' + self.p_4;
+      return result;
     }
   },
   data: function data() {
     return {
       data_onetool: {
-        machining: ' ',
-        material: ' ',
-        shark: ' ',
-        sharkamount: ' ',
-        cooling: ' ',
+        machining: '',
+        material: '',
+        shark: '',
+        sharkamount: '',
+        cooling: '',
         p_1: 0,
         p_2: 0,
         p_3: 0,
-        p_4: 0,
-        p_5: 0,
-        p_6: 0,
-        p_7: 0
+        p_4: 0
       }
     };
   },
-  methods: {
-    tool_combine: function tool_combine() {
-      var self = this.data_onetool;
-      return self.machining + '.' + self.material + '.' + self.shark + '.' + self.sharkamount + '.' + self.cooling + '.' + self.p_1 + '.' + self.p_2 + '.' + self.p_3 + '.' + self.p_4 + '.' + self.p_5 + '.' + self.p_6 + '.' + self.p_7;
-    }
-  },
+  methods: {},
   created: function created() {}
 });
 
@@ -2947,7 +3239,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  methods: {},
+  methods: {
+    get_typeList: function get_typeList() {
+      var result = [];
+      if (this.type_select == 0) result = this.$store.state.ToolHolder_Type.machining;else if (this.type_select == 1) result = this.$store.state.ToolHolder_Type.material;else if (this.type_select == 2) result = this.$store.state.ToolHolder_Type.shank;else if (this.type_select == 3) result = this.$store.state.ToolHolder_Type.shankamount;else if (this.type_select == 4) result = this.$store.state.ToolHolder_Type.cooling;
+      return result;
+    }
+  },
   created: function created() {}
 });
 
@@ -7875,7 +8173,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../../../no
 
 
 // module
-exports.push([module.i, ".code_black[data-v-3b009672] {\n  width: 97%;\n  height: 98%;\n  margin: 0 auto;\n  padding-top: 0.3rem;\n  padding-bottom: 0.3rem;\n  text-align: center;\n  background: #e7e7e7;\n  overflow: hidden;\n  overflow-y: scroll;\n}\n.code_cell[data-v-3b009672] {\n  background: #d4d4d4;\n  width: 97%;\n  height: 3rem;\n  margin-left: 0.3rem;\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: flex-start;\n  border: solid 1px #7e7e7e;\n}\n.title[data-v-3b009672] {\n  width: 3rem;\n  height: 100%;\n  background: #00969b;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.context[data-v-3b009672] {\n  width: 18rem;\n  height: 100%;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.delect[data-v-3b009672] {\n  width: 3rem;\n  height: 100%;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.btn_list[data-v-3b009672] {\n  width: 2.5rem;\n  height: 70%;\n  margin-right: 0.4rem;\n  font-size: 1rem;\n  text-align: center;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n  box-shadow: 0 1px 2px #5f5f5f;\n}\n.btn_cancel[data-v-3b009672] {\n  background: linear-gradient(#db9358, #be4e03);\n  color: white;\n}\n\n/* width */\n[data-v-3b009672]::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n[data-v-3b009672]::-webkit-scrollbar-track {\n  background: #f1f1f1;\n}\n\n/* Handle */\n[data-v-3b009672]::-webkit-scrollbar-thumb {\n  background: #0bacc9;\n}\n\n/* Handle on hover */\n[data-v-3b009672]::-webkit-scrollbar-thumb:hover {\n  background: #077d92;\n}", ""]);
+exports.push([module.i, ".toolholder_black[data-v-3b009672] {\n  width: 100%;\n  height: 98%;\n}\n.code_black[data-v-3b009672] {\n  width: 97%;\n  height: 95%;\n  margin: 0 auto;\n  padding-top: 0.3rem;\n  padding-bottom: 0.3rem;\n  text-align: center;\n  background: #e7e7e7;\n  overflow: hidden;\n  overflow-y: scroll;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n}\n.page_black[data-v-3b009672] {\n  width: 97%;\n  height: 5%;\n}\n.code_cell[data-v-3b009672] {\n  background: #d4d4d4;\n  width: 97%;\n  height: 3rem;\n  margin-left: 0.3rem;\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: flex-start;\n  border: solid 1px #7e7e7e;\n}\n.title[data-v-3b009672] {\n  width: 3rem;\n  height: 100%;\n  background: #00969b;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.context[data-v-3b009672] {\n  width: 18rem;\n  height: 100%;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.delect[data-v-3b009672] {\n  width: 3rem;\n  height: 100%;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.btn_list[data-v-3b009672] {\n  width: 2.5rem;\n  height: 70%;\n  margin-right: 0.4rem;\n  font-size: 1rem;\n  text-align: center;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n  box-shadow: 0 1px 2px #5f5f5f;\n}\n.btn_cancel[data-v-3b009672] {\n  background: linear-gradient(#db9358, #be4e03);\n  color: white;\n}\n.page_black[data-v-3b009672] {\n  display: flex;\n  justify-content: flex-end;\n  color: white;\n}\n.page_black_cell[data-v-3b009672] {\n  display: flex;\n  justify-content: flex-start;\n  margin-right: 0.2rem;\n}\n.page_black_cell > .page[data-v-3b009672] {\n  font-size: 1.5rem;\n  cursor: pointer;\n}\n.page_black_cell > .point[data-v-3b009672] {\n  font-size: 1.5rem;\n}\n.active_page[data-v-3b009672] {\n  color: red;\n}\n\n/* width */\n[data-v-3b009672]::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n[data-v-3b009672]::-webkit-scrollbar-track {\n  background: #f1f1f1;\n}\n\n/* Handle */\n[data-v-3b009672]::-webkit-scrollbar-thumb {\n  background: #0bacc9;\n}\n\n/* Handle on hover */\n[data-v-3b009672]::-webkit-scrollbar-thumb:hover {\n  background: #077d92;\n}", ""]);
 
 // exports
 
@@ -7913,7 +8211,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../../../no
 
 
 // module
-exports.push([module.i, ".show_black[data-v-123b0972] {\n  width: 100%;\n  height: 2rem;\n  margin-top: 2rem;\n  margin-bottom: 0.5rem;\n}\n.show[data-v-123b0972] {\n  width: 95%;\n  height: 100%;\n  padding-top: 0.3rem;\n  background: white;\n  margin: 0 auto;\n  margin-left: 0.5rem;\n  text-align: center;\n  color: #0a0a0a;\n}\n.show option[data-v-123b0972] {\n  text-align: center;\n}\n.type_black[data-v-123b0972] {\n  width: 97%;\n  height: 36.5rem;\n  padding-top: 3rem;\n  margin: 0 auto;\n  text-align: center;\n}\n.type_black .type_option[data-v-123b0972] {\n  width: 100%;\n  margin-bottom: 1rem;\n  display: flex;\n  justify-content: flex-start;\n}\n.type_black .type_option div[data-v-123b0972] {\n  width: 30%;\n  color: white;\n  font-size: 1.2rem;\n}\n.type_black .type_option .type_code[data-v-123b0972] {\n  width: 70%;\n}\n.btn_block[data-v-123b0972] {\n  width: 100%;\n  height: 2rem;\n  display: flex;\n  justify-content: flex-end;\n}\n.btn_type[data-v-123b0972] {\n  width: 20%;\n  height: 100%;\n  margin-right: 0.4rem;\n  font-size: 1.3rem;\n  text-align: center;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n  box-shadow: 0 1px 2px #5f5f5f;\n}\n.btn_enter[data-v-123b0972] {\n  background: linear-gradient(#58ccdb, #03a9be);\n  color: white;\n}\n.btn_cancel[data-v-123b0972] {\n  background: linear-gradient(#db9358, #be4e03);\n  color: white;\n}", ""]);
+exports.push([module.i, ".show_black[data-v-123b0972] {\n  width: 100%;\n  height: 2rem;\n  margin-top: 2rem;\n  margin-bottom: 0.5rem;\n}\n.show[data-v-123b0972] {\n  width: 95%;\n  height: 100%;\n  padding-top: 0.3rem;\n  background: white;\n  margin: 0 auto;\n  margin-left: 0.5rem;\n  text-align: center;\n  color: #0a0a0a;\n}\n.show option[data-v-123b0972] {\n  text-align: center;\n}\n.type_black[data-v-123b0972] {\n  width: 97%;\n  height: 9rem;\n  padding-top: 1rem;\n  margin: 0 auto;\n  text-align: center;\n}\n.type_black .type_option[data-v-123b0972] {\n  width: 100%;\n  margin-bottom: 1rem;\n  display: flex;\n  justify-content: flex-start;\n}\n.type_black .type_option div[data-v-123b0972] {\n  width: 30%;\n  color: white;\n  font-size: 1.2rem;\n}\n.type_black .type_option .type_code[data-v-123b0972] {\n  width: 70%;\n}\n.btn_block[data-v-123b0972] {\n  width: 100%;\n  height: 2rem;\n  display: flex;\n  justify-content: flex-end;\n}\n.btn_type[data-v-123b0972] {\n  width: 20%;\n  height: 100%;\n  margin-right: 0.4rem;\n  font-size: 1.3rem;\n  text-align: center;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n  box-shadow: 0 1px 2px #5f5f5f;\n}\n.btn_enter[data-v-123b0972] {\n  background: linear-gradient(#58ccdb, #03a9be);\n  color: white;\n}\n.btn_cancel[data-v-123b0972] {\n  background: linear-gradient(#db9358, #be4e03);\n  color: white;\n}\n.code_black[data-v-123b0972] {\n  width: 97%;\n  height: 27rem;\n  margin: 0 auto;\n  margin-bottom: 0.5rem;\n  padding-top: 0.3rem;\n  padding-bottom: 0.3rem;\n  text-align: center;\n  background: #6b6b6b;\n  overflow: hidden;\n  overflow-y: scroll;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n}\n.code_cell[data-v-123b0972] {\n  background: #d4d4d4;\n  width: 97%;\n  height: 3rem;\n  margin-left: 0.3rem;\n  margin-top: 0.5rem;\n  display: flex;\n  justify-content: flex-start;\n  border: solid 1px #7e7e7e;\n}\n.title[data-v-123b0972] {\n  width: 3rem;\n  height: 100%;\n  background: #00969b;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.context[data-v-123b0972] {\n  width: 18rem;\n  height: 100%;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.delect[data-v-123b0972] {\n  width: 3rem;\n  height: 100%;\n  color: white;\n  padding-top: 0.7rem;\n  font-size: 1rem;\n}\n.btn_list[data-v-123b0972] {\n  width: 2.5rem;\n  height: 70%;\n  margin-right: 0.4rem;\n  font-size: 1rem;\n  text-align: center;\n  border: 1px solid rgba(34, 34, 34, 0.185);\n  box-shadow: 0 1px 2px #5f5f5f;\n}\n.btn_cancel[data-v-123b0972] {\n  background: linear-gradient(#db9358, #be4e03);\n  color: white;\n}\n\n/* width */\n[data-v-123b0972]::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n[data-v-123b0972]::-webkit-scrollbar-track {\n  background: #f1f1f1;\n}\n\n/* Handle */\n[data-v-123b0972]::-webkit-scrollbar-thumb {\n  background: #0bacc9;\n}\n\n/* Handle on hover */\n[data-v-123b0972]::-webkit-scrollbar-thumb:hover {\n  background: #077d92;\n}", ""]);
 
 // exports
 
@@ -81767,143 +82065,151 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "job_outline" }, [
-    _c(
-      "div",
-      {
-        staticClass: "job_title",
-        class: { active_move: _vm.click_move },
-        on: {
-          mouseup: function($event) {
-            return _vm.Mouseup_stay_panel()
-          },
-          mousedown: function($event) {
-            return _vm.Mousedown_stay_panel()
-          },
-          mouseover: function($event) {
-            return _vm.Controls_Mouseover()
-          },
-          mouseleave: function($event) {
-            return _vm.Controls_Mouseleave()
-          },
-          mousemove: _vm.update_jog
+  return _c(
+    "div",
+    {
+      staticClass: "job_outline",
+      on: {
+        mouseover: function($event) {
+          return _vm.Controls_Mouseover()
+        },
+        mouseleave: function($event) {
+          return _vm.Controls_Mouseleave()
         }
-      },
-      [_vm._v("控制器")]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "title_close" }, [
-      _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "job_tree_trbot" }, [
-      _c("div", { staticClass: "selectedmode" }, [
-        _vm._v(
-          "\n            目前選擇 :\n            " +
-            _vm._s(_vm.select_word) +
-            "\n        "
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "job_title",
+          class: { active_move: _vm.click_move },
+          on: {
+            mouseup: function($event) {
+              return _vm.Mouseup_stay_panel()
+            },
+            mousedown: function($event) {
+              return _vm.Mousedown_stay_panel()
+            },
+            mousemove: _vm.update_jog
+          }
+        },
+        [_vm._v("控制器")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "title_close" }, [
+        _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "job_tree_trbot" }, [
+        _c("div", { staticClass: "selectedmode" }, [
+          _vm._v(
+            "\n            目前選擇 :\n            " +
+              _vm._s(_vm.select_word) +
+              "\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { attrs: { id: "myUL" } },
+          _vm._l(
+            _vm.$store.state.threejs.equipment_action.setting.equipment,
+            function(item, index) {
+              return _c("li", { key: index }, [
+                _c(
+                  "span",
+                  { staticClass: "caret", on: { click: _vm.select_cancel } },
+                  [_vm._v(_vm._s(item.name))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "nested" },
+                  _vm._l(item.axis, function(item2, index2) {
+                    return _c(
+                      "li",
+                      {
+                        key: index2,
+                        class: {
+                          nestedliunActive: !_vm.robotActive(index, index2),
+                          nestedliActive: _vm.robotActive(index, index2)
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.select_axis(index, index2)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(item2.name))]
+                    )
+                  }),
+                  0
+                )
+              ])
+            }
+          ),
+          0
         )
       ]),
       _vm._v(" "),
-      _c(
-        "ul",
-        { attrs: { id: "myUL" } },
-        _vm._l(
-          _vm.$store.state.threejs.equipment_action.setting.equipment,
-          function(item, index) {
-            return _c("li", { key: index }, [
-              _c(
-                "span",
-                { staticClass: "caret", on: { click: _vm.select_cancel } },
-                [_vm._v(_vm._s(item.name))]
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "nested" },
-                _vm._l(item.axis, function(item2, index2) {
-                  return _c(
-                    "li",
-                    {
-                      key: index2,
-                      class: {
-                        nestedliunActive: !_vm.robotActive(index, index2),
-                        nestedliActive: _vm.robotActive(index, index2)
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.select_axis(index, index2)
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(item2.name))]
-                  )
-                }),
-                0
-              )
-            ])
-          }
-        ),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "job_controller" }, [
-      _c("p", [_vm._v("移動控制器")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "set setbg white" }, [
-        _c("nav", { staticClass: "d-pad" }, [
-          _c("a", {
-            staticClass: "up",
-            attrs: { href: "#" },
-            on: {
-              mousedown: function($event) {
-                return _vm.robot_contorl_md("u")
-              },
-              mouseup: _vm.robot_contorl_mu,
-              mouseleave: _vm.robot_contorl_mu
-            }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "right",
-            attrs: { href: "#" },
-            on: {
-              mousedown: function($event) {
-                return _vm.robot_contorl_md("r")
-              },
-              mouseup: _vm.robot_contorl_mu,
-              mouseleave: _vm.robot_contorl_mu
-            }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "down",
-            attrs: { href: "#" },
-            on: {
-              mousedown: function($event) {
-                return _vm.robot_contorl_md("d")
-              },
-              mouseup: _vm.robot_contorl_mu,
-              mouseleave: _vm.robot_contorl_mu
-            }
-          }),
-          _vm._v(" "),
-          _c("a", {
-            staticClass: "left",
-            attrs: { href: "#" },
-            on: {
-              mousedown: function($event) {
-                return _vm.robot_contorl_md("l")
-              },
-              mouseup: _vm.robot_contorl_mu,
-              mouseleave: _vm.robot_contorl_mu
-            }
-          })
+      _c("div", { staticClass: "job_controller" }, [
+        _c("p", [_vm._v("移動控制器")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "set setbg white" }, [
+          _c("nav", { staticClass: "d-pad" }, [
+            _c("a", {
+              staticClass: "up",
+              attrs: { href: "#" },
+              on: {
+                mousedown: function($event) {
+                  return _vm.robot_contorl_md("u")
+                },
+                mouseup: _vm.robot_contorl_mu,
+                mouseleave: _vm.robot_contorl_mu
+              }
+            }),
+            _vm._v(" "),
+            _c("a", {
+              staticClass: "right",
+              attrs: { href: "#" },
+              on: {
+                mousedown: function($event) {
+                  return _vm.robot_contorl_md("r")
+                },
+                mouseup: _vm.robot_contorl_mu,
+                mouseleave: _vm.robot_contorl_mu
+              }
+            }),
+            _vm._v(" "),
+            _c("a", {
+              staticClass: "down",
+              attrs: { href: "#" },
+              on: {
+                mousedown: function($event) {
+                  return _vm.robot_contorl_md("d")
+                },
+                mouseup: _vm.robot_contorl_mu,
+                mouseleave: _vm.robot_contorl_mu
+              }
+            }),
+            _vm._v(" "),
+            _c("a", {
+              staticClass: "left",
+              attrs: { href: "#" },
+              on: {
+                mousedown: function($event) {
+                  return _vm.robot_contorl_md("l")
+                },
+                mouseup: _vm.robot_contorl_mu,
+                mouseleave: _vm.robot_contorl_mu
+              }
+            })
+          ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -82224,12 +82530,6 @@ var render = function() {
       staticClass: "wh_outline",
       class: { active_move: _vm.click_move },
       on: {
-        mouseup: function($event) {
-          return _vm.Mouseup_stay_panel()
-        },
-        mousedown: function($event) {
-          return _vm.Mousedown_stay_panel()
-        },
         mouseover: function($event) {
           return _vm.Controls_Mouseover()
         },
@@ -82240,11 +82540,25 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "title" }, [
-        _vm._v(
-          "\n                            設備狀態\n                        "
-        )
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "title",
+          on: {
+            mouseup: function($event) {
+              return _vm.Mouseup_stay_panel()
+            },
+            mousedown: function($event) {
+              return _vm.Mousedown_stay_panel()
+            }
+          }
+        },
+        [
+          _vm._v(
+            "\n                            設備狀態\n                        "
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "title_close" }, [
         _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
@@ -82357,35 +82671,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "code_black" },
-    _vm._l(20, function(n) {
-      return _c("div", { key: n, staticClass: "code_cell" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("th" + _vm._s(n))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "context" }, [
-          _vm._v("N1.M1.Z1.K1.L0.20.100.10.30.50.330.10")
-        ]),
-        _vm._v(" "),
-        _vm._m(0, true)
-      ])
-    }),
-    0
-  )
+  return _c("div", { staticClass: "toolholder_black" }, [
+    _c(
+      "div",
+      { staticClass: "code_black" },
+      _vm._l(_vm.toolholderdata, function(item, n) {
+        return _c("div", { key: n, staticClass: "code_cell" }, [
+          _c("div", { staticClass: "title" }, [_vm._v(_vm._s(item.name))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "context" }, [_vm._v(_vm._s(item.code))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "delect" })
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "page_black" },
+      _vm._l(_vm.pagemax, function(index) {
+        return _c("div", { key: index, staticClass: "page_black_cell" }, [
+          _c(
+            "p",
+            {
+              staticClass: "page",
+              class: { active_page: _vm.page_now == index },
+              on: {
+                click: function($event) {
+                  return _vm.changeIndex(index)
+                }
+              }
+            },
+            [_vm._v(_vm._s(index))]
+          ),
+          _vm._v(" "),
+          index < _vm.pagemax
+            ? _c("p", { staticClass: "point" }, [
+                _vm._v("\n                .\n            ")
+              ])
+            : _vm._e()
+        ])
+      }),
+      0
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "delect" }, [
-      _c("div", { staticClass: "btn_list btn_cancel" }, [
-        _vm._v("\n                 清除\n            ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -82447,13 +82779,15 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", [_vm._v("A")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("B")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("C")])
-          ]
+          _vm._l(_vm.$store.state.ToolHolder_Type.machining, function(
+            item,
+            index
+          ) {
+            return _c("option", { key: index }, [
+              _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -82489,13 +82823,15 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", [_vm._v("A")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("B")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("C")])
-          ]
+          _vm._l(_vm.$store.state.ToolHolder_Type.material, function(
+            item,
+            index
+          ) {
+            return _c("option", { key: index }, [
+              _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -82531,13 +82867,12 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", [_vm._v("A")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("B")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("C")])
-          ]
+          _vm._l(_vm.$store.state.ToolHolder_Type.shank, function(item, index) {
+            return _c("option", { key: index }, [
+              _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -82573,13 +82908,15 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", [_vm._v("A")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("B")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("C")])
-          ]
+          _vm._l(_vm.$store.state.ToolHolder_Type.shankamount, function(
+            item,
+            index
+          ) {
+            return _c("option", { key: index }, [
+              _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -82615,13 +82952,15 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", [_vm._v("A")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("B")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("C")])
-          ]
+          _vm._l(_vm.$store.state.ToolHolder_Type.cooling, function(
+            item,
+            index
+          ) {
+            return _c("option", { key: index }, [
+              _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -82724,84 +83063,6 @@ var render = function() {
                 return
               }
               _vm.$set(_vm.data_onetool, "p_4", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "type_option" }, [
-        _c("div", [_vm._v("參數 5:")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data_onetool.p_5,
-              expression: "data_onetool.p_5"
-            }
-          ],
-          staticClass: "type_num",
-          attrs: { placeholder: "edit me" },
-          domProps: { value: _vm.data_onetool.p_5 },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.data_onetool, "p_5", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "type_option" }, [
-        _c("div", [_vm._v("參數 6:")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data_onetool.p_6,
-              expression: "data_onetool.p_6"
-            }
-          ],
-          staticClass: "type_num",
-          attrs: { placeholder: "edit me" },
-          domProps: { value: _vm.data_onetool.p_6 },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.data_onetool, "p_6", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "type_option" }, [
-        _c("div", [_vm._v("參數 7:")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data_onetool.p_7,
-              expression: "data_onetool.p_7"
-            }
-          ],
-          staticClass: "type_num",
-          attrs: { placeholder: "edit me" },
-          domProps: { value: _vm.data_onetool.p_7 },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.data_onetool, "p_7", $event.target.value)
             }
           }
         })
@@ -82944,6 +83205,23 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "code_black" },
+      _vm._l(_vm.get_typeList(), function(item, index) {
+        return _c("div", { key: index, staticClass: "code_cell" }, [
+          _c("div", { staticClass: "title" }, [_vm._v(_vm._s(index + 1))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "context" }, [
+            _vm._v(_vm._s(item.code) + "-" + _vm._s(item.description))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "delect" })
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
     _vm._m(0)
   ])
 }
@@ -82988,25 +83266,33 @@ var render = function() {
     "div",
     {
       staticClass: "toolholder_outline",
-      class: { active_move: _vm.click_move },
       on: {
-        mouseup: function($event) {
-          return _vm.Mouseup_stay_panel()
-        },
-        mousedown: function($event) {
-          return _vm.Mousedown_stay_panel()
-        },
         mouseover: function($event) {
           return _vm.Controls_Mouseover()
         },
         mouseleave: function($event) {
           return _vm.Controls_Mouseleave()
-        },
-        mousemove: _vm.update_wh
+        }
       }
     },
     [
-      _c("div", { staticClass: "title" }, [_vm._v("\n        刀把設定\n    ")]),
+      _c(
+        "div",
+        {
+          staticClass: "title",
+          class: { active_move: _vm.click_move },
+          on: {
+            mouseup: function($event) {
+              return _vm.Mouseup_stay_panel()
+            },
+            mousedown: function($event) {
+              return _vm.Mousedown_stay_panel()
+            },
+            mousemove: _vm.update_wh
+          }
+        },
+        [_vm._v("\n        刀把設定\n    ")]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "title_close" }, [
         _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
@@ -83104,12 +83390,6 @@ var render = function() {
       staticClass: "wh_outline",
       class: { active_move: _vm.click_move },
       on: {
-        mouseup: function($event) {
-          return _vm.Mouseup_stay_panel()
-        },
-        mousedown: function($event) {
-          return _vm.Mousedown_stay_panel()
-        },
         mouseover: function($event) {
           return _vm.Controls_Mouseover()
         },
@@ -83120,9 +83400,21 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "title" }, [
-        _vm._v("\n            刀把倉儲\n        ")
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "title",
+          on: {
+            mouseup: function($event) {
+              return _vm.Mouseup_stay_panel()
+            },
+            mousedown: function($event) {
+              return _vm.Mousedown_stay_panel()
+            }
+          }
+        },
+        [_vm._v("\n            刀把倉儲\n        ")]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "title_close" }, [
         _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
@@ -83430,12 +83722,6 @@ var render = function() {
       staticClass: "wh_outline",
       class: { active_move: _vm.click_move },
       on: {
-        mouseup: function($event) {
-          return _vm.Mouseup_stay_panel()
-        },
-        mousedown: function($event) {
-          return _vm.Mousedown_stay_panel()
-        },
         mouseover: function($event) {
           return _vm.Controls_Mouseover()
         },
@@ -83446,9 +83732,21 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "title" }, [
-        _vm._v("\n            工具機刀把倉儲\n        ")
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "title",
+          on: {
+            mouseup: function($event) {
+              return _vm.Mouseup_stay_panel()
+            },
+            mousedown: function($event) {
+              return _vm.Mousedown_stay_panel()
+            }
+          }
+        },
+        [_vm._v("\n            工具機刀把倉儲\n        ")]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "title_close" }, [
         _c("p", { on: { click: _vm.Click_Close } }, [_vm._v("X")])
@@ -101027,9 +101325,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../../../node_modules/babel-loader/lib??ref--12-0!./panel_list.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./resources/js/components/Platform/TMS/Select/equip_3d/toolholder_setting/panel_list/panel_list.js?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_12_0_panel_list_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -101857,16 +102153,12 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
     baseUrlApi: 'http://127.0.0.1:8000/api',
     p_w: '/warehouse',
     p_wcnc: '/cnc',
-    p_tool_unpre: '/toolholder/unprepared',
-    p_tool_pre_record: '/toolholder/prepared',
-    p_tool_life_record: '/toolholder/maxlife',
-    p_tool_life_one_record: '/toolholder/maxlife/single',
-    p_tool_all: '/toolholder',
-    //所有刀套
-    p_tool_scrollmax: '/toolholder/scrollmax',
-    p_tool_life_scrollmax: '/toolholder/scrollmax_life',
-    p_tool_g_serial: '/toolholder/serial',
-    p_tool_datatransfer1: '/datatransfer1',
+    p_type: '/type',
+    //種類
+    p_toolholder: '/toolholder',
+    //刀把資料
+    p_toolholderPage: '/toolholder/page',
+    //刀把資料
     TMS_select_now: null,
     TMS_select_now_sub: null,
     ToolHolder_TYPES: [{
@@ -101896,7 +102188,14 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
       'data': []
     }],
     ToolHolder_wh: [],
-    ToolHolder_Cnc: []
+    ToolHolder_Cnc: [],
+    ToolHolder_Type: {
+      'cooling': [],
+      'machining': [],
+      'material': [],
+      'shank': [],
+      'shankamount': []
+    }
   },
   getters: {
     ApiPath: function ApiPath(state) {
@@ -102070,6 +102369,105 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
             }
           }
         }, _callee6);
+      }))();
+    },
+    A_GetType_toolholder: function A_GetType_toolholder(state, checkdata) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var self, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                self = _this3;
+                data = {
+                  'path': self.state.baseUrlApi + self.state.p_type + "/" + checkdata
+                };
+                state;
+                _context7.next = 5;
+                return _js_store__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('AxiosGet', data).then(function (response) {
+                  return response;
+                })["catch"](function (error) {
+                  console.error(error);
+                  return "error";
+                });
+
+              case 5:
+                return _context7.abrupt("return", _context7.sent);
+
+              case 6:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    A_GetPage_toolholder: function A_GetPage_toolholder(state) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var self, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                self = _this4;
+                data = {
+                  'path': self.state.baseUrlApi + self.state.p_toolholderPage
+                };
+                state;
+                _context8.next = 5;
+                return _js_store__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('AxiosGet', data).then(function (response) {
+                  return response;
+                })["catch"](function (error) {
+                  console.error(error);
+                  return "error";
+                });
+
+              case 5:
+                return _context8.abrupt("return", _context8.sent);
+
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }))();
+    },
+    A_Get_toolholder: function A_Get_toolholder(state, checkdata) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var self, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                self = _this5;
+                data = {
+                  'path': self.state.baseUrlApi + self.state.p_toolholder + '?p=' + checkdata
+                };
+                state;
+                _context9.next = 5;
+                return _js_store__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('AxiosGet', data).then(function (response) {
+                  return response;
+                })["catch"](function (error) {
+                  console.error(error);
+                  return "error";
+                });
+
+              case 5:
+                return _context9.abrupt("return", _context9.sent);
+
+              case 6:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9);
       }))();
     }
   },
@@ -102402,7 +102800,56 @@ var Setting = function Setting() {
       'name': 'idle',
       'instance': null
     }]
-  }];
+  }]; //wh刀把點
+
+  this.point_wh_toolholder = [{
+    'name': 'w1',
+    'pos': []
+  }, {
+    'name': 'w2',
+    'pos': []
+  }, {
+    'name': 'w3',
+    'pos': []
+  }, {
+    'name': 'w4',
+    'pos': []
+  }, {
+    'name': 'w5',
+    'pos': []
+  }, {
+    'name': 'w6',
+    'pos': []
+  }, {
+    'name': 'w7',
+    'pos': []
+  }, {
+    'name': 'w8',
+    'pos': []
+  }, {
+    'name': 'w9',
+    'pos': []
+  }]; //cnc刀把點
+
+  this.point_cnc_toolholder = [{
+    'name': 't1',
+    'pos': []
+  }, {
+    'name': 't2',
+    'pos': []
+  }]; //貨物的點
+
+  this.point_project = []; //貨物到CNC的點
+
+  this.point_cnc_move = []; //toolholder ori
+
+  this.toolholder = null;
+  this.project = null;
+  this.toolholders = {
+    'wh': [],
+    'cnc': []
+  };
+  this.projects = [];
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({

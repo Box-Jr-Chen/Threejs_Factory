@@ -1,11 +1,11 @@
 <template>
-<div class="job_outline">
+<div class="job_outline"
+        v-on:mouseover="Controls_Mouseover()"
+        v-on:mouseleave="Controls_Mouseleave()">
 
     <div class="job_title"
         @mouseup="Mouseup_stay_panel()"
         @mousedown="Mousedown_stay_panel()"
-        v-on:mouseover="Controls_Mouseover()"
-        v-on:mouseleave="Controls_Mouseleave()"
         v-on:mousemove="update_jog"
         v-bind:class="{ active_move: click_move }"
     >控制器</div>
