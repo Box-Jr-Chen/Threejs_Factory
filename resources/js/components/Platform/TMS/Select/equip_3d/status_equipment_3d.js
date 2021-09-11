@@ -6,6 +6,8 @@ import wh_cnc from "./wh_cnc/wh_cnc.vue";
 import toolholder_setting from "./toolholder_setting/toolholder_setting.vue";
 import jog from "./jog/jog.vue";
 import status from "./status/status.vue";
+import notfull from "./notfull/notfull.vue";
+import init_loading from "./init_loading/init_loading.vue";
 import loading from "./loading/loading.vue";
 
 
@@ -15,15 +17,15 @@ import { MeshPhongMaterial } from "three";
        name: 'status_equipment',
        props:['element'],
        components: {
-            // Type_toolholderData,
-            // Type_add_newtype,
             // loading,
             sidebar,
             wh,
             wh_cnc,
             toolholder_setting,
             jog,
-            status
+            status,
+            notfull,
+            init_loading
         },
       data(){
              return{
@@ -32,7 +34,7 @@ import { MeshPhongMaterial } from "three";
                    isLoadingInit:false,
                    modelsize:4,
                    element_panel:null,
-                   loading_finish:[],
+                   isFullScreen:false,
              }
          },
       computed:
@@ -47,7 +49,6 @@ import { MeshPhongMaterial } from "three";
       mounted(){
               var self = this;
               const container = document.getElementById('container');
-
               self.$store.state.threejs.init(container);
               self.animate();
               self.load_CNC_wavehouseModel();
@@ -60,9 +61,11 @@ import { MeshPhongMaterial } from "three";
               setTimeout(()=>{
                 self.$store.state.width_3d  =  container.offsetWidth;
                 self.$store.state.height_3d =  container.offsetHeight;
+                self.$store.state.threejs.Controls_Camera_Disabled();
               },100);
 
-              //self.check_LoadingProcess();
+              //檢查有沒有此吋改變
+              self.isFullScreen = true;
 
      },
         beforeDestroy(){
@@ -133,6 +136,10 @@ import { MeshPhongMaterial } from "three";
                     self.$store.state.threejs.equipment_action.CNC_1_Status(2);
                     self.$store.state.threejs.equipment_action.CNC_2_Status(0);
                     self.$store.state.threejs.scene.add(obj.scene);
+
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -172,6 +179,9 @@ import { MeshPhongMaterial } from "three";
                       })
 
                     self.$store.state.threejs.scene.add(obj.scene);
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -206,6 +216,9 @@ import { MeshPhongMaterial } from "three";
 
 
                     self.$store.state.threejs.scene.add(obj.scene);
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -244,6 +257,9 @@ import { MeshPhongMaterial } from "three";
 
 
                     self.$store.state.threejs.scene.add(obj.scene);
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -289,6 +305,9 @@ import { MeshPhongMaterial } from "three";
                       obj.scene.children[0].material.color.b =lightscale;
 
                     //self.$store.state.threejs.scene.add(obj.scene);
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -306,8 +325,8 @@ import { MeshPhongMaterial } from "three";
                     obj.name = "Lali_project";
                     obj.scene.scale.set(self.modelsize, self.modelsize, self.modelsize);
                     //初始位置
-                    console.log('project');
-                    console.log(obj.scene);
+                    //console.log('project');
+                   // console.log(obj.scene);
                     self.$store.state.threejs.equipment_action.setting.project = obj.scene.children[0];
 
                     var lightscale =self.$store.state.threejs.texturelight;
@@ -317,6 +336,9 @@ import { MeshPhongMaterial } from "three";
                       obj.scene.children[0].material.color.b =lightscale;
 
                     //self.$store.state.threejs.scene.add(obj.scene);
+
+                    //完成
+                    self.$store.state.loading_finish.push(true);
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -364,6 +386,10 @@ import { MeshPhongMaterial } from "three";
                     cnc_pro_pos.children.forEach(function(pro_once,index){
                         self.$store.state.threejs.equipment_action.setting.point_cnc_move.push(pro_once.position);
                     });
+                    //完成
+                    self.$store.state.loading_finish.push(true);
+
+
                 },
                 function (xhr) {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded")
@@ -449,6 +475,9 @@ import { MeshPhongMaterial } from "three";
                     toolholder_instance_cnc.push(toolholder_instance_one_cnc);
                 };
                 self.$store.state.threejs.equipment_action.setting.toolholders.cnc = toolholder_instance_cnc;
+
+                //完成
+                self.$store.state.loading_finish.push(true);
             },
             async instance_project(){
                 var self = this;
@@ -474,6 +503,9 @@ import { MeshPhongMaterial } from "three";
                                 self.$store.state.threejs.scene.add(clone);
 
                 };
+
+                //完成
+                self.$store.state.loading_finish.push(true);
             },
             //DATA
            async load_WH_Toolholder(){
@@ -487,10 +519,11 @@ import { MeshPhongMaterial } from "three";
                     await  self.$store.dispatch('A_GetWarehouse_toolholder',w[i]).
                     then(response =>{
                         self.$store.state.ToolHolder_wh.push(response.data);
-                        console.log();
+                        //console.log();
                     });
                 }
-                console.log('load wh');
+                //完成
+                self.$store.state.loading_finish.push(true);
            },
            async load_CNC_Toolholder(){
             var self = this;
@@ -504,7 +537,8 @@ import { MeshPhongMaterial } from "three";
                     self.$store.state.ToolHolder_Cnc.push(response.data);
                 });
             }
-
+            //完成
+            self.$store.state.loading_finish.push(true);
            },
            async load_Type_Toolholder(){
             var self = this;
@@ -517,7 +551,7 @@ import { MeshPhongMaterial } from "three";
 
                     if(response !=='error')
                     {
-                        self.loading_finish.push(true);
+
                         if(e==='cooling')
                           self.$store.state.ToolHolder_Type.cooling =response.data;
                         else if(e==='machining')
@@ -528,10 +562,14 @@ import { MeshPhongMaterial } from "three";
                           self.$store.state.ToolHolder_Type.shank =response.data;
                         else if(e==='shankamount')
                           self.$store.state.ToolHolder_Type.shankamount =response.data;
+
+
+                          self.$store.state.loading_finish.push(true);
                     }
                 });
             });
            },
+
            eHandler(data) {
             this.width = data.width;
             this.height = data.height;

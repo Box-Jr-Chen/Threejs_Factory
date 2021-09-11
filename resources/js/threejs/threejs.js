@@ -212,6 +212,8 @@ class ThreeJs_3D {
     animate()
     {
         this.render();
+
+
     }
     renderBloom( mask ) {
 
@@ -245,19 +247,6 @@ class ThreeJs_3D {
         }
 
     }
-
-
-    restoreMaterial( obj ) {
-
-        // if ( this.materials[ obj.uuid ] ) {
-
-        //     obj.material = this.materials[ obj.uuid ];
-        //     delete this.materials[ obj.uuid ];
-
-        // }
-
-    }
-
 
      async Load_Model_Data(path,action_sucess,action_loding,action_error)
     {

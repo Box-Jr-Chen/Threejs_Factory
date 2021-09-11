@@ -1,0 +1,91 @@
+.init{
+    width: 100%;
+    height: 100%;
+    background: rgba(36, 36, 36, 0.8);
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wh_outline{
+    width: 27rem;
+    height:27rem;
+    border-radius:5px;
+    border: 1px solid rgb(165, 165, 165);
+    background-image: linear-gradient(#636363b9, rgba(87, 86, 86, 0.747));
+    z-index:2;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+}
+.wh_outline p{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+.active_move{
+    cursor: grabbing;
+}
+.delcare tr td{
+    padding-bottom: 0.2rem;
+    font-size: 1.2rem;
+}
+.btn_block{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn_type{
+    width: 20%;
+    height: 100%;
+    margin-right: 0.4rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border: 1px solid rgba(34, 34, 34, 0.185);
+    box-shadow: 0 1px 2px rgb(95, 95, 95);
+}
+.btn_enter_unactive{
+    background: linear-gradient(#c0c0c0, #717272);
+    color: rgb(97, 97, 97);
+}
+.btn_enter_active{
+    background: linear-gradient(#58ccdb, #03a9be);
+    color: white;
+    cursor: pointer;
+}
+
+.btn_enter{
+}
+
+.btn_enter_active:active{
+    background: linear-gradient(#1a9fb1, #046f7e);
+}
+.bar_block{
+    width: 100%;
+    height: 8rem;
+    position: relative;
+}
+
+.bar_outline{
+    width: 90%;
+    height: 2rem;
+    background: rgb(61, 61, 61);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.bar{
+    height: 2rem;
+    background: rgb(196, 196, 196);
+    border-radius: 10px;
+}

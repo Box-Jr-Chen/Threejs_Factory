@@ -69,6 +69,9 @@
      <!-- loading 介面
      <loading  v-if="isLoadingInit" :style="{width:panel_add_toolholder_BG_width+'px',height:panel_add_toolholder_BG_height+'px' }"/> -->
 
+
+    <notfull  v-if="!$store.state.isFullScreen"/>
+    <init_loading v-if="$store.state.isInit_loading"/>
   </div>
 </template>
 

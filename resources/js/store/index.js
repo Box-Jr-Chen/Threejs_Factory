@@ -22,8 +22,10 @@ export default new Vuex.Store({
         program_robot :Program_Robot.Program_Robot,
         select_panel:0,
         element_panel:null, //panel組件
+        isFullScreen:false,
+        isInit_loading:true,
 
-
+        loading_finish:[],
 
         baseUrlApi:'https://wh-toolholder-3d.herokuapp.com/api',
         p_w: '/warehouse',

@@ -25,17 +25,41 @@ export default {
             self.$store.state.nav_height  = self.$store.state.myheight/27 ;
             self.$store.state.bound_x     = (window.innerWidth-self.$store.state.mywidth)/2;
             self.$store.state.bound_y     = (window.innerHeight-self.$store.state.myheight)/2;
-          }
+          },
+         checkFullScreen(){
+               var self =this;
+            if(screen.width === window.innerWidth)
+            {
+                self.$store.state.isFullScreen = true;
+                self.$store.state.threejs.Controls_Camera_Abled();
+                //location.reload();
+            }
+            else
+            {
+               self.$store.state.isFullScreen = false;
+               self.$store.state.threejs.Controls_Camera_Disabled();
+                //location.reload();
+            }
+           },
   },
    mounted() {
+    var self =this;
     this.displayWindowSize();
+
+
+    self.checkFullScreen();
+    window.addEventListener('resize', function(){
+        self.displayWindowSize();
+        self.checkFullScreen();
+    });
+
   }
 }
 </script>
 
 <style>
 body{
-    background: rgb(156, 156, 156);
+         background: rgb(136, 136, 136);
 }
 #app {
     align-items: center;
