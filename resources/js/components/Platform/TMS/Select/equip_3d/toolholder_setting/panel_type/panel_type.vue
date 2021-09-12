@@ -10,7 +10,7 @@
             </select>
         </div>
 
-        <div class="type_black">
+        <!-- <div class="type_black">
 
             <div class="type_option">
                     <div>代碼:</div>
@@ -20,7 +20,7 @@
                     <div>說明:</div>
                     <input class="type_code" v-model="data_type.description"/>
             </div>
-        </div>
+        </div> -->
 
         <div class="code_black">
             <div  class="code_cell"  v-for="(item,index) in get_typeList()" :key="index">
@@ -34,14 +34,14 @@
             </div>
         </div>
 
-        <div class="btn_block">
+        <!-- <div class="btn_block">
             <div class="btn_type btn_enter">
                 確定
             </div>
             <div class="btn_type btn_cancel">
                 取消
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 

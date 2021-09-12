@@ -133,7 +133,7 @@ import { MeshPhongMaterial } from "three";
                     obj.scene.children[3].material.opacity =1;
                     obj.scene.children[3].material =material;
 
-                    self.$store.state.threejs.equipment_action.CNC_1_Status(2);
+                    self.$store.state.threejs.equipment_action.CNC_1_Status(0);
                     self.$store.state.threejs.equipment_action.CNC_2_Status(0);
                     self.$store.state.threejs.scene.add(obj.scene);
 

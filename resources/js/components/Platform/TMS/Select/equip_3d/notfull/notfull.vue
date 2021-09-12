@@ -9,7 +9,7 @@
     height: 100%;
     background: rgb(136, 136, 136);
     position: relative;
-    z-index: 999;
+    z-index: 9999;
 }
 .notfull  p{
    position: absolute;

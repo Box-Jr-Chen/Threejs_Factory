@@ -56,10 +56,92 @@ class ToolHolderController extends Controller
         }
          $result = intval($data/$this->count) ;
 
-         if($this->count % $data >0)
+         if($data %$this->count >0)
                 $result = $result+1;
 
         return response()->json(array('message'=>'success','data'=>$result),200);
     }
 
+    public function Insert_date(Request $request)
+    {
+
+        if (!isset($request->code))
+        {
+            return response()->json(array('message'=>'no code'),400);
+        }
+
+        $code = $request->code ;
+        $description = $request->description ;
+
+
+        $check  = DB::table('toolholder')
+        ->count();
+
+        $name_toolholder = 'th'.strval($check+1);
+
+        $now = date_create()->format('Y-m-d H:i:s');
+
+
+        $data  = DB::table('toolholder')
+            ->insert(
+                [
+                    'name' =>  $name_toolholder,
+                    'code' =>$code,
+                    'life' =>100,
+                    'maxlife' =>100,
+                    'isbreak' =>false,
+                    'created_at' =>$now
+                ]);
+
+        if($data ==1)
+        {
+            return response()->json(array('message'=>'新增成功'),202);
+        }
+        else  if($data ==0)
+        {
+            return response()->json(array('message'=>'新增錯誤'),404);
+        }
+    }
+
+
+    public function Update_date(Request $request)
+    {
+
+        if (!isset($request->code))
+        {
+            return response()->json(array('message'=>'no code'),400);
+        }
+
+        $code = $request->code ;
+        $description = $request->description ;
+
+
+        $check  = DB::table('toolholder')
+        ->count();
+
+        $name_toolholder = 'th'.strval($check+1);
+
+        $now = date_create()->format('Y-m-d H:i:s');
+
+
+        $data  = DB::table('toolholder')
+            ->insert(
+                [
+                    'name' =>  $name_toolholder,
+                    'code' =>$code,
+                    'life' =>100,
+                    'maxlife' =>100,
+                    'isbreak' =>false,
+                    'created_at' =>$now
+                ]);
+
+        if($data ==1)
+        {
+            return response()->json(array('message'=>'新增成功'),202);
+        }
+        else  if($data ==0)
+        {
+            return response()->json(array('message'=>'新增錯誤'),404);
+        }
+    }
 }

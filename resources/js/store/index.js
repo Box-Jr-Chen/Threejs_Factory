@@ -2,7 +2,6 @@ import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import ThreeJs from '@js/threejs/threejs.js';
-import Program_Robot from '@js/program_robot/program_robot.js';
 import store from '@js/store'
 Vue.use(Vuex)
 
@@ -19,7 +18,7 @@ export default new Vuex.Store({
         bound_x:0,
         bound_y:0,
         threejs :ThreeJs.ThreeJs,
-        program_robot :Program_Robot.Program_Robot,
+        //program_robot :Program_Robot.Program_Robot,
         select_panel:0,
         element_panel:null, //panel組件
         isFullScreen:false,
@@ -28,6 +27,7 @@ export default new Vuex.Store({
         loading_finish:[],
 
         baseUrlApi:'https://wh-toolholder-3d.herokuapp.com/api',
+     //   baseUrlApi:'http://127.0.0.1:8000/api',
         p_w: '/warehouse',
         p_wcnc:'/cnc',
         p_type:'/type',  //種類

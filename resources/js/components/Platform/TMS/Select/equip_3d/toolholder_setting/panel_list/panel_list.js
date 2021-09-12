@@ -4,17 +4,33 @@ export default {
     components: {
     },
     computed:{
+        lastPage_group:function()
+        {
+            var self =this;
+            if(self.pagemax <=0)
+            {
+                return 0;
+            }
 
+            var result = Math.floor(self.pagemax/self.page_group_cell) ;
+
+            if(self.pagemax%self.page_group_cell >0)
+                    result = result+1;
+            return result;
+        }
     },
     data(){
            return{
                 pagemax:0,
                 page_now:1,
+                page_group:1,
+                page_group_cell:3,
                 toolholderdata:[]
            }
        },
     mounted(){
         this.page_now =1;
+        this.page_group =1;
         this.get_toolholderdata();
     },
     methods:{
@@ -51,6 +67,9 @@ export default {
                         self.toolholderdata = response.data;
                     }
                 });
+            },
+            changePageGroup(index){
+                this.page_group =  this.page_group + index;
             }
        },
     created(){

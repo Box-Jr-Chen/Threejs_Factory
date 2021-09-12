@@ -19,6 +19,92 @@ class Equipment_Action {
         this.Material_nor    = null;
         this.selectedObjects_control = [];
 
+        this.equiment_status =
+        [
+           {
+               'name':'工具機 01',
+               'image':'https://drive.google.com/uc?id=1tiAlLtGH0edHa0lFQklnOMRHaX88w1eH',
+               'status':'idle',
+               'detail':[
+                   {
+                       'title':'動作狀態 :',
+                       'context':'等待連線'
+                   },
+                   {
+                    'title':'加工工件 :',
+                    'context':'無'
+                   },
+                   {
+                    'title':'加工工序 :',
+                    'context':'無'
+                   }
+               ]
+           },
+           {
+            'name':'工具機 02',
+            'image':'https://drive.google.com/uc?id=1tiAlLtGH0edHa0lFQklnOMRHaX88w1eH',
+            'status':'idle',
+            'detail':[
+                {
+                    'title':'動作狀態 :',
+                    'context':'等待連線'
+                },
+                {
+                 'title':'加工工件 :',
+                 'context':'無'
+                },
+                {
+                 'title':'加工工序 :',
+                 'context':'無'
+                }
+                ]
+            },
+            {
+                'name':'倉儲機器人',
+                'image':'https://drive.google.com/uc?id=1Ucnk_l2NBv7uVFyrGVjQWJWuE9EfxdVU',
+                'status':'idle',
+                'detail':[
+                    {
+                        'title':'動作狀態 :',
+                        'context':'等待連線'
+                    },
+                    {
+                     'title':'提取工件 :',
+                     'context':'無'
+                    },
+                    ]
+            },
+            {
+                'name':'刀倉機器人',
+                'image':'https://drive.google.com/uc?id=1GbXeQfBHLkVgcO-qmOzy2NZjHkz8CPcf',
+                'status':'idle',
+                'detail':[
+                    {
+                        'title':'動作狀態 :',
+                        'context':'等待連線'
+                    },
+                    {
+                     'title':'提取工件 :',
+                     'context':'無'
+                    },
+                    ]
+            },
+            {
+                'name':'龍門機器人',
+                'image':'https://drive.google.com/uc?id=1UVIYlwG5r0N1mW7BSIJQMSxxPgpRaxwl',
+                'status':'idle',
+                'detail':[
+                    {
+                        'title':'動作狀態 :',
+                        'context':'等待連線'
+                    },
+                    {
+                     'title':'提取工件 :',
+                     'context':'無'
+                    },
+                    ]
+            },
+        ];
 
         this.vertexShadertext_outline =
         `
@@ -45,7 +131,8 @@ class Equipment_Action {
             {
                 float a = pow( b + s * abs(dot(vNormal, vPositionNormal)), p );
                 gl_FragColor = vec4( glowColor, a );
-            }`;
+        }`;
+
     }
 
     ControlMove(dir) {
@@ -152,6 +239,8 @@ class Equipment_Action {
                 this.setting.equipment_CNC[0].tip[0].instance.layers.enable(0);
                 this.setting.equipment_CNC[0].tip[1].instance.layers.enable(0);
                 this.setting.equipment_CNC[0].tip[2].instance.layers.enable(1);
+
+                this.equiment_status[0].status = 'idle';
             }
             else if(status===1)
             {
@@ -162,6 +251,8 @@ class Equipment_Action {
                 this.setting.equipment_CNC[0].tip[0].instance.layers.enable(0);
                 this.setting.equipment_CNC[0].tip[1].instance.layers.enable(1);
                 this.setting.equipment_CNC[0].tip[2].instance.layers.enable(0);
+
+                this.equiment_status[0].status = 'run';
             }
             else if(status===2)
             {
@@ -172,6 +263,8 @@ class Equipment_Action {
                 this.setting.equipment_CNC[0].tip[0].instance.layers.enable(1);
                 this.setting.equipment_CNC[0].tip[1].instance.layers.enable(0);
                 this.setting.equipment_CNC[0].tip[2].instance.layers.enable(0);
+
+                this.equiment_status[0].status = 'error';
             }
     }
 
@@ -190,6 +283,8 @@ class Equipment_Action {
             this.setting.equipment_CNC[1].tip[0].instance.layers.enable(0);
             this.setting.equipment_CNC[1].tip[1].instance.layers.enable(0);
             this.setting.equipment_CNC[1].tip[2].instance.layers.enable(1);
+
+            this.equiment_status[1].status = 'idle';
         }
         else if(status===1)
         {
@@ -200,6 +295,8 @@ class Equipment_Action {
             this.setting.equipment_CNC[1].tip[0].instance.layers.enable(0);
             this.setting.equipment_CNC[1].tip[1].instance.layers.enable(1);
             this.setting.equipment_CNC[1].tip[2].instance.layers.enable(0);
+
+            this.equiment_status[1].status = 'run';
         }
         else if(status===2)
         {
@@ -210,6 +307,8 @@ class Equipment_Action {
             this.setting.equipment_CNC[1].tip[0].instance.layers.enable(1);
             this.setting.equipment_CNC[1].tip[1].instance.layers.enable(0);
             this.setting.equipment_CNC[1].tip[2].instance.layers.enable(0);
+
+            this.equiment_status[1].status = 'error';
         }
 }
 }

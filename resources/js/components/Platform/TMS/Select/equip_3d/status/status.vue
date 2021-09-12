@@ -1,13 +1,13 @@
 <template>
 
-                <div class="wh_outline"
+                <div class="status_outline"
                 v-on:mouseover="Controls_Mouseover()"
-                v-on:mouseleave="Controls_Mouseleave()"
-                v-on:mousemove="update_wh"
-                v-bind:class="{ active_move: click_move }">
+                v-on:mouseleave="Controls_Mouseleave()">
                         <div class="title"
                            @mouseup="Mouseup_stay_panel()"
-                           @mousedown="Mousedown_stay_panel()">
+                           @mousedown="Mousedown_stay_panel()"
+                           v-on:mousemove="update_wh"
+                           v-bind:class="{ active_move: click_move }">
                             設備狀態
                         </div>
 
@@ -17,12 +17,9 @@
 
                         <div class="outline_2">
 
-                            <div  class="outline_status"  v-for="item in $store.state.program_robot.equiment_status" :key="item">
+                            <div  class="outline_status"  v-for="item in getEquiment_status()" :key="item">
                                 <div class="pic">
-                                    <!-- <img :src='require('./assets/images/03.jpg')' alt="" > -->
-                                    <div>
-sss
-                                    </div>
+                                    <img :src='item.image' alt="" >
                                 </div>
                                 <div  class="context">
 
@@ -32,7 +29,8 @@ sss
                                             v-bind:class="{
                                                 'led-gray':(item.status=='unconnect'),
                                                 'led-green': (item.status=='idle'),
-                                                'led-blue': (item.status=='run') }"
+                                                'led-blue': (item.status=='run'),
+                                                'led-red': (item.status=='error') }"
                                             ></div>
                                         </div>
                                         <div class="connect_status">

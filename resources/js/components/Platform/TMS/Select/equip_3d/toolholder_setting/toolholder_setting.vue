@@ -21,7 +21,7 @@
 
                         <div class="tabs">
                             <label class="tab" id="one-tab" for="one" @click="Click_tab(0)" v-bind:class="{ 'tab_active': select_tab==0 }">刀把輸入</label>
-                            <label class="tab" id="two-tab" for="two" @click="Click_tab(1)" v-bind:class="{ 'tab_active': select_tab==1 }">種類設定</label>
+                            <label class="tab" id="two-tab" for="two" @click="Click_tab(1)" v-bind:class="{ 'tab_active': select_tab==1 }">種類閱覽</label>
                             <label class="tab" id="three-tab" for="three" @click="Click_tab(2)" v-bind:class="{ 'tab_active': select_tab==2 }">刀把列表</label>
                         </div>
                         <div class="panels">

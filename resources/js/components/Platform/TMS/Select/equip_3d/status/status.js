@@ -47,6 +47,7 @@ export default {
                 {
                     if(self.page_x !=0 && self.page_y !=0)
                     {
+
                         var bounder_right = (self.$store.state.width_3d -(self.element[0].offsetWidth/2)) + self.$store.state.bound_x;
                         var bounder_left = (self.element[0].offsetWidth/2) + self.$store.state.bound_x;
 
@@ -108,6 +109,12 @@ export default {
                     this.$store.state.threejs.enter=false;
                     this.$store.state.threejs.Controls_Camera_Abled();
                 },
+                getEquiment_status(){
+                    return  this.$store.state.threejs.equipment_action.equiment_status;
+                },
+                getImg(){
+                    return 'https://drive.google.com/file/d/1tiAlLtGH0edHa0lFQklnOMRHaX88w1eH/view?usp=sharing';
+                },
                 status_show(status) {
 
                      var result ="";
@@ -115,10 +122,23 @@ export default {
                      {
                         result ="未連線";
                      }
+                     else if(status=='idle')
+                     {
+                        result ="等待中";
+                     }
+                     else if(status=='run')
+                     {
+                        result ="機器運行";
+                     }
+                     else if(status=='error')
+                     {
+                        result ="機器錯誤";
+                     }
                   return result;
                 }
        },
        created(){
+           this.getEquiment_status();
        }
 
 }

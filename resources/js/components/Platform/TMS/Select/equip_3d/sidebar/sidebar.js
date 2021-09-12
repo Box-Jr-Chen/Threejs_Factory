@@ -11,30 +11,30 @@ export default {
            }
        },
        methods:{
-               btn_select(Num)
-               {
-                   if(this.$store.state.TMS_select_now == this.$store.state.TMS_select_btns[Num]) return;
-                   this.$store.state.TMS_select_now = this.$store.state.TMS_select_btns[Num];
+            //    btn_select(Num)
+            //    {
+            //        if(this.$store.state.TMS_select_now == this.$store.state.TMS_select_btns[Num]) return;
+            //        this.$store.state.TMS_select_now = this.$store.state.TMS_select_btns[Num];
 
-                   this.$store.state.TMS_select_now_sub = null;
+            //        this.$store.state.TMS_select_now_sub = null;
 
-               },
-               btn_select_sub(item_sub ,Num)
-               {
-                   if(this.$store.state.TMS_select_now_sub == item_sub[Num]) return;
+            //    },
+            //    btn_select_sub(item_sub ,Num)
+            //    {
+            //        if(this.$store.state.TMS_select_now_sub == item_sub[Num]) return;
 
-                   this.$store.state.TMS_select_now_sub = item_sub[Num];
-               },
+            //        this.$store.state.TMS_select_now_sub = item_sub[Num];
+            //    },
                btn_leave()
                {
                     this.$router.push({path:'/service'}) ;
                },
-               Controls_Camera_Disabled(){
-                   this.controls.enabled = false;
-               },
-               Controls_Camera_Abled(){
-                   this.controls.enabled = true;
-               },
+            //    Controls_Camera_Disabled(){
+            //        this.controls.enabled = false;
+            //    },
+            //    Controls_Camera_Abled(){
+            //        this.controls.enabled = true;
+            //    },
                Click_panel(panel_num){
 
                     var self = this;
@@ -50,19 +50,11 @@ export default {
                         self.$store.state.element_panel = document.getElementsByClassName('toolholder_outline');
                     else  if(panel_num ==4)
                         self.$store.state.element_panel = document.getElementsByClassName('job_outline');
+                    else  if(panel_num ==5)
+                        self.$store.state.element_panel = document.getElementsByClassName('status_outline');
                }
        },
-       created(){
-           // if( this.$router.currentRoute.path === '/service/tms/status_3d')
-           // {
-           //     this.select_now =this.select_btns[1];
-           // }
-           // else if( this.$router.currentRoute.path === '/service/tms/toolholder')
-           // {
-           //     this.select_now =this.select_btns[2];
-           // }
-
-           this.$store.state.TMS_select_now = this.$store.state.TMS_select_btns[0];
+       mounted() {
 
        }
 
